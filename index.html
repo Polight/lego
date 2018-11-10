@@ -1,0 +1,16 @@
+<!doctype html>
+<meta charset=utf8>
+
+<my-component>Mycomponent is powered by LEGO</my-component>
+
+<script type=module>
+  import component from './dist/lego.js'
+
+  component('my-component', {
+    template: '<h1>${this.user.name}</h1>' +
+              '<p>Age: ${this.user.age}</p>' +
+              '<small>(<slot></slot>)</small>',
+    style: '<style>h1 {color: ${this.color}}</style>',
+    context: { user: { name: 'John Doe', age: 42 }, color: 'green' },
+  })
+</script>
