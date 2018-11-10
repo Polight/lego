@@ -3,6 +3,10 @@
 
 <my-component>Mycomponent is powered by LEGO</my-component>
 
+<!-- This component overrides the default color -->
+<my-component color="red" id=tune-me>This is red</my-component>
+
+
 <script type=module>
   import component from './dist/lego.js'
 
@@ -13,4 +17,8 @@
     style: '<style>h1 {color: ${this.color}}</style>',
     context: { user: { name: 'John Doe', age: 42 }, color: 'green' },
   })
+
+  // Get the #tune-me component and change the user.
+  const tuneMe = document.querySelector('#tune-me')
+  tuneMe.render({ user: { name: 'Chuck Norris', age: 18 } })
 </script>
