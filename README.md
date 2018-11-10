@@ -38,6 +38,7 @@ You may add the [WebComponentsJS polyfill](https://github.com/webcomponents/webc
 ## Available properties
 
 **template**: The HTML content of the component. [Web-components slots](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots#Adding_flexibility_with_slots) and other native web-components properties are fully available. Variables are interpreted from the `context` property. Ex: `${this.myprop}` will read from `context.myprop`.
+See the _Template properties_ for further details.
 
 **style**: The CSS style you want to incorporate. Variables are interpreted from context just like in the _template_ property.
 
@@ -47,3 +48,15 @@ You may add the [WebComponentsJS polyfill](https://github.com/webcomponents/webc
 ## Available methods
 
 **render(context)**: Refresh the component, overriding the context.
+
+
+## Template properties
+
+The template can replace [native template literal](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals),
+so any variable between `${  }` will be interpreted. `this` representing the _context_.
+ex: with a _context_ such as `{ name: 'John' }`, a _template_ `Hey ${ this.name }!` will output
+`Hey John!`.
+
+The template property also offers conditional templating through the `if` attribute.
+`<p if="${ this.age > 100 }">Over a century old</p>` will outputed only if the `age` property
+in the _context_ is above _100_.
