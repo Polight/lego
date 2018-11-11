@@ -14,6 +14,9 @@
     template: '<h1>${this.user.name}</h1>' +
               '<p>Age: ${this.user.age}</p>' +
               '<p if="${this.user.age < 30}">young guy…</p>' +
+              '<ul>' +
+              '  <li for="${ this.games }">${ item }</li>' +
+              '</ul>' +
               '<small>(<slot></slot>)</small>',
     style: '<style>h1 {color: ${this.color}}</style>',
     context: { user: { name: 'John Doe', age: 42 }, color: 'green' },
