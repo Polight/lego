@@ -1,4 +1,7 @@
+<div style="text-align:center"><img src="./assets/lego.svg" alt="Lego web-components JS lib"></div>
+
 # LEGO: Modern Web-Components
+
 
 LEGO (_Lightweight Embedded Gluten-free Objects_) is a thin layer to build web-component bricks that are easy to digest for your browser.
 
