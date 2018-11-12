@@ -1,4 +1,4 @@
-class HTMLParser {
+export default class HTMLParser {
 
   static htmlToDom(html) {
     const container = document.createElement('div')
@@ -50,11 +50,4 @@ class HTMLParser {
     dom = HTMLParser.parseAttributeFor(dom, ctx)
     return HTMLParser.evaluate(dom.innerHTML, ctx)
   }
-}
-
-try {
-  eval('export default HTMLParser')
-}
-catch {
-  module.exports = HTMLParser
 }

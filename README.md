@@ -1,4 +1,4 @@
-<div style="text-align:center"><img src="./assets/lego.svg" alt="Lego web-components JS lib"></div>
+![Lego web-components JS lib](./assets/lego.svg)
 
 # LEGO: Modern Web-Components
 
