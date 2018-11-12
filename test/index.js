@@ -1,7 +1,7 @@
 import assert from 'assert'
 import jsdom from 'mocha-jsdom'
 
-import HTMLParser from '../dist/html-parser.js'
+import HTMLParser from '../lego/html-parser.js'
 
 jsdom({ url: 'http://localhost/', includeNodeLocations: true })
 

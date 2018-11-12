@@ -11,7 +11,8 @@
     "mocha-jsdom": "^2.0.0"
   },
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register"
+    "test": "mocha --compilers js:babel-core/register",
+    "compile": "node ./lego/bin/compiler.js"
   },
   "babel": {
     "presets": [

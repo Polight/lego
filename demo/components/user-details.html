@@ -1,0 +1,17 @@
+<template name=user-details>
+  <h1>${ this.name }</h1>
+  <p>is ${ this.age } years old</p>
+
+  <p if="${ this.age < 60 }" class="comment">(somehow he's still young!)</p>
+</template>
+
+<style>
+  .comment {
+    font-size: .8rem;
+    color: #888;
+  }
+</style>
+
+<script>
+  console.log('Component <user-details> was instanciated')
+</script>

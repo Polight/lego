@@ -7,10 +7,10 @@
 
 LEGO (_Lightweight Embedded Gluten-free Objects_) is a thin layer to build web-component bricks that are easy to digest for your browser.
 
-> No dependency, no compilation!™
+Lego is inspired from great libraries such as [Riot](https://riot.js.org/), [VueJS](https://vuejs.org) or [Polymer](https://www.polymer-project.org/). It's just much lighter with no complexity, easier to read code, maintain and interact with the source.
 
 
-## Create your element
+## Create a _naive_ element
 
 ```html
 <my-component>Content of my component</my-component>
@@ -19,10 +19,9 @@ LEGO (_Lightweight Embedded Gluten-free Objects_) is a thin layer to build web-c
   import component from './dist/lego.js'
 
   component('my-component', {
-      template: '<h1>${this.user.name}</h1><p>Age: ${this.user.age}</p><slot />',
-      style: '<style>h1 {color: ${this.color}}</style>'
-      context: { user: { name: 'John Doe', age: 42 }, color: 'green' },
-    }
+    template: '<h1>${this.user.name}</h1><p>Age: ${this.user.age}</p>',
+    style: '<style>h1 {color: ${this.color}}</style>'
+    context: { user: { name: 'John Doe', age: 42 }, color: 'green' },
   })
 </script>
 ```
@@ -32,13 +31,49 @@ LEGO (_Lightweight Embedded Gluten-free Objects_) is a thin layer to build web-c
 In 4 lines you created a full powered web-component!
 
 
+## Create a real world component
+
+For more complex applications you will need to separate concerns and write advanced components.
+We could write the previous example this way:
+
+_index.html_
+
+```html
+<my-component name="John Doe" age="42" color="green"></my-component>
+
+<script src="./my-component.js" type="module"></script>
+```
+
+_components/my-component.html_
+
+```html
+<template>
+ <h1>${ this.name }</h1>
+ <p>Age: ${ this.age }</p>
+</template>
+
+<style>
+ h1 {
+   color: ${ this.color }
+ }
+ </style>
+```
+
+In this case you will need to compile _components/my-component.html_ into _./my-component.js_:
+
+```sh
+npm compile ./components/my-component.html ./my-component.js
+```
+
+
 ## Just a thin layer
 
 It is still fully compatible with native _custom elements_. No magic behind the scene,
 no complexity, just a couple of useful methods to write native web components easier.
 
-You may add the [WebComponentsJS polyfill](https://github.com/webcomponents/webcomponentsjs) to increase browser compatibility.
+Because Lego is actual native web-components, all its native possibilities (like [slots](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots#Adding_flexibility_with_slots)) are on board.
 
+You may add the [WebComponentsJS polyfill](https://github.com/webcomponents/webcomponentsjs) to increase browser compatibility.
 
 
 ## Available properties

@@ -25,7 +25,7 @@ export default class HTMLParser {
       tag.removeAttribute('for')
       const fragment = tag.outerHTML
       const [_, itemName, propName] = result
-      const list = (new Function('return ' + propName)).apply(ctx)
+      const list = (new Function(String.raw`return ${propName}`)).apply(ctx)
       let tagHTML = ''
       if(!list || !list.length) tag.remove()
       else list.map(item => {
