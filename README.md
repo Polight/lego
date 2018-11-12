@@ -41,7 +41,7 @@ _index.html_
 ```html
 <my-component name="John Doe" age="42" color="green"></my-component>
 
-<script src="./my-component.js" type="module"></script>
+<script src="./components.js" type="module"></script>
 ```
 
 _components/my-component.html_
@@ -62,8 +62,10 @@ _components/my-component.html_
 In this case you will need to compile _components/my-component.html_ into _./my-component.js_:
 
 ```sh
-npm compile ./components/my-component.html ./my-component.js
+npm compile ./components
 ```
+
+That will read all HTML components from _./components_ and create a _components.js_ file.
 
 
 ## Just a thin layer
@@ -102,6 +104,16 @@ The template property also offers conditional templating through the `if` attrib
 `<p if="${ this.age > 100 }">Over a century old</p>` will outputed only if the `age` property
 in the _context_ is above _100_.
 
+
+## Compiling
+
+```sh
+npm run compile <source_path> <target_file_path>
+```
+**source_path**: either a file or a directory (relative or absolute). If it's a directory, it will recursively read all the _.html_ files and compile them into the _target_file_.
+
+**target_file_path**: (default: _components.js_) the path (relative or absolute) to a _.js_ file.
+That file will be created and contain all the components.
 
 ## Running tests [![CircleCI](https://circleci.com/gh/vinyll/lego/tree/master.svg?style=svg)](https://circleci.com/gh/vinyll/lego/tree/master)
 

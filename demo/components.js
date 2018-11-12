@@ -1,6 +1,22 @@
 
 import lego from '/lego/index.js'
 
+lego('app-header', {
+  template: `
+  <header>
+    <h1><a href="https://github.com/vinyll/lego">Lego Web-components</a></h1>
+  </header>
+`,
+  style: `<style>
+  header {
+    padding: 1rem 2rem;
+    background-color: #eee;
+    color: #555;
+  }
+</style>`,
+  context: {}
+})
+
 lego('user-details', {
   template: `
   <h1>\${ this.name }</h1>
