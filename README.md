@@ -1,11 +1,14 @@
 ![Lego web-components JS lib](./assets/lego.svg)
 
+[![CircleCI ](https://circleci.com/gh/vinyll/lego/tree/master.svg?style=shield)](https://circleci.com/gh/vinyll/lego/tree/master)
+
 # LEGO: Modern Web-Components
 
 
 LEGO (_Lightweight Embedded Gluten-free Objects_) is a thin layer to build web-component bricks that are easy to digest for your browser.
 
 > No dependency, no compilation!™
+
 
 ## Create your element
 
@@ -63,3 +66,8 @@ ex: with a _context_ such as `{ name: 'John' }`, a _template_ `Hey ${ this.name 
 The template property also offers conditional templating through the `if` attribute.
 `<p if="${ this.age > 100 }">Over a century old</p>` will outputed only if the `age` property
 in the _context_ is above _100_.
+
+
+## Running tests [![CircleCI](https://circleci.com/gh/vinyll/lego/tree/master.svg?style=svg)](https://circleci.com/gh/vinyll/lego/tree/master)
+
+Just install node dev dependencies (`npm install`) and run the tests (`npm test`).
