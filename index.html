@@ -8,9 +8,9 @@
 
 
 <script type=module>
-  import component from './dist/lego.js'
+  import lego from './lego/index.js'
 
-  component('my-component', {
+  lego('my-component', {
     template: '<h1>${this.user.name}</h1>' +
               '<p>Age: ${this.user.age}</p>' +
               '<p if="${this.user.age < 30}">young guy…</p>' +
