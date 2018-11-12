@@ -12,7 +12,8 @@
   },
   "scripts": {
     "test": "mocha --compilers js:babel-core/register",
-    "compile": "node ./lego/bin/compiler.js"
+    "compile": "node ./lego/bin/compile.js",
+    "watch": "node ./lego/bin/watch.js"
   },
   "babel": {
     "presets": [

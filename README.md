@@ -110,10 +110,22 @@ in the _context_ is above _100_.
 ```sh
 npm run compile <source_path> <target_file_path>
 ```
+
+or
+```sh
+npm run watch <source_path> <target_file_path>
+```
+in development mode.
+
+
 **source_path**: either a file or a directory (relative or absolute). If it's a directory, it will recursively read all the _.html_ files and compile them into the _target_file_.
 
 **target_file_path**: (default: _components.js_) the path (relative or absolute) to a _.js_ file.
 That file will be created and contain all the components.
+
+`npm run watch` will watch for any file change among your components and recompile
+(bewarn that is doesn't watch file creation, you'll need to run the command again).
+
 
 ## Running tests [![CircleCI](https://circleci.com/gh/vinyll/lego/tree/master.svg?style=svg)](https://circleci.com/gh/vinyll/lego/tree/master)
 

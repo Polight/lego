@@ -22,12 +22,7 @@ function readHTMLComponent(path) {
 }
 
 function createJsComponent(name, html, style) {
-  return `
-lego('${name}', {
-  template: \`${escapeLiteral(html)}\`,
-  style: \`${escapeLiteral(style)}\`,
-  context: {}
-})`
+  return `lego('${name}', {template: \`${escapeLiteral(html)}\`, style: \`${escapeLiteral(style)}\`, context: {}})`
 }
 
 function transpile(path) {
@@ -39,4 +34,4 @@ function transpile(path) {
 }
 
 // Non ES7 module because of Node 11…
-module.exports = { transpile }
+module.exports = { transpile, readHTMLComponent, createJsComponent }

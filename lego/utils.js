@@ -9,7 +9,7 @@ async function walkDir(dirname, extensions) {
 }
 
 function escapeLiteral(text) {
-  return text.replace(/\${/g, '\\${')
+  return text && text.replace(/\${/g, '\\${') || ''
 }
 
 module.exports = { walkDir, escapeLiteral }
