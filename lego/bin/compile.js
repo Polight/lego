@@ -11,16 +11,16 @@ if(!target) target = './components.js'
 async function compile(source, target) {
   const filenames = await walkDir(source, ['html'])
   const components = filenames.map(f => transpile(f))
-  const output = `import lego from '/lego/index.js'
-                  ${components.map(c => c.content).join('\n')}
-                  `.replace(/\s{2,}/g, ' ')
+  const output = `
+    import lego from '/lego/index.js'
+    ${components.map(c => c.content).join('\n')}
+    `.replace(/[ ]{2,}/g, ' ')
   fs.writeFileSync(target, output, 'utf8')
   return components.map(c => c.name)
 }
 
 async function build() {
-  await compile(source, target)
-  const names = await build()
+  const names = await compile(source, target)
   return console.info(`${names.length} components were compiled into "${target}": ${names.join(', ')}.`)
 }
 build()

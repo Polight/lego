@@ -21,15 +21,16 @@ function readHTMLComponent(path) {
   return { name, html, style, script }
 }
 
-function createJsComponent(name, html, style) {
-  return `lego('${name}', {template: \`${escapeLiteral(html)}\`, style: \`${escapeLiteral(style)}\`, context: {}})`
+function createJsComponent(name, html, style, script) {
+  const initFunction = script ? `init: function() {${script}}` : ''
+  return `lego('${name}', {template: \`${escapeLiteral(html)}\`, style: \`${escapeLiteral(style)}\`, context: {}, ${initFunction}})`
 }
 
 function transpile(path) {
-  const { name, html, style } = readHTMLComponent(path)
+  const { name, html, style, script } = readHTMLComponent(path)
   return {
     name: name,
-    content: createJsComponent(name, html, style)
+    content: createJsComponent(name, html, style, script)
   }
 }
 

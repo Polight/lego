@@ -1,8 +1,11 @@
 <template name=user-details>
   <h1>${ this.name }</h1>
-  <p>is ${ this.age } years old</p>
+  <p>is ${ this.age } years old
+  </p>
+  <button onclick="this.makeMeYounger">Make ${ this.name } younger</button>
+  <button onclick="this.makeMeOlder">Make ${ this.name } older</button>
 
-  <p if="${ this.age < 60 }" class="comment">(somehow he's still young!)</p>
+  <p if="${ this.age < 45 }" class="comment">(somehow he's still young!)</p>
 </template>
 
 <style>
@@ -13,5 +16,14 @@
 </style>
 
 <script>
-  console.log('Component <user-details> was instanciated')
+  this.makeMeOlder = (event) => {
+    this.render({ age: Number(this.context.age) + 1 })
+  }
+  this.makeMeYounger = (event) => {
+    this.render({ age: Number(this.context.age) - 1 })
+  }
+
+  this.connected = () => {
+    console.log(`Component <user-details> was instanciated with ${this.context.age}`)
+  }
 </script>
