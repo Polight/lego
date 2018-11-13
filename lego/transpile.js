@@ -23,7 +23,12 @@ function readHTMLComponent(path) {
 
 function createJsComponent(name, html, style, script) {
   const initFunction = script ? `init: function() {${script}}` : ''
-  return `lego('${name}', {template: \`${escapeLiteral(html)}\`, style: \`${escapeLiteral(style)}\`, context: {}, ${initFunction}})`
+  const properties = [
+    `template: \`${escapeLiteral(html)}\``,
+    `style: \`${escapeLiteral(style)}\``
+  ]
+  if(script) properties.push(`init: function() {${escapeLiteral(script)}}`)
+  return `lego('${name}', {${properties.join(', ')}})`
 }
 
 function transpile(path) {
