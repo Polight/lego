@@ -6,16 +6,16 @@ export default class HTMLParser {
     return container
   }
 
-  static parseAttributeIf(dom, ctx) {
+  static parseAttributeIf(dom, state) {
     const tags = Array.from(dom.querySelectorAll('*')).filter(n => n.hasAttribute('if'))
     tags.forEach(tag => {
-      if(HTMLParser.evaluate(tag.getAttribute('if'), ctx) === 'false') tag.remove()
+      if(HTMLParser.evaluate(tag.getAttribute('if'), state) === 'false') tag.remove()
       else tag.removeAttribute('if')
     })
     return dom
   }
 
-  static parseAttributeFor(dom, ctx) {
+  static parseAttributeFor(dom, state) {
     const tags = Array.from(dom.querySelectorAll('*')).filter(n => n.hasAttribute('for'))
     const forInPattern = /\${\s*(.+)\s+in\s+(.[^\s]*)\s+}/
     tags.forEach(tag => {
@@ -25,13 +25,13 @@ export default class HTMLParser {
       tag.removeAttribute('for')
       const fragment = tag.outerHTML
       const [_, itemName, propName] = result
-      const list = (new Function(String.raw`return ${propName}`)).apply(ctx)
+      const list = (new Function(String.raw`return ${propName}`)).apply(state)
       let tagHTML = ''
       if(!list || !list.length) tag.remove()
       else list.map(item => {
-        const subContext = Object.assign({}, ctx)
-        subContext[itemName] = item
-        const subTemplate = HTMLParser.parse(fragment, subContext)
+        const subState = Object.assign({}, state)
+        subState[itemName] = item
+        const subTemplate = HTMLParser.parse(fragment, subState)
         tagHTML += subTemplate
       })
       tag.outerHTML = tagHTML
@@ -39,15 +39,15 @@ export default class HTMLParser {
     return dom
   }
 
-  static evaluate(html, ctx) {
+  static evaluate(html, state) {
     const templater = new Function('return `' + html + '`')
-    return templater.apply(ctx)
+    return templater.apply(state)
   }
 
-  static parse(template, ctx) {
+  static parse(template, state) {
     let dom = HTMLParser.htmlToDom(template)
-    dom = HTMLParser.parseAttributeIf(dom, ctx)
-    dom = HTMLParser.parseAttributeFor(dom, ctx)
-    return HTMLParser.evaluate(dom.innerHTML, ctx)
+    dom = HTMLParser.parseAttributeIf(dom, state)
+    dom = HTMLParser.parseAttributeFor(dom, state)
+    return HTMLParser.evaluate(dom.innerHTML, state)
   }
 }

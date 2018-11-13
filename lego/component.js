@@ -9,9 +9,9 @@ class Component extends HTMLElement {
     if(this._metaProperties) properties = this._metaProperties
     //
     this.shadow = this.attachShadow({mode: 'open'})
-    const defaults = { template: '', style: '', context: {}, init: null }
+    const defaults = { template: '', style: '', state: {}, init: null }
     this.properties = Object.assign({}, defaults, properties)
-    Object.assign(this.properties.context, this.getAttributes())
+    Object.assign(this.properties.state, this.getAttributes())
     this.properties.init && this.properties.init.apply(this)
     this.render()
   }
@@ -25,7 +25,7 @@ class Component extends HTMLElement {
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    this.properties.context[name] = newValue
+    this.properties.state[name] = newValue
     this.changed ? this.changed(name, oldValue) : this.render()
   }
 
@@ -39,15 +39,15 @@ class Component extends HTMLElement {
     return attributes
   }
 
-  get context() {
-    return this.properties.context
+  get state() {
+    return this.properties.state
   }
 
-  render(ctx = {}) {
-    const context = Object.assign(this.properties.context, ctx)
-    const template = HTMLParser.parse(this.properties.template, context)
-    const style = HTMLParser.parse(this.properties.style, context)
-    this.shadow.innerHTML = HTMLParser.parse(style + template, context)
+  render(state = {}) {
+    const fullState = Object.assign(this.properties.state, state)
+    const template = HTMLParser.parse(this.properties.template, fullState)
+    const style = HTMLParser.parse(this.properties.style, state)
+    this.shadow.innerHTML = HTMLParser.parse(style + template, state)
     this.listenEvents(this.shadow)
   }
 

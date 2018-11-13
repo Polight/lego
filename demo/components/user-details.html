@@ -17,13 +17,13 @@
 
 <script>
   this.makeMeOlder = (event) => {
-    this.render({ age: Number(this.context.age) + 1 })
+    this.render({ age: Number(this.state.age) + 1 })
   }
   this.makeMeYounger = (event) => {
-    this.render({ age: Number(this.context.age) - 1 })
+    this.render({ age: Number(this.state.age) - 1 })
   }
 
   this.connected = () => {
-    console.log(`Component <user-details> was instanciated with ${this.context.age}`)
+    console.log(`Component <user-details> was instanciated with ${this.state.age}`)
   }
 </script>
