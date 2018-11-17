@@ -12,8 +12,8 @@
   },
   "scripts": {
     "test": "mocha --require babel-core/register",
-    "compile": "node ./lib/bin/compile.js",
-    "watch": "node ./lib/bin/watch.js"
+    "compile": "LIB_PATH=/lib node ./lib/bin/compile.js",
+    "watch": "LIB_PATH=/lib node ./lib/bin/watch.js"
   },
   "babel": {
     "presets": [

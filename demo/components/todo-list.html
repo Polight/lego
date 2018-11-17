@@ -2,23 +2,28 @@
   <ul if="${ this.state.tasks }">
     <li for="${ task in this.state.tasks }">
       <label>
-        <input type=checkbox checked?="${ this.task.done }" value="${ this.task.label }" onclick="this.toggleCheck">
-        ${ this.task.label }
+        <input type=checkbox checked?="${ this.task.done }" value="${ this.task.label }" on-click="this.toggleCheck">
+        <span>${ this.task.label }</span>
       </label>
     </li>
   </ul>
 
-  <form>
-    <input id=task-name>
-    <button onclick="this.addTask">Add task</button>
+  <form on-submit="this.addTask">
+    <input type=text id=task-name placeholder="What should you do today?">
+    <button>Add task</button>
   </form>
+
+  <button on-click="this.save">Save for later</button>
 </template>
 
 <script>
-  this.state.tasks = []
+  this.state.tasks = JSON.parse(localStorage.getItem('todo-list-demo')) || []
 
   this.addTask = (event) => {
-    this.state.tasks.push({ label: this.document.querySelector('#task-name').value, done: false })
+    event.preventDefault()
+    const label = event.target['task-name'].value
+    if(!label) return alert("You must insert a task label.")
+    this.state.tasks.push({ label: label, done: false })
     this.render()
   }
 
@@ -27,4 +32,25 @@
     this.state.tasks[index].done = event.target.checked
     this.render()
   }
+
+  this.save = () => {
+    localStorage.setItem('todo-list-demo', JSON.stringify(this.state.tasks))
+    alert("Your tasks were saved!")
+  }
 </script>
+
+<style>
+  [type=text] {
+    padding: .5rem;
+    width: 50%;
+    font: inherit;
+  }
+  [checked] + span {
+    text-decoration: line-through;
+  }
+  button {
+    font: inherit;
+    display: block;
+    margin-top: 1rem;
+  }
+</style>
