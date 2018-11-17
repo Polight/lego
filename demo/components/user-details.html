@@ -1,11 +1,11 @@
 <template name=user-details>
-  <h1>${ this.name }</h1>
-  <p>is ${ this.age } years old
+  <h1>${ this.state.name }</h1>
+  <p>is ${ this.state.age } years old
   </p>
-  <button onclick="this.makeMeYounger">Make ${ this.name } younger</button>
-  <button onclick="this.makeMeOlder">Make ${ this.name } older</button>
+  <button onclick="this.makeMeYounger">Make ${ this.state.name } younger</button>
+  <button onclick="this.makeMeOlder">Make ${ this.state.name } older</button>
 
-  <p if="${ this.age < 45 }" class="comment">(somehow he's still young!)</p>
+  <p if="${ this.state.age < 45 }" class="comment">(somehow he's still young!)</p>
 </template>
 
 <style>

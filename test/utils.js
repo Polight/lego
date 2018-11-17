@@ -1,7 +1,7 @@
 import path from 'path'
 import assert from 'assert'
 
-import { walkDir, escapeLiteral } from '../lego/utils.js'
+import { walkDir, escapeLiteral } from '../lib/utils.js'
 
 describe('utils', () => {
   describe('#walkDir()', () => {
@@ -12,7 +12,8 @@ describe('utils', () => {
         dirname,
         `${dirname}/fixtures`,
         `${dirname}/fixtures/x-basic.html`,
-        `${dirname}/index.js`,
+        `${dirname}/fixtures/x-scripted.html`,
+        `${dirname}/html-parser.js`,
         `${dirname}/utils.js`,
         `${dirname}/transpile.js`,
       ].sort())
@@ -22,7 +23,7 @@ describe('utils', () => {
       const dirname = path.resolve(__dirname + '/../test')
       const dirs = await walkDir(dirname, ['js'])
       assert.deepEqual(dirs.sort(), [
-        `${dirname}/index.js`,
+        `${dirname}/html-parser.js`,
         `${dirname}/utils.js`,
         `${dirname}/transpile.js`,
       ].sort())

@@ -1,7 +1,7 @@
 import assert from 'assert'
 import jsdom from 'mocha-jsdom'
 
-import HTMLParser from '../lego/html-parser.js'
+import HTMLParser from '../lib/html-parser.js'
 
 jsdom({ url: 'http://localhost/', includeNodeLocations: true })
 
@@ -23,7 +23,7 @@ describe('HTMLParser', () => {
       assert.equal(HTMLParser.evaluate(template, { user: { name: 'John', age: 42 } }), 'John is 42 years old')
     })
     it('should ignore undefined variables', () => {
-      const template = 'John is ${ this.age } years old'
+      const template = 'John is ${ this.nothing } years old'
       assert.equal(HTMLParser.evaluate(template), 'John is undefined years old')
     })
   })
@@ -47,6 +47,17 @@ describe('HTMLParser', () => {
     })
   })
 
+  describe('#parseAttributeBoolean()', () => {
+    it('should create valid attribute when boolean is true', () => {
+      const dom = HTMLParser.htmlToDom('<p><b selected?="true">Hey</b></p>')
+      assert.equal(HTMLParser.parseAttributeBoolean(dom).innerHTML, '<p><b selected="selected">Hey</b></p>')
+    })
+    it('should remove attribute when boolean is false', () => {
+      const dom = HTMLParser.htmlToDom('<p><b selected?="false">Hey</b></p>')
+      assert.equal(HTMLParser.parseAttributeBoolean(dom).innerHTML, '<p><b>Hey</b></p>')
+    })
+  })
+
   describe('#parseAttributeFor()', () => {
     it('should remove node when list is empty', () => {
       const dom = HTMLParser.htmlToDom('<p><a for="${ url in this.urls }">link</a></p>')
@@ -63,9 +74,13 @@ describe('HTMLParser', () => {
       const template = '${ this.user.name } is ${ this.user.age } years old'
       assert.equal(HTMLParser.parse(template, { user: { name: 'John', age: 42 } }), 'John is 42 years old')
     })
-    it('should evaluate template "if" and "for" attributes', () => {
+    it('should evaluate template nested "if" attributes', () => {
       const template = '<p><a if="${ this.showLink }">link</a><b if="${ this.showStrong }">strong</b></p>'
       assert.equal(HTMLParser.parse(template, { showLink: true, showStrong: false }), '<p><a>link</a></p>')
+    })
+    it('should evaluate template boolean attribute', () => {
+      const template = '<p><a if="${ this.showLink }" selected?="${ this.isSelected }">link</a></p>'
+      assert.equal(HTMLParser.parse(template, { showLink: true, showStrong: false, isSelected: true }), '<p><a selected="selected">link</a></p>')
     })
     it('should duplicate nodes when list has elements', () => {
       const template = '<p><b><a for="${ url in this.urls }">${ this.url }</a></b></p>'

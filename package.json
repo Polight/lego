@@ -11,9 +11,9 @@
     "mocha-jsdom": "^2.0.0"
   },
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register",
-    "compile": "node ./lego/bin/compile.js",
-    "watch": "node ./lego/bin/watch.js"
+    "test": "mocha --require babel-core/register",
+    "compile": "node ./lib/bin/compile.js",
+    "watch": "node ./lib/bin/watch.js"
   },
   "babel": {
     "presets": [
@@ -26,5 +26,8 @@
     "riot"
   ],
   "author": "Vincent Agnano",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "node-inspector": "^0.7.5"
+  }
 }
