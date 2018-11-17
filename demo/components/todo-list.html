@@ -1,0 +1,30 @@
+<template>
+  <ul if="${ this.state.tasks }">
+    <li for="${ task in this.state.tasks }">
+      <label>
+        <input type=checkbox checked?="${ this.task.done }" value="${ this.task.label }" onclick="this.toggleCheck">
+        ${ this.task.label }
+      </label>
+    </li>
+  </ul>
+
+  <form>
+    <input id=task-name>
+    <button onclick="this.addTask">Add task</button>
+  </form>
+</template>
+
+<script>
+  this.state.tasks = []
+
+  this.addTask = (event) => {
+    this.state.tasks.push({ label: this.document.querySelector('#task-name').value, done: false })
+    this.render()
+  }
+
+  this.toggleCheck = (event) => {
+    const index = this.state.tasks.findIndex(t => t.label === event.target.value)
+    this.state.tasks[index].done = event.target.checked
+    this.render()
+  }
+</script>
