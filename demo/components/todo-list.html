@@ -1,30 +1,31 @@
 <template>
-  <ul if="${ this.state.tasks }">
-    <li for="${ task in this.state.tasks }">
+  <ul :if="this.state.tasks">
+    <li :for="task in this.state.tasks">
       <label>
-        <input type=checkbox checked?="${ this.task.done }" value="${ this.task.label }" on-click="this.toggleCheck">
+        <input type="checkbox" :checked="this.task.done" value="${ this.task.label }" :on-click="this.toggleCheck">
         <span>${ this.task.label }</span>
       </label>
     </li>
   </ul>
 
-  <form on-submit="this.addTask">
-    <input type=text id=task-name placeholder="What should you do today?">
-    <button>Add task</button>
+  <form>
+    <input type="text" :on-input="this.updateTaskName" value="${ this.state.taskName }">
+    <button :on-click="this.addTask">Add task</button>
   </form>
-
-  <button on-click="this.save">Save for later</button>
 </template>
 
 <script>
   this.state.tasks = JSON.parse(localStorage.getItem('todo-list-demo')) || []
+  this.state.taskName = ''
 
   this.addTask = (event) => {
-    event.preventDefault()
-    const label = event.target['task-name'].value
-    if(!label) return alert("You must insert a task label.")
-    this.state.tasks.push({ label: label, done: false })
+    this.state.tasks.push({ label: this.state.taskName, done: false })
+    this.state.taskName = ''
     this.render()
+  }
+
+  this.updateTaskName = (event) => {
+    this.state.taskName = event.target.value
   }
 
   this.toggleCheck = (event) => {
