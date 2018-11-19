@@ -8,10 +8,12 @@
     </li>
   </ul>
 
-  <form>
+  <form :on-submit="this.addTask">
     <input type="text" :on-input="this.updateTaskName" value="${ this.state.taskName }">
-    <button :on-click="this.addTask">Add task</button>
+    <button>Add task</button>
   </form>
+
+  <button :on-click="this.save">Save my tasks</button>
 </template>
 
 <script>
@@ -19,6 +21,7 @@
   this.state.taskName = ''
 
   this.addTask = (event) => {
+    event.preventDefault()
     this.state.tasks.push({ label: this.state.taskName, done: false })
     this.state.taskName = ''
     this.render()
@@ -36,7 +39,7 @@
 
   this.save = () => {
     localStorage.setItem('todo-list-demo', JSON.stringify(this.state.tasks))
-    alert("Your tasks were saved!")
+    alert("Your tasks were saved for next time!")
   }
 </script>
 
