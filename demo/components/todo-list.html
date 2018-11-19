@@ -1,19 +1,19 @@
 <template>
-  <ul if="${ this.state.tasks }">
-    <li for="${ task in this.state.tasks }">
+  <ul :if="${ this.state.tasks }">
+    <li :for="${ task in this.state.tasks }">
       <label>
-        <input type=checkbox checked?="${ this.task.done }" value="${ this.task.label }" on-click="this.toggleCheck">
+        <input type=checkbox :checked="${ this.task.done }" value="${ this.task.label }" :on-click="this.toggleCheck">
         <span>${ this.task.label }</span>
       </label>
     </li>
   </ul>
 
-  <form on-submit="this.addTask">
+  <form :on-submit="this.addTask">
     <input type=text id=task-name placeholder="What should you do today?">
     <button>Add task</button>
   </form>
 
-  <button on-click="this.save">Save for later</button>
+  <button :on-click="this.save">Save for later</button>
 </template>
 
 <script>
