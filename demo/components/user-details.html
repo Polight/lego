@@ -2,10 +2,10 @@
   <h1>${ this.state.name }</h1>
   <p>is ${ this.state.age } years old
   </p>
-  <button onclick="this.makeMeYounger">Make ${ this.state.name } younger</button>
-  <button onclick="this.makeMeOlder">Make ${ this.state.name } older</button>
+  <button :on-click="this.makeMeYounger">Make ${ this.state.name } younger</button>
+  <button :on-click="this.makeMeOlder">Make ${ this.state.name } older</button>
 
-  <p if="${ this.state.age < 45 }" class="comment">(somehow he's still young!)</p>
+  <p :if="this.state.age < 45" class="comment">(somehow he's still young!)</p>
 </template>
 
 <style>
@@ -24,6 +24,6 @@
   }
 
   this.connected = () => {
-    console.log(`Component <user-details> was instanciated with ${this.state.age}`)
+    console.log('Component <user-details> was instanciated with the following state:', this.state)
   }
 </script>

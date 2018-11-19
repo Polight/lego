@@ -16,7 +16,7 @@ Lego is inspired from great libraries such as [Riot](https://riot.js.org/), [Vue
 <my-component>Content of my component</my-component>
 
 <script type=module>
-  import component from './dist/lego.js'
+  import component from './lib/lego.js'
 
   component('my-component', {
     template: '<h1>${this.user.name}</h1><p>Age: ${this.user.age}</p>',
@@ -101,7 +101,7 @@ ex: with a _context_ such as `{ name: 'John' }`, a _template_ `Hey ${ this.name 
 `Hey John!`.
 
 The template property also offers conditional templating through the `if` attribute.
-`<p if="${ this.age > 100 }">Over a century old</p>` will outputed only if the `age` property
+`<p :if="this.age > 100">Over a century old</p>` will outputed only if the `age` property
 in the _context_ is above _100_.
 
 

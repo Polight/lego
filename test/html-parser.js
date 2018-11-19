@@ -13,18 +13,30 @@ describe('HTMLParser', () => {
     })
   })
 
-  describe('#evaluate()', () => {
+  describe('#evaluateString()', () => {
+    it('should replace string with value of context', () => {
+      assert.equal(HTMLParser.evaluateString('this.name', { name: 'John' }), 'John')
+    })
+    it('should replace complex objects in string', () => {
+      assert.equal(HTMLParser.evaluateString('this.user.name', { user: { name: 'John' } }), 'John')
+    })
+    it('should ignore undefined variables', () => {
+      assert.equal(HTMLParser.evaluateString('this.user'), '')
+    })
+  })
+
+  describe('#evaluateLiteral()', () => {
     it('should replace string and integers in template', () => {
       const template = '${ this.name } is ${ this.age } years old'
-      assert.equal(HTMLParser.evaluate(template, { name: 'John', age: 42 }), 'John is 42 years old')
+      assert.equal(HTMLParser.evaluateLiteral(template, { name: 'John', age: 42 }), 'John is 42 years old')
     })
     it('should replace complex objects in template', () => {
       const template = '${ this.user.name } is ${ this.user.age } years old'
-      assert.equal(HTMLParser.evaluate(template, { user: { name: 'John', age: 42 } }), 'John is 42 years old')
+      assert.equal(HTMLParser.evaluateLiteral(template, { user: { name: 'John', age: 42 } }), 'John is 42 years old')
     })
     it('should ignore undefined variables', () => {
       const template = 'John is ${ this.nothing } years old'
-      assert.equal(HTMLParser.evaluate(template), 'John is undefined years old')
+      assert.equal(HTMLParser.evaluateLiteral(template), 'John is undefined years old')
     })
   })
 
@@ -60,11 +72,11 @@ describe('HTMLParser', () => {
 
   describe('#parseAttributeFor()', () => {
     it('should remove node when list is empty', () => {
-      const dom = HTMLParser.htmlToDom('<p><a :for="${ url in this.urls }">link</a></p>')
+      const dom = HTMLParser.htmlToDom('<p><a :for="url in this.urls">link</a></p>')
       assert.equal(HTMLParser.parseAttributeFor(dom).innerHTML, '<p></p>')
     })
     it('should duplicate nodes when list has elements', () => {
-      const dom = HTMLParser.htmlToDom('<p><a :for="${ url in this.urls }">${ this.url }</a></p>')
+      const dom = HTMLParser.htmlToDom('<p><a :for="url in this.urls">${ this.url }</a></p>')
       assert.equal(HTMLParser.parseAttributeFor(dom, { urls: ['localhost', 'example'] }).innerHTML, '<p><a>localhost</a><a>example</a></p>')
     })
   })
@@ -75,23 +87,23 @@ describe('HTMLParser', () => {
       assert.equal(HTMLParser.parse(template, { user: { name: 'John', age: 42 } }), 'John is 42 years old')
     })
     it('should evaluate template nested "if" attributes', () => {
-      const template = '<p><a :if="${ this.showLink }">link</a><b :if="${ this.showStrong }">strong</b></p>'
+      const template = '<p><a :if="this.showLink">link</a><b :if="this.showStrong">strong</b></p>'
       assert.equal(HTMLParser.parse(template, { showLink: true, showStrong: false }), '<p><a>link</a></p>')
     })
     it('should evaluate template boolean attribute', () => {
-      const template = '<p><a :if="${ this.showLink }" :selected="${ this.isSelected }">link</a></p>'
+      const template = '<p><a :if="this.showLink" :selected="this.isSelected">link</a></p>'
       assert.equal(HTMLParser.parse(template, { showLink: true, showStrong: false, isSelected: true }), '<p><a selected="selected">link</a></p>')
     })
     it('should duplicate nodes when list has elements', () => {
-      const template = '<p><b><a :for="${ url in this.urls }">${ this.url }</a></b></p>'
+      const template = '<p><b><a :for="url in this.urls">${ this.url }</a></b></p>'
       assert.equal(HTMLParser.parse(template, { urls: ['localhost', 'example'] }), '<p><b><a>localhost</a><a>example</a></b></p>')
     })
     it('should not display "for" when "if" is false', () => {
-      const template = '<p>links: <a :if="${ this.showLink }" :for="${ url in this.urls }">${ this.url }</a></p>'
+      const template = '<p>links: <a :if="this.showLink" :for="url in this.urls">${ this.url }</a></p>'
       assert.equal(HTMLParser.parse(template, { showLink: false, urls: ['localhost', 'example'] }), '<p>links: </p>')
     })
     it('should loop "for" when "if" is true', () => {
-      const template = '<p>links: <a :if="${ this.showLink }" :for="${ url in this.urls }">${ this.url }</a></p>'
+      const template = '<p>links: <a :if="this.showLink" :for="url in this.urls">${ this.url }</a></p>'
       assert.equal(HTMLParser.parse(template, { showLink: true, urls: ['localhost', 'example'] }), '<p>links: <a>localhost</a><a>example</a></p>')
     })
   })

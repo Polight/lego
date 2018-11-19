@@ -1,7 +1,7 @@
 {
   "name": "lego",
-  "version": "0.1.0",
-  "description": "Lightweight future-proof webcomponents",
+  "version": "0.2.0",
+  "description": "Lightweight future-proof web-components",
   "main": "index.js",
   "devDependencies": {
     "babel-core": "^6.26.3",
@@ -26,8 +26,5 @@
     "riot"
   ],
   "author": "Vincent Agnano",
-  "license": "MIT",
-  "dependencies": {
-    "node-inspector": "^0.7.5"
-  }
+  "license": "MIT"
 }
