@@ -15,6 +15,7 @@ describe('utils', () => {
         `${dirname}/fixtures/x-scripted.html`,
         `${dirname}/html-parser.js`,
         `${dirname}/utils.js`,
+        `${dirname}/index.js`,
         `${dirname}/transpile.js`,
       ].sort())
     })
@@ -25,6 +26,7 @@ describe('utils', () => {
       assert.deepEqual(dirs.sort(), [
         `${dirname}/html-parser.js`,
         `${dirname}/utils.js`,
+        `${dirname}/index.js`,
         `${dirname}/transpile.js`,
       ].sort())
     })

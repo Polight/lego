@@ -1,9 +1,6 @@
 import assert from 'assert'
-import jsdom from 'mocha-jsdom'
 
 import HTMLParser from '../lib/html-parser.js'
-
-jsdom({ url: 'http://localhost/', includeNodeLocations: true })
 
 describe('HTMLParser', () => {
   describe('#htmlToDom()', () => {
