@@ -2,18 +2,18 @@
   <ul :if="this.state.tasks">
     <li :for="task in this.state.tasks">
       <label>
-        <input type="checkbox" :checked="this.task.done" value="${ this.task.label }" :on-click="this.toggleCheck">
+        <input type="checkbox" :checked="this.task.done" value="${ this.task.label }" on:click="this.toggleCheck">
         <span>${ this.task.label }</span>
       </label>
     </li>
   </ul>
 
-  <form :on-submit="this.addTask">
-    <input type="text" :on-input="this.updateTaskName" value="${ this.state.taskName }">
+  <form on:submit="this.addTask">
+    <input type="text" on:input="this.updateTaskName" value="${ this.state.taskName }">
     <button>Add task</button>
   </form>
 
-  <button :on-click="this.save">Save my tasks</button>
+  <button on:click="this.save">Save my tasks</button>
 </template>
 
 <script>
