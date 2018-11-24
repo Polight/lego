@@ -59,14 +59,16 @@ _components/my-component.html_
  </style>
 ```
 
-In this case you will need to compile _components/my-component.html_ into _./my-component.js_:
+In this case you will need to compile _components/my-component.html_ into _./compiled.js_:
 
 ```sh
-npm compile ./components
+npm compile ./components ./compiled.js
 ```
 
-That will read all HTML components from _./components_ and create a _components.js_ file.
+That will read all HTML components from _./components_ and create a _compiled.js_ file.
 
+> When developing you may want to automatically recompile components on change.
+> In that case pass the `-w` flag: `npm compile -w ./components ./compiled.js`
 
 ## Just a thin layer
 
