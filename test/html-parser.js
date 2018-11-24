@@ -107,8 +107,8 @@ describe('HTMLParser', () => {
 
 
   describe('#registerListeners()', () => {
-    it('should remove an attribute with `:on-` when converting into a listener', () => {
-      const dom = HTMLParser.htmlToDom('<p><a :on-click="this.click">link</a></p>')
+    it('should remove an attribute with `on--` when converting into a listener', () => {
+      const dom = HTMLParser.htmlToDom('<p><a on--click="this.click">link</a></p>')
       assert.equal(HTMLParser.registerListeners(dom, { click: () => 'clicked' }).innerHTML, '<p><a>link</a></p>')
     })
   })
