@@ -1,3 +1,5 @@
 ## Lego Web-components Demo
 
-run the following to compile components: `npm run compile ./demo/components demo/components.js`
+The preview page is available on [the index page](./index.html).
+
+The source of the components are available in [the components folder](./components).

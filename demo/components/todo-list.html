@@ -9,7 +9,7 @@
   </ul>
 
   <form on:submit="this.addTask">
-    <input type="text" on:input="this.updateTaskName" value="${ this.state.taskName }">
+    <input type="text" on:input="this.updateTaskName" value="${ this.state.taskName }"  placeholder="I should implement Lego in my projects">
     <button>Add task</button>
   </form>
 
@@ -22,7 +22,9 @@
 
   this.addTask = (event) => {
     event.preventDefault()
-    this.state.tasks.push({ label: this.state.taskName, done: false })
+    const label = this.state.taskName
+    if (!label) return
+    this.state.tasks.push({ label, done: false })
     this.state.taskName = ''
     this.render()
   }

@@ -18,7 +18,7 @@ async function compile(source, target) {
   const filenames = await walkDir(source, ['html'])
   const components = filenames.map(f => transpile(f))
   const output = `
-    import lego from '${config.libPath}/index.js'
+    import lego from '${config.libPath}'
     ${components.map(c => c.content).join('\n')}
     `.replace(/[ ]{2,}/g, ' ')
   fs.writeFileSync(target, output, 'utf8')

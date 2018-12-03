@@ -16,7 +16,7 @@
   },
   "scripts": {
     "test": "mocha --require @babel/register --require @babel/polyfill",
-    "compile": "LIB_PATH=/lib lego",
+    "compile": "LEGO_PATH=/lib/index.js ./bin/compile.js ./demo/components/ ./demo/components.js",
     "watch": "npm run compile -- -w"
   },
   "bin": {

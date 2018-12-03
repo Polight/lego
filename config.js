@@ -1,3 +1,3 @@
 module.exports = {
-  libPath: process.env.LIB_PATH || 'lego'
+  libPath: process.env.LEGO_PATH || 'https://cdn.jsdelivr.net/gh/polight/lego@master/lib/index.js'
 }
