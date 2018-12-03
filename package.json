@@ -1,11 +1,9 @@
 {
   "name": "@polight/lego",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "description": "Lightweight future-proof web-components",
   "main": "lib/index.js",
-  "dependencies": {
-    "jsdom": "*"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.1.6",
     "@babel/polyfill": "^7.0.0",
@@ -39,7 +37,6 @@
     "lib": "lib",
     "test": "test"
   },
-  "dependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/polight/lego.git"
