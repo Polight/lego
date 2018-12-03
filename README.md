@@ -1,6 +1,6 @@
 ![Lego web-components JS lib](./assets/lego.svg)
 
-[![CircleCI ](https://circleci.com/gh/vinyll/lego/tree/master.svg?style=shield)](https://circleci.com/gh/vinyll/lego/tree/master)
+[![CircleCI](https://circleci.com/gh/polight/lego/tree/master.svg?style=shield)](https://circleci.com/gh/polight/lego/tree/master)
 
 
 # LEGO: Modern Web-Components
@@ -251,7 +251,7 @@ That file will be created and contain all the components.
 
 ## Testing
 
-## Running tests [![CircleCI](https://circleci.com/gh/vinyll/lego/tree/master.svg?style=svg)](https://circleci.com/gh/vinyll/lego/tree/master)
+## Running tests [![CircleCI](https://circleci.com/gh/polight/lego/tree/master.svg?style=svg)](https://circleci.com/gh/polight/lego/tree/master)
 
 Just install node dev dependencies (`npm install`) and run the tests (`npm test`).
 
