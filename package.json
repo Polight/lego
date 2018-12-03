@@ -1,9 +1,11 @@
 {
   "name": "@polight/lego",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Lightweight future-proof web-components",
   "main": "lib/index.js",
-  "dependencies": {},
+  "dependencies": {
+    "jsdom": "*"
+  },
   "devDependencies": {
     "@babel/core": "^7.1.6",
     "@babel/polyfill": "^7.0.0",
