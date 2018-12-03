@@ -1,3 +1,5 @@
+@import url('https://cdn.jsdelivr.net/gh/polight/decor@master/decor.css');
+
 .markdown-body > h1:first-child {
   display: none;
 }
