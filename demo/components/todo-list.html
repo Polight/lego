@@ -9,7 +9,7 @@
   </ul>
 
   <form on:submit="this.addTask">
-    <input type="text" on:input="this.updateTaskName" value="${ this.state.taskName }"  placeholder="I should implement Lego in my projects">
+    <input type="text" on:input="this.updateTaskName" value="${ this.state.taskName }"  placeholder="Type a task to be done…">
     <button>Add task</button>
   </form>
 
@@ -41,7 +41,7 @@
 
   this.save = () => {
     localStorage.setItem('todo-list-demo', JSON.stringify(this.state.tasks))
-    alert("Your tasks were saved for next time!")
+    alert("Your tasks were saved. You can even refresh your browser!")
   }
 </script>
 

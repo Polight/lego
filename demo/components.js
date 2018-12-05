@@ -1,5 +1,5 @@
 
- import lego from '/lib/index.js'
+ import lego from 'https://cdn.jsdelivr.net/gh/polight/lego@master/lib/index.js'
  lego('x-basic', {template: `
  <p>Component says that first name is: \${ this.state.firstName }</p>
 `, style: `<style>
@@ -89,4 +89,3 @@ lego('todo-list', {template: `
  alert("Your tasks were saved for next time!")
  }
 }})
- 
