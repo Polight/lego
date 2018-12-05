@@ -151,6 +151,7 @@ __components/user-profile.html__
 
 Will write `…<p>important information: <span>This user is in Paris</span></p>`
 
+[See more advanced examples](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots#Adding_flexibility_with_slots).
 
 
 ### Script tag
