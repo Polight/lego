@@ -10,7 +10,7 @@ LEGO (_Lightweight Embedded Gluten-free Objects_) is a thin layer to build web-c
 
 Lego is inspired from great libraries such as [Riot](https://riot.js.org/), [VueJS](https://vuejs.org) or [Polymer](https://www.polymer-project.org/). It's just much lighter with no complexity, easier to read code, maintain and interact with the source.
 
-[Demo](https://lego.js.org/demo/index.hml)
+[Demo](https://lego.js.org/demo/index.html)
 
 
 ## Install
@@ -299,7 +299,6 @@ Just install node dev dependencies (`npm install`) and run the tests (`npm test`
 
 
 ## Under the hood
-
 
 ### Native web-components
 
