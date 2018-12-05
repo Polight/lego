@@ -41,15 +41,15 @@ Create an element:
 
 <script>
   this.setState({
-    firstName: 'John',
-    lastName: 'Doe',
+    firstName: "John",
+    lastName: "Doe",
     registered: false
   });
 
   this.register = () => {
-    this.state.registered = true
-    this.render() // update the interface
-  }
+    this.state.registered = true;
+    this.render(); // update the interface
+  };
 </script>
 ```
 
@@ -136,9 +136,7 @@ Example:
 **index.html**
 
 ```html
-<user-profile>
-  <span>This user is in Paris</span>
-</user-profile>
+<user-profile> <span>This user is in Paris</span> </user-profile>
 ```
 
 **components/user-profile.html**
@@ -151,6 +149,8 @@ Example:
 ```
 
 Will write `…<p>important information: <span>This user is in Paris</span></p>`
+
+[See more advanced examples](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots#Adding_flexibility_with_slots).
 
 ### Script tag
 
@@ -186,8 +186,8 @@ Example:
 </template>
 <script>
   this.clicked = () => {
-    alert('you clicked the button!')
-  }
+    alert("you clicked the button!");
+  };
 </script>
 ```
 
@@ -235,7 +235,7 @@ Example:
 </template>
 
 <script>
-  this.state.color = '#357'
+  this.state.color = "#357";
 </script>
 
 <style>
