@@ -12,6 +12,19 @@ Lego is inspired from great libraries such as [Riot](https://riot.js.org/), [Vue
 
 [Demo](https://lego.js.org/demo/index.hml)
 
+
+## Install
+
+The compiler can be installed via a simple command:
+
+```sh
+npm install @polight/lego
+```
+
+That will permit to compile your components.
+See the [Compiling section](#Compiling) for further info.
+
+
 ## Quick start
 
 Create an element:
@@ -49,19 +62,22 @@ _index.html_
 <script src="./dist.js" type="module"></script>
 ```
 
+> Notice that you don't need to include Lego script in your index.html file.
+
 Now you need to compile your components into a js file:
 
 ```sh
 npx lego ./components/ ./dist.js
 ```
 
-That will read all HTML components from _./components_ and create a _dist.js_ file.
+That will read all HTML components from the _./components_ folder and sub-folders and
+create a _dist.js_ file.
 
-> When developing you may want to automatically recompile components on change (_aka_ watch files changes).
+> When developing you may want to automatically watch files changes.
 > In that case pass the `-w` flag: `npx lego -w ./components/ ./dist.js`
 
 > Trick: you probably want to store this task with a shortcut like `npm run watch`.
-> To do so just add `lego -w ./components/ ./dist.js` in you _package.json_ scripts.
+> To do so just add `"watch": "lego -w ./components/ ./dist.js"` in you _package.json_ scripts.
 
 
 ## Writing a component
