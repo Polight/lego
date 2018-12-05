@@ -44,12 +44,12 @@ Create an element:
     firstName: 'John',
     lastName: 'Doe',
     registered: false
-  });
+  })
 
   this.register = () => {
     this.state.registered = true
     this.render() // update the interface
-  };
+  }
 </script>
 ```
 
@@ -189,7 +189,7 @@ Example:
 <script>
   this.clicked = () => {
     alert('you clicked the button!')
-  };
+  }
 </script>
 ```
 
@@ -221,7 +221,7 @@ Writing CSS is as easy as
 
 #### Host
 
-[`:host` is a native selector](<https://developer.mozilla.org/en-US/docs/Web/CSS/:host()>)
+[`:host` is a native selector](https://developer.mozilla.org/en-US/docs/Web/CSS/:host())
 for web-components.
 It allows to select the current component itself.
 
@@ -237,7 +237,7 @@ Example:
 </template>
 
 <script>
-  this.state.color = '#357';
+  this.state.color = '#357'
 </script>
 
 <style>
