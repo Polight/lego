@@ -186,7 +186,7 @@ Example:
 </template>
 <script>
   this.clicked = () => {
-    alert("you clicked the button!")
+    alert('you clicked the button!')
   }
 </script>
 ```
