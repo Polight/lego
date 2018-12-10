@@ -1,6 +1,6 @@
 ![Lego web-components JS lib](./assets/lego.svg)
 
-[![CircleCI](https://circleci.com/gh/Polight/lego/tree/master.svg?style=shield)](https://circleci.com/gh/Polight/lego/tree/master)
+[![CircleCI](https://circleci.com/gh/Polight/lego.svg?style=shield)](https://circleci.com/gh/Polight/lego)
 
 
 # LEGO: Modern Web-Components
@@ -293,7 +293,7 @@ Will create a `<my-super-button>` component.
 
 ## Testing
 
-## Running tests [![CircleCI](https://circleci.com/gh/Polight/lego/tree/master.svg?style=svg)](https://circleci.com/gh/Polight/lego/tree/master)
+## Running tests [![CircleCI](https://circleci.com/gh/Polight/lego.svg?style=svg)](https://circleci.com/gh/Polight/lego)
 
 Just install node dev dependencies (`npm install`) and run the tests (`npm test`).
 
