@@ -1,6 +1,6 @@
 <template>
-  <ul :if="this.state.tasks">
-    <li :for="task in this.state.tasks">
+  <ul :if="this.tasks">
+    <li :for="task in this.tasks">
       <label>
         <input type="checkbox" :checked="this.task.done" value="${ this.task.label }" on:click="this.toggleCheck">
         <span>${ this.task.label }</span>
@@ -9,7 +9,7 @@
   </ul>
 
   <form on:submit="this.addTask">
-    <input type="text" on:input="this.updateTaskName" value="${ this.state.taskName }"  placeholder="Type a task to be done…">
+    <input type="text" on:input="this.updateTaskName" value="${ this.taskName }"  placeholder="Type a task to be done…">
     <button>Add task</button>
   </form>
 

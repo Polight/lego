@@ -1,7 +1,7 @@
 
- import lego from 'https://cdn.jsdelivr.net/gh/polight/lego@master/lib/index.js'
+ import lego from '/lib/index.js'
  lego('x-basic', {template: `
- <p>Component says that first name is: \${ this.state.firstName }</p>
+ <p>Component says that first name is: \${ this.firstName }</p>
 `, style: `<style>
  p {
  color: #555;
@@ -10,7 +10,7 @@
  this.state.firstName = 'John'
 }})
 lego('x-button', {template: `
- <button on:click="this.clicked" :clicked="\${ this.state.status === 'clicked' }"><slot></slot> (\${ this.state.status })</button>
+ <button on:click="this.clicked" :clicked="\${ this.status === 'clicked' }"><slot></slot> (\${ this.status })</button>
 `, style: `<style>
  button {
  padding: 1rem 2rem;
@@ -32,8 +32,8 @@ lego('x-button', {template: `
  }
 }})
 lego('todo-list', {template: `
- <ul :if="this.state.tasks">
- <li :for="task in this.state.tasks">
+ <ul :if="this.tasks">
+ <li :for="task in this.tasks">
  <label>
  <input type="checkbox" :checked="this.task.done" value="\${ this.task.label }" on:click="this.toggleCheck">
  <span>\${ this.task.label }</span>
@@ -42,7 +42,7 @@ lego('todo-list', {template: `
  </ul>
 
  <form on:submit="this.addTask">
- <input type="text" on:input="this.updateTaskName" value="\${ this.state.taskName }" placeholder="I should implement Lego in my projects">
+ <input type="text" on:input="this.updateTaskName" value="\${ this.taskName }" placeholder="Type a task to be done…">
  <button>Add task</button>
  </form>
 
@@ -86,6 +86,7 @@ lego('todo-list', {template: `
 
  this.save = () => {
  localStorage.setItem('todo-list-demo', JSON.stringify(this.state.tasks))
- alert("Your tasks were saved for next time!")
+ alert("Your tasks were saved. You can even refresh your browser!")
  }
 }})
+ 

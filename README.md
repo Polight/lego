@@ -33,10 +33,10 @@ __components/user-profile.html__
 
 ```html
 <template>
-  <h1>${ this.state.firstName } ${ this.state.lastName }'s profile</h1>
-  <p>Welcome ${ this.state.firstName }!</p>
-  <p :if="this.state.registered">You are fully registered</p>
-  <button :if="!this.state.registered" on:click="this.register">Register now</button>
+  <h1>${ this.firstName } ${ this.lastName }'s profile</h1>
+  <p>Welcome ${ this.firstName }!</p>
+  <p :if="this.registered">You are fully registered</p>
+  <button :if="!this.registered" on:click="this.register">Register now</button>
 </template>
 
 <script>
@@ -159,7 +159,7 @@ Will write `…<p>important information: <span>This user is in Paris</span></p>`
 The `<script>` tag contains HTML that will be injected into the component on initialisation.
 
 It can provide information to the template via the `state` object.
-Example: `this.state.userName = 'John'` will permit to render `<p>Hello ${ John }</p>`.
+Example: `this.state.userName = 'John'` will permit to render `<p>Hello ${ this.userName }</p>`.
 
 
 #### Rendering
@@ -242,7 +242,7 @@ Example:
 </script>
 <style>
   h1 {
-    color: ${ this.state.color };
+    color: ${ this.color };
   }
 </style>
 ```

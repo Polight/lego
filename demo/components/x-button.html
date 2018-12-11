@@ -1,5 +1,5 @@
 <template>
-  <button on:click="this.clicked" :clicked="${ this.state.status === 'clicked' }"><slot></slot> (${ this.state.status })</button>
+  <button on:click="this.clicked" :clicked="${ this.status === 'clicked' }"><slot></slot> (${ this.status })</button>
 </template>
 
 <script>
