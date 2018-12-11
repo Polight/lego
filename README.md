@@ -326,3 +326,9 @@ no complexity, just a couple of useful methods to write native web-components ea
 
 Using a compiled component has no dependency, nothing extra injected in the browser.
 Compiling depends on [jsdom](https://www.npmjs.com/package/jsdom).
+
+<div style="margin: 2rem auto; height: 2rem; text-align: center;">
+  <a href="https://github.com/polight/lego">
+    <img alt="Github logo" src="http://vectorlogofree.com/wp-content/uploads/2014/04/25657-github-sign-icon-vector-icon-vector-eps.png">
+  </a>
+</div>
