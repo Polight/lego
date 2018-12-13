@@ -6,7 +6,7 @@
  p {
  color: #555;
  }
-</style>`, init: function() {
+</style>`, state: {}, init: function() {
  this.state.firstName = 'John'
 }})
 lego('x-button', {template: `
@@ -23,7 +23,7 @@ lego('x-button', {template: `
  background-color: #c99;
  }
 
-</style>`, init: function() {
+</style>`, state: {}, init: function() {
  this.state.status = 'unclicked'
 
  this.clicked = () => {
@@ -61,7 +61,7 @@ lego('todo-list', {template: `
  display: block;
  margin-top: 1rem;
  }
-</style>`, init: function() {
+</style>`, state: {}, init: function() {
  this.state.tasks = JSON.parse(localStorage.getItem('todo-list-demo')) || []
  this.state.taskName = ''
 
