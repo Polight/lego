@@ -126,6 +126,34 @@ An event can be attached to a _DOM_ element with the prefix `on:` and the event 
 Example: `<button on:click="this.clicked">Click me</button>` will call the `this.clicked`
 method in the component.
 
+#### Ractive components
+
+When changing an attribute you may want the component to be updated automatically.
+
+In order to listen to the attribute, you can simply declare it as an attribute of your `<template>` tag:
+
+```html
+<template firstname="John" lastname="Doe" age="42">
+  <h1>Welcome ${ this.firstname } ${ this.lastname }</h1>
+</template>
+```
+
+This will:
+
+- listen to changes on the 3 attributes _firstname_, _lastname_ and _age_.
+- declare the default values for each of your attributes into your state.
+
+Note that these default values will be available for your script into the _state_:
+
+```js
+console.log(this.state.age) // 42
+```
+
+> When compiling, the attributes values are evaluated whenever possible.
+> In the current example "42" will become a Number. You could therefore pass
+> `kids="['Brice', 'Kelly']"` and retrieve an array of 2 kids.
+
+
 #### Slots
 
 [Slots](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) are part of the
