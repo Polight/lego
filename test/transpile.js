@@ -6,19 +6,19 @@ describe('transpile', () => {
     it('should create a basic component with a template', () => {
       assert.equal(
         createJsComponent('x-component', 'Hey'),
-        "lego('x-component', {template: `Hey`, style: ``})"
+        "lego('x-component', {template: `Hey`, style: ``, state: {}})"
       )
     })
     it('should create a basic component with a template and styles', () => {
       assert.equal(
         createJsComponent('x-component', 'Hey', 'stylish'),
-        "lego('x-component', {template: `Hey`, style: `stylish`})"
+        "lego('x-component', {template: `Hey`, style: `stylish`, state: {}})"
       )
     })
     it('should create a basic component with init function', () => {
       assert.equal(
         createJsComponent('x-component', 'Hey', 'stylish', 'this.done = true'),
-        "lego('x-component', {template: `Hey`, style: `stylish`, init: function() {this.done = true}})"
+        "lego('x-component', {template: `Hey`, style: `stylish`, state: {}, init: function() {this.done = true}})"
       )
     })
   })
