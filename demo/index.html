@@ -11,6 +11,21 @@
 <h2>Basic component</h2>
 <x-basic></x-basic>
 
+<h2>Basic Clock</h2>
+<x-clock></x-clock>
+
+<h2>Basic attribute change</h2>
+<color-changer></color-changer>
+<script>
+  function step(current) { return current < 256 ? Math.round(current + 1) : 0 }
+  const tag = document.querySelector('color-changer')
+  let [r, g, b] = [70, 140, 210]
+  setInterval(() => {
+    [r, g, b] = [step(r), step(g), step(b*1.3)]
+    tag.setAttribute('color', `rgb(${r}, ${g}, ${b})`)
+  }, 40)
+</script>
+
 <h2>Basic button with toggle</h2>
 <x-button>Click me</x-button>
 

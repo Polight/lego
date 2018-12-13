@@ -9,6 +9,18 @@
 </style>`, state: {}, init: function() {
  this.state.firstName = 'John'
 }})
+lego('color-changer', {template: `
+ <p>color is \${ this.color }</p>
+`, style: `<style>
+ root {
+ display: inline-block;
+ padding: 2rem .1rem .1rem 3rem;
+ color: white;
+ width: 200px;
+ background-color: \${ this.color };
+ }
+ p { margin: 0 }
+</style>`, state: {"color":null}})
 lego('x-button', {template: `
  <button on:click="this.clicked" :clicked="\${ this.status === 'clicked' }"><slot></slot> (\${ this.status })</button>
 `, style: `<style>
@@ -87,6 +99,24 @@ lego('todo-list', {template: `
  this.save = () => {
  localStorage.setItem('todo-list-demo', JSON.stringify(this.state.tasks))
  alert("Your tasks were saved. You can even refresh your browser!")
+ }
+}})
+lego('x-clock', {template: `
+ <p>Current time is <span>\${ this.time }</span></p>
+`, style: `<style>
+ span {
+ padding: .2rem;
+ color: white;
+ font-family: Monospace;
+ background-color: black;
+ }
+</style>`, state: {}, init: function() {
+ this.setState({ time: getTime() })
+
+ setInterval(() => this.render({time: getTime()}), 1000)
+
+ function getTime() {
+ return (new Date()).toLocaleTimeString()
  }
 }})
  
