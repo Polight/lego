@@ -1,6 +1,7 @@
 #! /usr/bin/env node
 
 const fs = require('fs')
+const path = require('path')
 const { walkDir } = require('../lib/utils.js')
 const { transpile } = require('../lib/transpile.js')
 
@@ -20,6 +21,7 @@ async function compile(source, target) {
     import lego from '${ libPath }'
     ${components.map(c => c.content).join('\n')}
     `.replace(/[ ]{2,}/g, ' ')
+  fs.mkdirSync(path.dirname(target), { recursive: true })
   fs.writeFileSync(target, output, 'utf8')
   return components.map(c => c.name)
 }
