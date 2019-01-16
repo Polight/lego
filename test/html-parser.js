@@ -54,6 +54,10 @@ describe('HTMLParser', () => {
       const dom = HTMLParser.htmlToDom('<p><a><b :if="false">bold link</b></a></p>')
       assert.equal(HTMLParser.parseAttributeIf(dom).innerHTML, '<p><a></a></p>')
     })
+    it('should not evaluate content of "if" when false', () => {
+      const template = '<p :if="false">${ this.doesNotExist }</p>'
+      assert.equal(HTMLParser.parse(template, {}), '')
+    })
   })
 
   describe('#parseAttributeBoolean()', () => {
@@ -75,6 +79,10 @@ describe('HTMLParser', () => {
     it('should duplicate nodes when list has elements', () => {
       const dom = HTMLParser.htmlToDom('<p><a :for="url in this.urls">${ this.url }</a></p>')
       assert.equal(HTMLParser.parseAttributeFor(dom, { urls: ['localhost', 'example'] }).innerHTML, '<p><a>localhost</a><a>example</a></p>')
+    })
+    it('should evaluate nested if in loop', () => {
+      const template = 'Hey <p :for="user in this.users"><em :if="this.user.name">${ this.user.name }</em><no :if="this.user.nothing"></no></p>'
+      assert.equal(HTMLParser.parse(template, { users: [{ name: 'John' }] }), 'Hey <p><em>John</em></p>')
     })
   })
 
@@ -102,6 +110,10 @@ describe('HTMLParser', () => {
     it('should loop "for" when "if" is true', () => {
       const template = '<p>links: <a :if="this.showLink" :for="url in this.urls">${ this.url }</a></p>'
       assert.equal(HTMLParser.parse(template, { showLink: true, urls: ['localhost', 'example'] }), '<p>links: <a>localhost</a><a>example</a></p>')
+    })
+    it('should loop "for" and evaluate nested "if" with subContext', () => {
+      const template = '<p :for="url in this.urls"><a :if="this.url !== \'localhost\'">${ this.url }</a></p>'
+      assert.equal(HTMLParser.parse(template, { urls: ['localhost', 'example'] }), '<p></p><p><a>example</a></p>')
     })
   })
 
