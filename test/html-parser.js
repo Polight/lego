@@ -111,12 +111,11 @@ describe('HTMLParser', () => {
       const template = '<p>links: <a :if="this.showLink" :for="url in this.urls">${ this.url }</a></p>'
       assert.equal(HTMLParser.parse(template, { showLink: true, urls: ['localhost', 'example'] }), '<p>links: <a>localhost</a><a>example</a></p>')
     })
-    it('should loop "for" and evaluate nested "if" with subContext', () => {
+    it.only('should loop "for" and evaluate nested "if" with subContext', () => {
       const template = '<p :for="url in this.urls"><a :if="this.url !== \'localhost\'">${ this.url }</a></p>'
       assert.equal(HTMLParser.parse(template, { urls: ['localhost', 'example'] }), '<p></p><p><a>example</a></p>')
     })
   })
-
 
   describe('#registerListeners()', () => {
     it('should remove an attribute with `on--` when converting into a listener', () => {
