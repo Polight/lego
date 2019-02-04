@@ -119,6 +119,22 @@ Example: `<input type=checkbox :checked="this.state.agreed" :required="this.stat
 With the following state: `this.setState({ agreed: false, mustAgree: true })` would render
 `<input type=checkbox required="required">`.
 
+#### Object attributes
+
+When passing complex object as attributes, such as objects themselves, arrays, classes, function…
+you should set the value explicitely with literal string:
+
+```html
+<x-element user="${ this.user }" />
+
+<script>
+  class User {
+    get fullName() { return 'John Doe' }
+  }
+  this.setState({ user: new User() })
+</script>
+```
+
 #### Event listener
 
 An event can be attached to a _DOM_ element with the prefix `on:` and the event name.
@@ -126,7 +142,7 @@ An event can be attached to a _DOM_ element with the prefix `on:` and the event 
 Example: `<button on:click="this.clicked">Click me</button>` will call the `this.clicked`
 method in the component.
 
-#### Ractive components
+#### Reactive components
 
 When changing an attribute you may want the component to be updated automatically.
 
