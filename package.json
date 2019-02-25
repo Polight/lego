@@ -1,6 +1,6 @@
 {
   "name": "@polight/lego",
-  "version": "0.9.2",
+  "version": "0.10.0",
   "description": "Lightweight future-proof web-components",
   "main": "lib/index.js",
   "dependencies": {
