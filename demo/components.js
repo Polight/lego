@@ -1,5 +1,5 @@
 
- import lego from '/lib/index.js'
+ import lego from '/lib/index'
  lego('x-basic', {template: `
  <p>Component says that first name is: \${ this.firstName }</p>
 `, style: `<style>
@@ -119,4 +119,3 @@ lego('x-clock', {template: `
  return (new Date()).toLocaleTimeString()
  }
 }})
- 

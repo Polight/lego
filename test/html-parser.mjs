@@ -1,6 +1,6 @@
 import assert from 'assert'
 
-import HTMLParser from '../lib/html-parser.js'
+import HTMLParser from '../lib/html-parser'
 
 describe('HTMLParser', () => {
   describe('#htmlToDom()', () => {

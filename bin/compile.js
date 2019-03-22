@@ -2,8 +2,8 @@
 
 const fs = require('fs')
 const path = require('path')
-const { walkDir } = require('../lib/utils.js')
-const { transpile } = require('../lib/transpile.js')
+const { walkDir } = require('../lib/utils')
+const { transpile } = require('../lib/transpile')
 
 const args = process.argv
 const watchIndex = args.indexOf('-w')

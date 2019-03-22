@@ -7,15 +7,11 @@
     "jsdom": "*"
   },
   "devDependencies": {
-    "@babel/core": "^7.1.6",
-    "@babel/polyfill": "^7.0.0",
-    "@babel/preset-env": "^7.1.6",
-    "@babel/register": "^7.0.0",
     "mocha": "*",
     "mocha-jsdom": "*"
   },
   "scripts": {
-    "test": "mocha --require @babel/register --require @babel/polyfill",
+    "test": "mocha test/html-parser -r esm",
     "test-debug": "npm test -- debug -R spec",
     "compile": "LEGO_PATH=/lib/index.js ./bin/compile.js ./demo/components/ ./demo/components.js",
     "watch": "npm run compile -- -w"

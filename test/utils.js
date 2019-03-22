@@ -1,7 +1,7 @@
 import path from 'path'
 import assert from 'assert'
 
-import { walkDir, escapeLiteral } from '../lib/utils.js'
+import { walkDir, escapeLiteral } from '../lib/utils'
 
 describe('utils', () => {
   describe('#walkDir()', () => {
@@ -33,7 +33,8 @@ describe('utils', () => {
   })
 
   describe('#escapeLiteral()', () => {
-    it('should escape ${} template', () => {
+    it.only('should escape ${} template', () => {
+      debugger
       assert.equal(escapeLiteral('${name} is ${age}'), '\\${name} is \\${age}')  // Single backslash!
     })
   })

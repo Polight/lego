@@ -1,5 +1,5 @@
 import assert from 'assert'
-import { transpile, readHTMLComponent, createJsComponent } from '../lib/transpile.js'
+import { transpile, readHTMLComponent, createJsComponent } from '../lib/transpile'
 
 describe('transpile', () => {
   describe('#createJsComponent()', () => {
