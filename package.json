@@ -18,8 +18,7 @@
     "babelify": "^10.0.0",
     "browserify": "^16.2.3",
     "mocha": "*",
-    "mocha-jsdom": "*",
-    "python3": "0.0.1"
+    "mocha-jsdom": "*"
   },
   "scripts": {
     "test": "mocha --require @babel/register --require @babel/polyfill",
@@ -27,8 +26,7 @@
     "compile": "LEGO_PATH=../lib/index.js ./bin/compile.js ./demo/components/ ./demo/components.js",
     "browserify": "browserify ./demo/components.js -o ./demo/components.js -t [ babelify --presets [ @babel/preset-env ] --plugins [ @babel/plugin-proposal-class-properties @babel/plugin-proposal-export-default-from @babel/plugin-proposal-export-namespace-from] ]",
     "compile-past": "npm run compile && npm run browserify",
-    "watch": "npm run compile -- -w",
-    "serve": "python3 -m http.server 8080"
+    "watch": "npm run compile -- -w"
   },
   "bin": {
     "lego": "./bin/compile.js"

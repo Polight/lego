@@ -2,16 +2,13 @@
 
 [![CircleCI](https://circleci.com/gh/Polight/lego.svg?style=shield)](https://circleci.com/gh/Polight/lego)
 
-
 # LEGO: Modern Web-Components
-
 
 LEGO (_Lightweight Embedded Gluten-free Objects_) is a thin layer to build web-component bricks that are easy to digest for your browser.
 
 Lego is inspired from great libraries such as [Riot](https://riot.js.org/), [VueJS](https://vuejs.org) or [Polymer](https://www.polymer-project.org/). It's just much lighter with no complexity, easier to read code, maintain and interact with the source.
 
 [Demo](https://lego.js.org/demo/index.html)
-
 
 ## Install
 
@@ -24,12 +21,11 @@ npm install @polight/lego
 That will permit to compile your components.
 See the [Compiling section](#Compiling) for further info.
 
-
 ## Quick start
 
 Create an element:
 
-__components/user-profile.html__
+**components/user-profile.html**
 
 ```html
 <template>
@@ -41,15 +37,15 @@ __components/user-profile.html__
 
 <script>
   this.setState({
-    firstName: 'John',
-    lastName: 'Doe',
+    firstName: "John",
+    lastName: "Doe",
     registered: false
-  })
+  });
 
   this.register = () => {
-    this.state.registered = true
-    this.render()  // update the interface
-  }
+    this.state.registered = true;
+    this.render(); // update the interface
+  };
 </script>
 ```
 
@@ -73,12 +69,13 @@ npx lego ./components/ ./dist.js
 That will read all HTML components from the _./components_ folder and sub-folders and
 create a _dist.js_ file.
 
-> When developing you may want to automatically watch files changes.
-> In that case pass the `-w` flag: `npx lego -w ./components/ ./dist.js`
+> When developing you may want:
+>
+> - Automatically watch files changes: In that case pass the `-w` flag: `npx lego -w ./components/ ./dist.js`
+> - Serve: you could use http-server
 
 > Trick: you probably want to store this task with a shortcut like `npm run watch`.
 > To do so just add `"watch": "lego -w ./components/ ./dist.js"` in you _package.json_ scripts.
-
 
 ## Writing a component
 
@@ -129,9 +126,11 @@ you should set the value explicitely with literal string:
 
 <script>
   class User {
-    get fullName() { return 'John Doe' }
+    get fullName() {
+      return "John Doe";
+    }
   }
-  this.setState({ user: new User() })
+  this.setState({ user: new User() });
 </script>
 ```
 
@@ -162,13 +161,12 @@ This will:
 Note that these default values will be available for your script into the _state_:
 
 ```js
-console.log(this.state.age) // 42
+console.log(this.state.age); // 42
 ```
 
 > When compiling, the attributes values are evaluated whenever possible.
 > In the current example "42" will become a Number. You could therefore pass
 > `kids="['Brice', 'Kelly']"` and retrieve an array of 2 kids.
-
 
 #### Slots
 
@@ -178,14 +176,17 @@ Because Lego build native web-components, you can use the standard _slots_.
 
 Example:
 
-__index.html__
+**index.html**
+
 ```html
 <user-profile>
   <span>This user is in Paris</span>
-<user-profile>
+  <user-profile></user-profile
+></user-profile>
 ```
 
-__components/user-profile.html__
+**components/user-profile.html**
+
 ```html
 <template>
   <h1>User profile</h1>
@@ -197,14 +198,12 @@ Will write `…<p>important information: <span>This user is in Paris</span></p>`
 
 [See more advanced examples](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots#Adding_flexibility_with_slots).
 
-
 ### Script tag
 
 The `<script>` tag contains HTML that will be injected into the component on initialisation.
 
 It can provide information to the template via the `state` object.
 Example: `this.state.userName = 'John'` will permit to render `<p>Hello ${ this.userName }</p>`.
-
 
 #### Rendering
 
@@ -218,7 +217,6 @@ Note that you can also pass the state as an object to the `render` method:
 `this.render({ userName: 'John' })`.
 
 In other words, calling `this.render()` is the way to update your component!
-
 
 #### Binding event methods
 
@@ -234,8 +232,8 @@ Example:
 </template>
 <script>
   this.clicked = () => {
-    alert('you clicked the button!')
-  }
+    alert("you clicked the button!");
+  };
 </script>
 ```
 
@@ -243,7 +241,6 @@ The events are native HTML. Meaning you can call `on:click`, `on:change`, `on:su
 
 Behind the scene, it creates an `addEventListener(eventName)`, meaning you can use the
 native browser debug, remove events and play with the full power of native events!
-
 
 ### Style tag
 
@@ -268,7 +265,7 @@ Writing CSS is as easy as
 
 #### Host
 
-[`:host` is a native selector](https://developer.mozilla.org/en-US/docs/Web/CSS/:host())
+[`:host` is a native selector](<https://developer.mozilla.org/en-US/docs/Web/CSS/:host()>)
 for web-components.
 It allows to select the current component itself.
 
@@ -277,6 +274,7 @@ It allows to select the current component itself.
 You can use variables in your CSS just like in your templates.
 
 Example:
+
 ```html
 <template>
   <h1>Bonjour<h1>
@@ -293,7 +291,6 @@ Example:
 
 will apply the `#357` color onto `h1`.
 
-
 ## Compiling
 
 ```sh
@@ -305,12 +302,10 @@ Would compile the _source_path_ file or folder (recursively) into _target_file_p
 As mentioned before, when developing you probably want to watch for changes with the `-w`
 option: `npx lego -w <source_path> <target_file_path>`
 
-
 **source_path**: either a file or a directory (relative or absolute). If it's a directory, it will recursively read all the _.html_ files and compile them into the _target_file_.
 
 **target_file_path**: (default: _components.js_) the path (relative or absolute) to a _.js_ file.
 That file will be created and contain all the components.
-
 
 ## Naming a component
 
@@ -332,8 +327,7 @@ _components/x-button.html_:
 Will create a `<my-super-button>` component.
 
 > Note that because it builds native web-components, the naming convention must respect
-[the ones from the standards](http://w3c.github.io/webcomponents/spec/custom/#valid-custom-element-name) (lowercase, with a dash in the name, starting with a letter, …)
-
+> [the ones from the standards](http://w3c.github.io/webcomponents/spec/custom/#valid-custom-element-name) (lowercase, with a dash in the name, starting with a letter, …)
 
 ## Testing
 
@@ -341,16 +335,13 @@ Will create a `<my-super-button>` component.
 
 Just install node dev dependencies (`npm install`) and run the tests (`npm test`).
 
-
 ## Under the hood
-
 
 ### Native web-components
 
 Because Lego is actual native web-components, all its native possibilities (like [slots](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots#Adding_flexibility_with_slots)),
 [:host](https://developer.mozilla.org/en-US/docs/Web/CSS/:host)
 and whatever exists or will exist are on board.
-
 
 ### Browser compatibility
 
@@ -361,7 +352,6 @@ shall increase in time.
 When building a web-app you may have control of the browsers.
 If you're building a more general website you may need to increase the overall browser
 compatibility and install the [custom-element polyfill](https://github.com/webcomponents/custom-elements).
-
 
 ### Dependencies
 
