@@ -18,7 +18,7 @@ async function compile(source, target) {
   const components = filenames.map(f => transpile(f))
   const libPath = process.env.LEGO_PATH || 'https://cdn.jsdelivr.net/gh/polight/lego@master/lib/index.js'
   const output = `
-    import lego from '${ libPath }'
+    import Component from '${ libPath }'
     ${components.map(c => c.content).join('\n')}
     `.replace(/[ ]{2,}/g, ' ')
   fs.mkdirSync(path.dirname(target), { recursive: true })
