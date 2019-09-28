@@ -6,23 +6,38 @@
 # LEGO: Modern Web-Components
 
 
-LEGO (_Lightweight Embedded Gluten-free Objects_) is a thin layer to build web-component bricks that are easy to digest for your browser.
+LEGO (_Lightweight Embedded Gluten-free Objects_) is a thin layer to build **native web-component** bricks that are easy to digest for your browser.
 
-Lego is inspired from great libraries such as [Riot](https://riot.js.org/), [VueJS](https://vuejs.org) or [Polymer](https://www.polymer-project.org/). It's just much lighter with no complexity, easier to read code, maintain and interact with the source.
+Lego is inspired from great libraries such as [Riot](https://riot.js.org/), [VueJS](https://vuejs.org) or [Polymer](https://www.polymer-project.org/).
+It's just much lighter with no complexity, easier to read code, maintain and interact with the source.
+And again, it's the only lib to create **real native web-components**!
 
-[Demo](https://lego.js.org/demo/index.html)
 
+Example:
 
-## Install
+```html
+<template>
+  <p>Hey, I'm ${ this.firstName }</p>
+</template>
 
-The compiler can be installed via a simple command:
+<script>
+  this.state.firstName = 'John'
+</script>
 
-```sh
-npm install @polight/lego
+<style>
+  p {
+    color: #555;
+  }
+</style>
 ```
 
-That will permit to compile your components.
-See the [Compiling section](#Compiling) for further info.
+Result:
+
+![Hey I'm John](./demo/hey-im-john.png)
+
+It's as easy.
+
+[See multiple components Demo page](https://lego.js.org/demo/index.html)
 
 
 ## Quick start
@@ -47,8 +62,7 @@ __components/user-profile.html__
   })
 
   this.register = () => {
-    this.state.registered = true
-    this.render()  // update the interface
+    this.render({ registered = true} )
   }
 </script>
 ```
@@ -62,9 +76,7 @@ _index.html_
 <script src="./dist.js" type="module"></script>
 ```
 
-> Notice that you don't need to include Lego script in your index.html file.
-
-Now you need to compile your components into a js file:
+Finally install the compiler with `npm install @polight/lego` and compile it:
 
 ```sh
 npx lego ./components/ ./dist.js
@@ -82,7 +94,7 @@ create a _dist.js_ file.
 
 ## Writing a component
 
-A component can optionnaly have 3 parts: some HTML in a `<template>` tag, some JavaScript
+A component can optionaly have 3 parts: some HTML in a `<template>` tag, some JavaScript
 in a `<script>` tag and some CSS in a `<style>` tag.
 
 ### Template tag
@@ -156,8 +168,9 @@ In order to listen to the attribute, you can simply declare it as an attribute o
 
 This will:
 
-- listen to changes on the 3 attributes _firstname_, _lastname_ and _age_.
-- declare the default values for each of your attributes into your state.
+- listen to changes on the 3 attributes of the `<template…>` tag: _firstname_, _lastname_ and _age_.
+- declare the default values for each of your attributes into your state: "John", "Doe" and "42".
+- automatically re-render the component when these attributes are changed from the outside.
 
 Note that these default values will be available for your script into the _state_:
 
@@ -166,8 +179,8 @@ console.log(this.state.age) // 42
 ```
 
 > When compiling, the attributes values are evaluated whenever possible.
-> In the current example "42" will become a Number. You could therefore pass
-> `kids="['Brice', 'Kelly']"` and retrieve an array of 2 kids.
+> In the current example "42" will become a Number. If you were passing an array as string
+> attribute like `kids="['Brice', 'Kelly']"` you would retrieve an array of 2 kids.
 
 
 #### Slots
