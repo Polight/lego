@@ -6,6 +6,14 @@ class XApp extends Component {
     return ['number']
   }
 
+  clicked(event) {
+    console.info('button clicked!', event.target.value)
+  }
+
+  over(event) {
+    console.info('over button…')
+  }
+
   get template() {
     this.state.users = [
       {name:'boris'},
@@ -15,6 +23,7 @@ class XApp extends Component {
       <h1>App \${state.number}</h1>
       <p>Current users:</p>
       <x-user :for="user in state.users" name="\${user.name}"></x-user>
+      <button @click="clicked" @mouseover="over" value=3>log event</button>
     `
   }
 }
