@@ -8,7 +8,7 @@ const { transpile } = require('../lib/transpile.js')
 const args = process.argv
 const watchIndex = args.indexOf('-w')
 const watch = watchIndex >= 0 && args.splice(watchIndex, 1)
-const [source, target] = args.slice(2)
+let [source, target] = args.slice(2)
 
 if(!source) throw new Error("first argument 'source' is required.")
 if(!target) target = './components.js'
@@ -17,10 +17,8 @@ async function compile(source, target) {
   const filenames = await walkDir(source, ['html'])
   const components = filenames.map(f => transpile(f))
   const libPath = process.env.LEGO_PATH || 'https://cdn.jsdelivr.net/gh/polight/lego@master/lib/index.js'
-  const output = `
-    import Component from '${ libPath }'
-    ${components.map(c => c.content).join('\n')}
-    `.replace(/[ ]{2,}/g, ' ')
+  const output = "import lego from '/lib/index.js';\n\n" +
+                 components.map(c => c.content).join('\n').replace(/[ ]{2,}/g, ' ')
   fs.mkdirSync(path.dirname(target), { recursive: true })
   fs.writeFileSync(target, output, 'utf8')
   return components.map(c => c.name)

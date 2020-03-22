@@ -4,7 +4,8 @@
   "description": "Lightweight future-proof web-components",
   "main": "lib/index.js",
   "dependencies": {
-    "jsdom": "*"
+    "jsdom": "*",
+    "litedom": "^0.12.1"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
