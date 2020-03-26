@@ -1,55 +1,38 @@
-import Component from "./lib/Component.js";
+import { h, Component } from "./lib/Component.js";
+import { literal } from "./lib/parsers.js"
 
 class XApp extends Component {
-
-  static get observedAttributes() {
-    return ['number']
+  init() {
+    this.state = {
+      letters: [
+        { unit: 'a' },
+        { unit: 'b' },
+      ],
+      choice: 1,
+    }
+    setInterval(() => {
+      this.state.choice = Number(!Boolean(this.state.choice))
+      this.render()
+    }, 500)
   }
 
-  clicked(event) {
-    console.info('button clicked!', event.target.value)
-  }
-
-  over(event) {
-    console.info('over button…')
-  }
-
-  get template() {
-    this.state.users = [
-      {name:'boris'},
-      {name:'vian'},
-    ]
-    return `
-      <h1>App \${state.number}</h1>
-      <p>Current users:</p>
-      <x-user :for="user in state.users" name="\${user.name}"></x-user>
-      <button @click="clicked" @mouseover="over" value=3>log event</button>
-    `
+  get vdom() {
+    return ({ state }) => (
+      h('x-letter', { 'choice': state.choice, letter: state.letters[state.choice] })
+    )
   }
 }
 
-
-class XUser extends Component {
-
-  static get observedAttributes() {
-    return ['name']
-  }
-  get template() {
-    return `
-      <p><span>\${ state.name }'s</span> profile</p>
-    `
-  }
-
-  get style() {
-    return `
-      <style>
-        span { font-weight: bold }
-      </style>
-    `
+class XLetter extends Component {
+  get vdom() {
+    return ({ state }) => ([
+      h('p', {}, `Hey ${state.choice} ${state.letter.unit}`)
+    ])
   }
 }
+
 
 export default [
-  customElements.define('x-user', XUser),
+  customElements.define('x-letter', XLetter),
   customElements.define('x-app', XApp),
 ]

@@ -5,7 +5,8 @@
   "main": "lib/index.js",
   "dependencies": {
     "jsdom": "*",
-    "litedom": "^0.12.1"
+    "litedom": "^0.12.1",
+    "petit-dom": "^0.3.4"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
