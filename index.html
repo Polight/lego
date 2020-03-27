@@ -1,3 +1,32 @@
-<x-app></x-app>
+<title>Demo of WebComponents built with Lego</title>
 
-<script type=module src=./index.js></script>
+<article>
+  <h2>Counter</h2>
+  <p>This is a basic classical counter demo</p>
+  <x-counter></x-counter>
+</article>
+
+
+<script type=module>
+  import { h, Component } from './lib/index.js'
+
+  class XCounter extends Component {
+    init() {
+      this.state = { counter: 0 }
+    }
+    get vdom() {
+      return ({ state }) => ([
+        h('button', { class: 'primary', onclick: () => state.counter-- }, '-'),
+        h('span', {}, state.counter),
+        h('button', { onclick: () => state.counter++ }, '+'),
+      ])
+    }
+
+    get vstyle () {
+      return ({ state }) => h('style', {}, `
+        @import url('index.css');
+      `)
+    }
+  }
+  customElements.define('x-counter', XCounter)
+</script>

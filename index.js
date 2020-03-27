@@ -1,4 +1,4 @@
-import { h, Component } from "./lib/Component.js";
+import { h, Component } from './lib/index.js'
 
 class XApp extends Component {
   init() {
@@ -55,7 +55,7 @@ class XLetter extends Component {
   }
 
   get vstyle() {
-    return ({ state }) => h('style', {}, `span { font-weight: bold; padding-left: ${state.letter.space}rem }`)
+    return ({ state }) => h('style', {}, `@import url('https://cdn.jsdelivr.net/gh/polight/decor@master/decor.css');`)
   }
 }
 
