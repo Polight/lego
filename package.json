@@ -1,0 +1,31 @@
+{
+  "name": "lego",
+  "version": "1.0.0",
+  "description": "Tiny webcomponent make future-proof",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "html-to-hyperscript": "^0.8.0",
+    "node-html-parser": "^1.2.13"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Polight/lego-cli.git"
+  },
+  "keywords": [
+    "webcomponents",
+    "hyperdom",
+    "reactive",
+    "vuejs",
+    "react",
+    "riot"
+  ],
+  "author": "vinyll <Vincent Agnano>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Polight/lego-cli/issues"
+  },
+  "homepage": "https://github.com/Polight/lego-cli#readme"
+}
