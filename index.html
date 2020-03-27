@@ -1,4 +1,7 @@
 <title>Demo of WebComponents built with Lego</title>
+<link rel=stylesheet href=index.css>
+
+<h1>Lego webcomponents demo</h1>
 
 <article>
   <h2>Counter</h2>
@@ -8,25 +11,40 @@
 
 
 <script type=module>
+  /* You will need this to extend component and build your virtual dom */
   import { h, Component } from './lib/index.js'
 
+  // This is the class you construct. Just extend `Component`
   class XCounter extends Component {
+
+    // Here you can initialize anything before building
     init() {
+      // `this.state` is very special. It contains all reactive properties
+      // of the component.
       this.state = { counter: 0 }
     }
+
+    // this property returns a function.
+    // the function itself returns a virtualdom.
+    // just build it as so: `h(nodeName, attributes, children)`
+    // you should return a function and you may use the state
     get vdom() {
       return ({ state }) => ([
         h('button', { class: 'primary', onclick: () => state.counter-- }, '-'),
-        h('span', {}, state.counter),
+        h('span', {}, `${ state.counter * 10 }%`),
         h('button', { onclick: () => state.counter++ }, '+'),
+        h('progress', { value: state.counter * 10, max: 100 })
       ])
     }
 
+    // same as the vdom property, but for css. Yes, you can have reactive CSS! 😱
     get vstyle () {
       return ({ state }) => h('style', {}, `
         @import url('index.css');
       `)
     }
   }
+
+  // Declare your class as an element. make sure to use an hyphen in the name!
   customElements.define('x-counter', XCounter)
 </script>
