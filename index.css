@@ -35,11 +35,17 @@ button {
   cursor: pointer;
 }
 
+button.reset {
+  font-size: 1rem;
+  margin-left: 5rem;
+}
+
 span {
   display: inline-block;
   font-size: 2rem;
-  padding: 3rem;
+  padding: 2rem;
   width: 50px;
+  text-align: right;
 }
 
 progress {

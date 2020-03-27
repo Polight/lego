@@ -1,7 +1,14 @@
+<meta charset=utf8>
 <title>Demo of WebComponents built with Lego</title>
 <link rel=stylesheet href=index.css>
 
 <h1>Lego webcomponents demo</h1>
+
+<article>
+  <h2>Button</h2>
+  <p>Minimalistic button demo</p>
+  <x-button></x-button>
+</article>
 
 <article>
   <h2>Counter</h2>
@@ -13,6 +20,22 @@
 <script type=module>
   /* You will need this to extend component and build your virtual dom */
   import { h, Component } from './lib/index.js'
+
+
+  class XButton extends Component {
+    init () {
+      this.state = { showText: false }
+    }
+    get vdom() {
+      return ({ state }) => h(
+        'button',
+        { onclick: () => state.showText = !state.showText },
+        state.showText ? 'text displayed! 🎪' : 'text hidden 🕵️‍♀️'
+      )}
+  }
+  customElements.define('x-button', XButton)
+
+
 
   // This is the class you construct. Just extend `Component`
   class XCounter extends Component {
@@ -33,6 +56,7 @@
         h('button', { class: 'primary', onclick: () => state.counter-- }, '-'),
         h('span', {}, `${ state.counter * 10 }%`),
         h('button', { onclick: () => state.counter++ }, '+'),
+        h('button', { onclick: () => state.counter = 0, class: 'reset' }, '♻'),
         h('progress', { value: state.counter * 10, max: 100 })
       ])
     }
