@@ -1,7 +1,5 @@
 ![Lego web-components JS lib](./assets/lego.svg)
 
-[![CircleCI](https://circleci.com/gh/Polight/lego.svg?style=shield)](https://circleci.com/gh/Polight/lego)
-
 
 # LEGO: Modern Web-Components
 
@@ -9,8 +7,9 @@
 LEGO (_Lightweight Embedded Gluten-free Objects_) is a thin layer to build **native web-component** bricks that are easy to digest for your browser.
 
 Lego is inspired from great libraries such as [Riot](https://riot.js.org/), [VueJS](https://vuejs.org) or [Polymer](https://www.polymer-project.org/).
+
 It's just much lighter with no complexity, easier to read code, maintain and interact with the source.
-And again, it's the only lib to create **real native web-components**!
+Because it's build raw on a [tiny vdom library](https://github.com/yelouafi/petit-dom), it's freaking fast!
 
 
 Example:
