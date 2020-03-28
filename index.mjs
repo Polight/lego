@@ -1,6 +1,7 @@
 const html = `
   <h1>Lego</h1>
-  <p>The light webcomponent library</p>
+  <!-- welcome -->
+  <p>The light webcomponent \${state.list.length} library</p>
   <ul class="list" :if="state.list.length">
     <li :for="item, i in state.list" :if="i > 1">fast \${item}</li>
   </ul>
