@@ -1,6 +1,7 @@
 #! /usr/bin/env node
 
 import fs from 'fs'
+import { env } from 'process'
 import { execFileSync } from 'child_process'
 import { transpile } from '../lib/transpiler.mjs'
 
@@ -9,9 +10,11 @@ const args = process.argv
 const watchIndex = args.indexOf('-w')
 const watch = watchIndex >= 0 && args.splice(watchIndex, 1)
 let [sourceDir, targetDir] = args.slice(2)
+const libPath = env.BRICK_URL || '/node_modules/@polight/brick/lib/index.js'
+
 
 if(!sourceDir) throw new Error("first argument 'source' is required.")
-if(!targetDir) targetDir = sourceDir
+if(!targetDir) targetDir = './dist'
 
 async function walkDir(dirname, extensions) {
   const stdout = await execFileSync('find', [dirname])
@@ -25,15 +28,15 @@ async function compile(sourceDir, targetDir) {
   fs.mkdirSync(targetDir, { recursive: true })
   return filenames.map(f => {
     const filename = f.replace(/.*\/(.+)\.html/, '$1')
-    const component = transpile(fs.readFileSync(f, 'utf8'))
-    fs.writeFileSync(`${targetDir}/${filename}.mjs`, component.content, 'utf8')
+    const component = transpile(fs.readFileSync(f, 'utf8'), filename, libPath)
+    fs.writeFileSync(`${targetDir}/${filename}.js`, component.content, 'utf8')
     return { component, filename }
   })
 }
 
 async function generateIndex(targetDir, filenames) {
-  const content = filenames.map((f, i) => `import c${i + 1} from './${f}.mjs'`).join('\n')
-  fs.writeFileSync(`${targetDir}/index.mjs`, content, 'utf8')
+  const content = filenames.map((f, i) => `import c${i + 1} from './${f}.js'`).join('\n')
+  fs.writeFileSync(`${targetDir}/index.js`, content, 'utf8')
 }
 
 async function build() {
