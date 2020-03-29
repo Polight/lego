@@ -40,15 +40,15 @@ async function build() {
   const compiled = await compile(sourceDir, targetDir)
   generateIndex(targetDir, compiled.map(c => c.filename))
   const names = compiled.map(c => c.component.name)
-  return console.info(`${names.length} component${names.length > 1 ? 's were' : ' was'} compiled into "${targetDir}": ${names.join(', ')}.`)
+  return console.info(`🏗  ${names.length} component${names.length > 1 ? 's were' : ' was'} compiled into "${targetDir}": ${names.join(', ')}.`)
 }
 
 build()
 
 if (watch) {
-  console.log(`Watching for changes in ${sourceDir}`)
+  console.info(`\n👀 Watching changes in ${sourceDir}…`)
   fs.watch(sourceDir, async (event, filename) => {
-    await build()
-    console.info(`${filename} was recompiled!`)
+    await compile(sourceDir, targetDir)
+    console.info(`  ♻️  ${filename} was recompiled!`)
   })
 }
