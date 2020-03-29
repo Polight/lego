@@ -1,0 +1,27 @@
+@import url('https://cdn.jsdelivr.net/gh/polight/decor@master/decor.css');
+
+body {
+  background-color: #f8f8f8;
+}
+
+.markdown-body {
+  max-width: 900px;
+  padding: 30px;
+  box-shadow: 1px 1px 10px #eee;
+  background-color: #fff;
+  margin: 0 auto;
+}
+
+.markdown-body > h1:first-child {
+  display: none;
+}
+
+.markdown-body > h1:first-child + p {
+  text-align: center;
+}
+
+h1:not(:first-of-type) {
+  padding-bottom: 5px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ccc;
+}
