@@ -1,99 +1,102 @@
-![Lego web-components JS lib](./assets/lego.svg)
+
+<p style="text-align:center">
+ <img src="./assets/lego.svg" title="Fast Webcomponents" alt="Lego is a fast web-components library">
+</p>
 
 
 # LEGO: Modern Web-Components
 
 
-LEGO (_Lightweight Embedded Gluten-free Objects_) is a thin layer to build **native web-component** bricks that are easy to digest for your browser.
+LEGO (_Lightweight Embedded Gluten-free Objects_) is a thin layer to build 🚀 fast, ♻️ reactive, 🏡 **native web-component** bricks that are easy to digest 🌱 for your browser.
 
-Lego is inspired from great libraries such as [Riot](https://riot.js.org/), [VueJS](https://vuejs.org) or [Polymer](https://www.polymer-project.org/).
+Lego is inspired from other great libraries such as [VueJS](https://vuejs.org) [Pureact](https://github.com/irony/pureact/), [Riot](https://riot.js.org/) and other more minimalist tools.
 
-It's just much lighter with no complexity, easier to read code, maintain and interact with the source.
-Because it's build raw on a [tiny vdom library](https://github.com/yelouafi/petit-dom), it's freaking fast!
+It's just **much lighter** with simplicity, source that are easy to read, hack and maintain.
 
+[View the demo page](index.html)
 
-Example:
+## Hello World
+
+__bricks/hello-world.html__
 
 ```html
 <template>
-  <p>Hey, I'm ${ this.firstName }</p>
+  <p>Hello ${state.name}</p>
 </template>
 
 <script>
-  this.state.firstName = 'John'
-</script>
-
-<style>
-  p {
-    color: #555;
+  init() {
+    this.state = { name: "Where?" }
   }
-</style>
+</script>
 ```
 
-Result:
+Compile with `npx lego bricks dist`
 
-![Hey I'm John](./demo/hey-im-john.png)
+And use it in your app:
 
-It's as easy.
+__index.html__
 
-[See multiple components Demo page](https://lego.js.org/demo/index.html)
-
+```html
+<script src="./dist/index.js" type="module"></script>s
+<hello-world name="world!" />
+```
 
 ## Quick start
 
-Create an element:
+### Create an element
 
-__components/user-profile.html__
+__bricks/user-profile.html__
 
 ```html
 <template>
-  <h1>${ this.firstName } ${ this.lastName }'s profile</h1>
-  <p>Welcome ${ this.firstName }!</p>
-  <p :if="this.registered">You are fully registered</p>
-  <button :if="!this.registered" on:click="this.register">Register now</button>
+  <h1>${state.firstName} ${state.lastName}'s profile</h1>
+  <p>Welcome ${state.firstName}!</p>
+  <h3 :if="state.favorites.length">You favorite fruits:</h3>
+  <p :for="fruit in state.favorites">${fruit.name} ${fruit.icon}</p>
+  <button :if="!state.registered" @click="register">Register now</button>
 </template>
 
 <script>
-  this.setState({
-    firstName: 'John',
-    lastName: 'Doe',
-    registered: false
-  })
+  init() {
+    this.state = {
+      registered: false,
+      firstName: 'John',
+      lastName: 'Doe',
+      favorites: [{ name: 'Apple', icon: '🍎' }, { name: 'Pineapple', icon: '🍍' }]
+    }
+  }
 
-  this.register = () => {
-    this.render({ registered = true} )
+  register() {
+    this.state.registered = confirm('Do you want to register?')
   }
 </script>
 ```
 
-Then include it in your page:
+Compile this component: `npx lego ./bricks ./dist`
+
+### Then include it in your page:
 
 _index.html_
 
 ```html
 <user-profile></user-profile>
-<script src="./dist.js" type="module"></script>
+<script src="./dist/index.js" type="module"></script>
 ```
 
-Finally install the compiler with `npm install @polight/lego` and compile it:
+Run your page directly in your browser!
 
-```sh
-npx lego ./components/ ./dist.js
-```
-
-That will read all HTML components from the _./components_ folder and sub-folders and
-create a _dist.js_ file.
 
 > When developing you may want to automatically watch files changes.
-> In that case pass the `-w` flag: `npx lego -w ./components/ ./dist.js`
+> In that case pass the `-w` flag: `npx lego -w ./bricks ./dist`
 
-> Trick: you probably want to store this task with a shortcut like `npm run watch`.
-> To do so just add `"watch": "lego -w ./components/ ./dist.js"` in you _package.json_ scripts.
+> Tip: you probably want to store this task with a shortcut like `npm run watch`.
+> To do so just add `"watch": "lego -w ./bricks ./dist"` in you _package.json_ scripts.
 
 
-## Writing a component
+## Understanding Webcomponents
 
-A component can optionaly have 3 parts: some HTML in a `<template>` tag, some JavaScript
+A component can optionally have 3 parts: some HTML in a `<template>` tag, some JavaScript
 in a `<script>` tag and some CSS in a `<style>` tag.
 
 ### Template tag
@@ -102,91 +105,121 @@ A template is written within a `<template>` tag.
 
 It's just HTML with some empowerments for reactiveness.
 
-These superpowers can be recognized with their `:` prefix.
+These superpowers can be recognized with their `:` or `@` prefixes.
 
-> Note that these tags are interpreted and removed. You can't read them with CSS or script.
+The possible directives are:
 
-#### `:if`
+- `:if` to display a tag based on a condition
+- `:for` to repeat a tag
+- `:` to evaluate a string
+- `@` to bind an event
+
+> Note that `:if` and `:for` attributes, when used in the same tag should be used
+> with an order in mind: `<a :if="user" :for="user in state.users">` won't work!
+>
+> `<a :for="user in users" :if="user">` will work as expected.
+>
+> You may want to use `:if` before `:for` when you want the loop to happen _if_
+> a condition is met before.
+>
+> `<a :if="state.isAdmin" :for="user in state.users">` won't loop at all for non admin.
+
+#### `:if` Directive
 
 Conditionally display a tag and its descendants.
 
-Example: `<p :if="this.state.count < 5">Less than 5</p>` will be displayed if the condition is met.
+Example: `<p :if="state.count < 5">Less than 5</p>` will be displayed if the condition is met.
 
-#### `:for`
+#### `:for` Directive
 
-Repeat a tag reading from a variable.
-The syntax is as follow: `:for="item in this.state.items"`.
-The _item_ value will be available trough `this.item` within the loop.
+Repeat a tag based on a property.
 
-Example: `<li :for="attendee in this.state.attendees">${ this.attendee }</li>` with a state as
-`this.setState({ attendees: ['John', 'Mary'] })` will display `<li>John</li><li>Mary</li>`
+The syntax is as follow: `:for="item in state.items"`.
+The _item_ value will be available trough `${item}` within the loop.
 
-#### Boolean attributes
+If you need an incremental index `i`, use `:for="item, i in state.items"`.
 
-[Boolean attributes](https://www.w3.org/TR/html5/infrastructure.html#sec-boolean-attributes)
-like `required`, `checked`, `selected`, `disabled`, … are interpreted with a simple `:` prefix.
+Example: `<li :for="attendee in state.attendees">${attendee}</li>` with a state as
+`this.state = { attendees: ['John', 'Mary'] }` will display `<li>John</li><li>Mary</li>`
 
-Example: `<input type=checkbox :checked="this.state.agreed" :required="this.state.mustAgree">`.
-With the following state: `this.setState({ agreed: false, mustAgree: true })` would render
-`<input type=checkbox required="required">`.
+#### `:` Custom Directive
 
-#### Object attributes
-
-When passing complex object as attributes, such as objects themselves, arrays, classes, function…
-you should set the value explicitely with literal string:
+A custom directive will interpret in JS whatever you pass as value.
 
 ```html
-<x-element user="${ this.user }" />
-
+<template>
+  <a :href="this.getUrl('144')">Visit Profile</a>
+</template>
 <script>
-  class User {
-    get fullName() { return 'John Doe' }
-  }
-  this.setState({ user: new User() })
+  getUrl(id) { return `/user/${id}` }
 </script>
 ```
 
-#### Event listener
+outputs
 
-An event can be attached to a _DOM_ element with the prefix `on:` and the event name.
+```
+<a href="/user/144">Visit Profile</a>
+```
 
-Example: `<button on:click="this.clicked">Click me</button>` will call the `this.clicked`
-method in the component.
+[Boolean attributes](https://www.w3.org/TR/html5/infrastructure.html#sec-boolean-attributes)
 
-#### Reactive components
+Example: `<input type=checkbox :checked="state.agreed" :required="state.mustAgree">`.
+With the following state: `this.state = { agreed: false, mustAgree: true }` would render
+`<input type=checkbox required="required">`.
 
-When changing an attribute you may want the component to be updated automatically.
-
-In order to listen to the attribute, you can simply declare it as an attribute of your `<template>` tag:
+#### `@` Directive for binding Events
 
 ```html
-<template firstname="John" lastname="Doe" age="42">
-  <h1>Welcome ${ this.firstname } ${ this.lastname }</h1>
-</template>
+<template>
+  <button @click="sayHi" name="the button">click</button>
+
+<script>
+  sayHi(event) {
+    alert(`${event.target.getAttribute('name')} says hi! 👋🏼`)
+  }
+</script>
 ```
 
-This will:
+#### Reactive Properties
 
-- listen to changes on the 3 attributes of the `<template…>` tag: _firstname_, _lastname_ and _age_.
-- declare the default values for each of your attributes into your state: "John", "Doe" and "42".
-- automatically re-render the component when these attributes are changed from the outside.
+The `state` is where the reactiveness takes place.
 
-Note that these default values will be available for your script into the _state_:
+declare a `state` object in the `init()` function with default values:
 
 ```js
-console.log(this.state.age) // 42
+init() {
+  this.state = {
+    user: { firstname: 'John', lastname: 'Doe' },
+    status: "Happy 😄"
+  }
+}
 ```
 
-> When compiling, the attributes values are evaluated whenever possible.
-> In the current example "42" will become a Number. If you were passing an array as string
-> attribute like `kids="['Brice', 'Kelly']"` you would retrieve an array of 2 kids.
+Whenever `registered`, `user`, or some `user` property will change, the component will be automagically updated!
+
+Displaying a _state_ value is as simple as writing `${state.theValue}` in your HTML.
+
+#### Component Attributes
+
+Attributes declared on the components will be all be accessible through the `state`.
+If the property is initialized in the `this.state`, the attribute will be reactive:
+
+```html
+<x-user status="thinking 🤔"><x-user>
+```
+
+`status` will therefore be reactive and the _thinking 🤔_ attribute value will overwrite the _Happy 😄_ default status.
+
+A property that is not declared in the `state` won't be reactive.
+It can be accessed through `this.getAttribute()`.
+sAfter all, don't forget that these components are native! 🏡
 
 
 #### Slots
 
 [Slots](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) are part of the
 native web-component.
-Because Lego build native web-components, you can use the standard _slots_.
+Because Lego builds native web-components, you can use the standard _slots_ as documented.
 
 Example:
 
@@ -197,7 +230,7 @@ __index.html__
 <user-profile>
 ```
 
-__components/user-profile.html__
+__bricks/user-profile.html__
 ```html
 <template>
   <h1>User profile</h1>
@@ -210,59 +243,13 @@ Will write `…<p>important information: <span>This user is in Paris</span></p>`
 [See more advanced examples](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots#Adding_flexibility_with_slots).
 
 
-### Script tag
-
-The `<script>` tag contains HTML that will be injected into the component on initialisation.
-
-It can provide information to the template via the `state` object.
-Example: `this.state.userName = 'John'` will permit to render `<p>Hello ${ this.userName }</p>`.
-
-
-#### Rendering
-
-_Rendering_ is calculating the template tag and displaying it.
-It is processed with the `render()` method.
-
-Most of the time when you change the `state`, you probably then want to call `this.render()`
-in order to update your HTML with the new `state` value(s).
-
-Note that you can also pass the state as an object to the `render` method:
-`this.render({ userName: 'John' })`.
-
-In other words, calling `this.render()` is the way to update your component!
-
-
-#### Binding event methods
-
-`on:eventName` will bind the _eventName_ to the _DOM_ object and trigger the method.
-
-In most cases you will want to bind that event with a call to a script function.
-
-Example:
-
-```html
-<template>
-  <button on:click="this.clicked">Click me</button>
-</template>
-<script>
-  this.clicked = () => {
-    alert('you clicked the button!')
-  }
-</script>
-```
-
-The events are native HTML. Meaning you can call `on:click`, `on:change`, `on:submit`, …
-
-Behind the scene, it creates an `addEventListener(eventName)`, meaning you can use the
-native browser debug, remove events and play with the full power of native events!
-
-
-### Style tag
+### Reactive CSS Style
 
 CSS is much more fun when it's scoped.
 Here it come with the web-components.
 
-Here again, no trick or magic, though the full power of web-components and scoping.
+Here again, no trick, just the full power of web-components and scoping styles.
+Well, you should know that the css is reactive too! 😲
 
 Writing CSS is as easy as
 
@@ -270,7 +257,17 @@ Writing CSS is as easy as
 <template>
   <h1>Bonjour!</h1>
 </template>
+
+<script>
+  init() {
+    this.state = { fontScale: 1 }
+  }
+</script>
+
 <style>
+  :host {
+    font-size: ${state.fontScale}rem;
+  }
   h1 {
     padding: 1rem;
     text-align: center;
