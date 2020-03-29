@@ -1,14 +1,14 @@
 {
   "name": "lego",
   "version": "1.0.0",
-  "description": "Tiny webcomponent make future-proof",
+  "description": "Hyper fast and tiny webcomponent written future-proof",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "html-to-hyperscript": "^0.8.0",
-    "node-html-parser": "^1.2.13"
+    "jsdom": "^16.2.1",
+    "parse5": "^5.1.1"
   },
   "repository": {
     "type": "git",
