@@ -6,14 +6,20 @@
 
 # LEGO: Modern Web-Components
 
-
 LEGO (_Lightweight Embedded Gluten-free Objects_) is a thin layer to build 🚀 fast, ♻️ reactive, 🏡 **native web-component** bricks that are easy to digest 🌱 for your browser.
 
 Lego is inspired from other great libraries such as [VueJS](https://vuejs.org) [Pureact](https://github.com/irony/pureact/), [Riot](https://riot.js.org/) and other more minimalist tools.
 
 It's just **much lighter** with simplicity, source that are easy to read, hack and maintain.
 
+Lego is a handy way to create [Brick](https://github.com/polight/brick) web-components writting HTML/CSS.
+It will transform your HTML in Brick classes that you can your browser use.
+Because the code generated is human-readable, you could even use these transpiled Brick classes directly and get rid of Lego!
+
 [View the demo page](demo.html)
+
+
+## Quick start
 
 ## Hello World
 
@@ -25,13 +31,11 @@ __bricks/hello-world.html__
 </template>
 
 <script>
-  init() {
-    this.state = { name: "Where?" }
-  }
+  init() { this.state = { name: "World!" } }
 </script>
 ```
 
-Compile with `npx lego bricks dist`
+Compile with `npx lego bricks`
 
 And use it in your app:
 
@@ -39,12 +43,14 @@ __index.html__
 
 ```html
 <script src="./dist/index.js" type="module"></script>s
-<hello-world name="world!" />
+<hello-world />
 ```
 
-## Quick start
+#### Explanation
 
-### Create an element
+`npx lego bricks` created _dist/hello-world.js_. Checkout that basic JS file, that's a simple [Brick](https://github.com/polight/brick) instance!
+
+### Reactive Advanced Web-Component Example
 
 __bricks/user-profile.html__
 
