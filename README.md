@@ -6,15 +6,14 @@
 
 # LEGO: Modern Web-Components
 
-LEGO (_Lightweight Embedded Gluten-free Objects_) is a thin layer to build 🚀 fast, ♻️ reactive, 🏡 **native web-component** bricks that are easy to digest 🌱 for your browser.
+LEGO (_Lightweight Embedded Gluten-free Objects_) is a NodeJS script to build 🚀 fast, ♻️ reactive, 🏡 **native web-component** [bricks](https://github.com/polight/brick) that are easy to digest 🌱 for your browser.
 
-Lego is inspired from other great libraries such as [VueJS](https://vuejs.org) [Pureact](https://github.com/irony/pureact/), [Riot](https://riot.js.org/) and other more minimalist tools.
+Lego is inspired from the [native Web-Component spec](https://developer.mozilla.org/en-US/docs/Web/Web_Components) and some other libraries such as [Pureact](https://github.com/irony/pureact/) or [Riot](https://riot.js.org/).
 
 It's just **much lighter** with simplicity, source that are easy to read, hack and maintain.
 
 Lego is a handy way to create [Brick](https://github.com/polight/brick) web-components writting HTML/CSS.
-It will transform your HTML in Brick classes that you can your browser use.
-Because the code generated is human-readable, you could even use these transpiled Brick classes directly and get rid of Lego!
+It will transform your HTML in [Brick](https://github.com/polight/brick) classes that you can your browser will use.
 
 [View the demo page](demo.html)
 
@@ -48,7 +47,19 @@ __index.html__
 
 #### Explanation
 
-`npx lego bricks` created _dist/hello-world.js_. Checkout that basic JS file, that's a simple [Brick](https://github.com/polight/brick) instance!
+`npx lego bricks` created _dist/hello-world.js_. Checkout that basic JS file, that's a simple [Brick](https://github.com/polight/brick) instance that looks like:
+
+```js
+class HelloWorld extends Component {
+  init() { this.state = { name: "World!" } }
+  get vdom() {
+    return ({ state }) => h('p', {}, `Hello ${state.name}`)
+  }
+}
+customElement.define('hello-world', HelloWorkd)
+```
+
+You don't need to understand this but if you want to know more, view [how Brick works](https://github.com/Polight/brick#getting-started).
 
 ### Reactive Advanced Web-Component Example
 
