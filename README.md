@@ -1,19 +1,21 @@
 
 <p style="text-align:center">
- <img src="./assets/lego.png" title="Fast Webcomponents" alt="Lego is a fast web-components library" style="max-width:50%">
+ <img src="./assets/lego.png" title="Fast Webcomponents" alt="Lego is a fast web-components library" style="width:100%;max-width:600px">
 </p>
 
 
 # LEGO: Modern Web-Components
 
-LEGO (_Lightweight Embedded Gluten-free Objects_) is a NodeJS script to build 🚀 fast, ♻️ reactive, 🏡 **native web-component** [bricks](https://github.com/polight/brick) that are easy to digest 🌱 for your browser.
+LEGO (_Lightweight Embedded Gluten-free Objects_) is a NodeJS tool to build 🚀 fast, ♻️ reactive, 🏡 **native web-component** [bricks](https://github.com/polight/brick) that are easy to digest 🌱 for your browser.
 
 Lego is inspired from the [native Web-Component spec](https://developer.mozilla.org/en-US/docs/Web/Web_Components) and some other libraries such as [Pureact](https://github.com/irony/pureact/) or [Riot](https://riot.js.org/).
 
 It's just **much lighter** with simplicity, source that are easy to read, hack and maintain.
 
-Lego is a handy way to create [Brick](https://github.com/polight/brick) web-components writting HTML/CSS.
-It will transform your HTML in [Brick](https://github.com/polight/brick) classes that you can your browser will use.
+Lego uses [Brick](https://github.com/polight/brick) to generate web-components. In Brick you would write JS and virtual-dom by hand. With lego you write HTML and CSS components in HTML files.
+
+It will transform your HTML in [Brick](https://github.com/polight/brick) classes run directly in your browser.
+
 
 [View the demo page](demo.html)
 
@@ -41,7 +43,7 @@ And use it in your app:
 __index.html__
 
 ```html
-<script src="./dist/index.js" type="module"></script>s
+<script src="./dist/index.js" type="module"></script>
 <hello-world />
 ```
 
