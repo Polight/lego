@@ -1,0 +1,20 @@
+<template>
+  <button class="primary" @click="decrement">-</button>
+  <span>${ state.counter * 10 }%</span>
+  <button @click="increment">+</button>
+  <button @click="reset" class="reset">♻</button>
+  <progress :value="state.counter * 10" max="100"></progress>
+</template>
+
+<style>
+  @import url('index.css');
+</style>
+
+<script>
+  init() {
+    this.state = { counter: 0 }
+  }
+  increment() { this.state.counter++ }
+  decrement() { this.state.counter-- }
+  reset() { this.state.counter = 0 }
+</script>

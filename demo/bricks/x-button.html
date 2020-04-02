@@ -1,0 +1,13 @@
+<template>
+  <button @click="toggleText">
+    <span :if="state.showText">text displayed! 🎪</span>
+    <span :if="!state.showText">text hidden 🕵️‍♀️</span>
+</template>
+
+<script>
+  init () { this.state = { showText: false } }
+
+  toggleText() {
+    this.state.showText = !this.state.showText
+  }
+</script>

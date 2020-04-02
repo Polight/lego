@@ -17,7 +17,7 @@ Lego uses [Brick](https://github.com/polight/brick) to generate web-components. 
 It will transform your HTML in [Brick](https://github.com/polight/brick) classes run directly in your browser.
 
 
-[View the demo page](demo.html)
+[View the demo page](./demo/index.html)
 
 
 ## Quick start
