@@ -3,7 +3,7 @@
 import fs from 'fs'
 import { env } from 'process'
 import { execFileSync } from 'child_process'
-import { transpile } from '../lib/transpiler.mjs'
+import { createComponent } from '../lib/transpiler.mjs'
 
 
 const args = process.argv
@@ -28,7 +28,7 @@ async function compile(sourceDir, targetDir) {
   fs.mkdirSync(targetDir, { recursive: true })
   return filenames.map(f => {
     const filename = f.replace(/.*\/(.+)\.html/, '$1')
-    const component = transpile(fs.readFileSync(f, 'utf8'), filename, libPath)
+    const component = createComponent(fs.readFileSync(f, 'utf8'), filename, libPath)
     fs.writeFileSync(`${targetDir}/${filename}.js`, component.content, 'utf8')
     return { component, filename }
   })
