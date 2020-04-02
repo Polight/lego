@@ -20,11 +20,23 @@ It will transform your HTML in [Brick](https://github.com/polight/brick) classes
 Demo: [view in action](https://lego.js.org/demo/) – [checkout the source](https://github.com/Polight/lego/tree/master/demo/bricks)
 
 
+## Installation
+
+Lego is based on [npm](npmjs.com) and latest [node](https://nodejs.org/).
+
+You should install the package from your project folder:
+```
+npm i @polight/lego
+```
+
+That's pretty much it!
+
+
 ## Quick start
 
 ## Hello World
 
-__bricks/hello-world.html__
+Create a file called __bricks/hello-world.html__:
 
 ```html
 <template>
@@ -38,9 +50,7 @@ __bricks/hello-world.html__
 
 Compile with `npx lego bricks`
 
-And use it in your app:
-
-__index.html__
+And use it in your __index.html__
 
 ```html
 <script src="./dist/index.js" type="module"></script>

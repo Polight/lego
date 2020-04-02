@@ -1,6 +1,6 @@
 {
   "name": "@polight/lego",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Hyper fast and tiny webcomponent written future-proof",
   "main": "index.js",
   "scripts": {
