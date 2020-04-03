@@ -4,11 +4,11 @@ import { h, Component } from 'https://unpkg.com/@polight/brick/lib'
 class XCounter extends Component {
   get vdom() {
     return ({ state }) => [
-  h("button", {"class": "primary", "onclick": this.decrement.bind(this)}, `-`),
+  h("button", {"class": `primary`, "onclick": this.decrement.bind(this)}, `-`),
   h("span", {}, `${ state.counter * 10 }%`),
   h("button", {"onclick": this.increment.bind(this)}, `+`),
-  h("button", {"onclick": this.reset.bind(this), "class": "reset"}, `♻`),
-  h("progress", {"value": state.counter * 10, "max": "100"}, "")]
+  h("button", {"onclick": this.reset.bind(this), "class": `reset`}, `♻`),
+  h("progress", {"value": state.counter * 10, "max": `100`, "title": `${state.counter} in percentage`}, "")]
   }
   get vstyle() {
     return ({ state }) => h('style', {}, `

@@ -3,7 +3,7 @@
   <span>${ state.counter * 10 }%</span>
   <button @click="increment">+</button>
   <button @click="reset" class="reset">♻</button>
-  <progress :value="state.counter * 10" max="100"></progress>
+  <progress :value="state.counter * 10" max="100" title="Represents the value of ${state.counter} in percentage"></progress>
 </template>
 
 <style>
