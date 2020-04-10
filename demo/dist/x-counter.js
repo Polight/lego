@@ -8,7 +8,7 @@ class XCounter extends Component {
   h("span", {}, `${ state.counter * 10 }%`),
   h("button", {"onclick": this.increment.bind(this)}, `+`),
   h("button", {"onclick": this.reset.bind(this), "class": `reset`}, `♻`),
-  h("progress", {"value": state.counter * 10, "max": `100`, "title": `${state.counter} in percentage`}, "")]
+  h("progress", {"value": state.counter * 10, "max": `100`, "title": `Represents the value of ${state.counter} in percentage`}, "")]
   }
   get vstyle() {
     return ({ state }) => h('style', {}, `
