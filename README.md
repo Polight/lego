@@ -350,52 +350,26 @@ option: `npx lego -w <source_path> <target_file_path>`
 That file will be created and contain all the components.
 
 
-## Naming a Component
+## Naming a component
 
 The name of the file will be the name of the component.
 
 Example: _components/x-button.html_ will create `<x-button>` component.
 
-## Using a Component as a Module
+However in some cases you may want to give your component a different name than the file.
+To do so, you may give your template a name with the `name` attribute.
 
-Importing external libraries is made easily possible with modules.
-Lego offers a shorthand writing by default that don't permit importing
-script by default.
-However you can easily break off the shorthand and use explicit writing.
+Example:
 
-In order to do that, you need the following parts:
-- `<script type="module">` to declare a module writing
-- `import { Component } from 'https://unpkg.com/@polight/brick/lib'` to extend the `Component` class
-- `class MyComponentName extends Component` for a component called `my-component-name` in a file called `my-component-name.html`
-
-The rest of the documentation applies to modules as they do for shorthand script writing.
-
-__x-button.html__
+_components/x-button.html_:
 
 ```html
-<template>
-  <button @click="toggleText">${state.text}</button>
-</template>
-
-<script type="module">
-  import { Component } from 'https://unpkg.com/@polight/brick/lib'
-  import { myFunction } from 'my/library/file.js'
-
-  class XButton extends Component {
-    init () { this.state = { text: "button says hello" } }
-
-    toggleText() {
-      this.state.text = myFunction("You clicked me!")
-    }
-  }
-</script>
+<template name="my-super-button"></template>
 ```
 
-## Caveats and Gotchas
+Will create a `<my-super-button>` component.
 
-### Naming a Component
-
-Because it builds native web-components, the naming convention must respect
+> Note that because it builds native web-components, the naming convention must respect
 [the ones from the standards](http://w3c.github.io/webcomponents/spec/custom/#valid-custom-element-name) (lowercase, with a dash in the name, starting with a letter, …)
 
 

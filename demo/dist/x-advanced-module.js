@@ -1,8 +1,8 @@
 
-import { h } from 'https://unpkg.com/@polight/brick/lib'
+import { h } from 'https://unpkg.com/@polight/brick/dist/index.js'
 
 // declare `type="module"` and import `Component` from the Brick package
-  import { Component } from 'https://unpkg.com/@polight/brick/lib'
+  import { Component } from 'https://unpkg.com/@polight/brick/dist'
 
   // Notice the name matches exactly the one of the component, in camelCase 🐫
   class XAdvancedModule extends Component {

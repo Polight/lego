@@ -1,5 +1,5 @@
 
-import { h, Component } from 'https://unpkg.com/@polight/brick/lib'
+import { h, Component } from 'https://unpkg.com/@polight/brick/dist/index.js'
 
 class HelloWorld extends Component {
   get vdom() {
