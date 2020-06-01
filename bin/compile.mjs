@@ -17,8 +17,10 @@ if(!sourceDir) throw new Error("first argument 'source' is required.")
 if(!targetDir) targetDir = './dist'
 
 async function walkDir(dirname, extensions) {
-  const stdout = await execFileSync('find', [dirname])
-  const dirs = String(stdout).split('\n').filter(d => d)
+  let stdout
+  if(os.platform() === 'win32') stdout =  execFileSync('cmd', ['/c', 'dir', '/s', '/b', dirname])
+  else stdout =  execFileSync('find', [dirname])
+  const dirs = String(stdout).split(os.EOL).filter(d => d)
   if(!extensions) return dirs
   return dirs.filter(d => extensions.includes(d.split('.').splice(-1)[0]))
 }
@@ -27,7 +29,7 @@ async function compile(sourceDir, targetDir) {
   const filenames = await walkDir(sourceDir, ['html'])
   fs.mkdirSync(targetDir, { recursive: true })
   return filenames.map(f => {
-    const filename = f.replace(/.*\/(.+)\.html/, '$1')
+    const filename = os.platform() === 'win32' ? f.replace(/.*\\(.+)\.html/, '$1') : f.replace(/.*\/(.+)\.html/, '$1')
     const component = createComponent(fs.readFileSync(f, 'utf8'), filename, libPath)
     fs.writeFileSync(`${targetDir}/${filename}.js`, component.content, 'utf8')
     return { component, filename }
