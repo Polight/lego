@@ -1,6 +1,7 @@
 #! /usr/bin/env node
 
 import fs from 'fs'
+import os from 'os'
 import { env } from 'process'
 import { execFileSync } from 'child_process'
 import { createComponent } from '../lib/transpiler.mjs'
