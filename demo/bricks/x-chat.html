@@ -1,0 +1,41 @@
+<template>
+  <header><p>Header</p></header>
+
+  <main>
+    <nav>
+      <p>Sidebar 1</p>
+    </nav>
+
+    <article>
+      <p>Main content of the page</p>
+    </article>
+
+    <aside>
+      <p>Sidebar 2</p>
+    </aside>
+  </main>
+
+  <footer>
+    <p>Footer</p>
+  </footer>
+</template>
+
+<style>
+  root {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+  }
+  article {
+    flex-grow: 1;
+  }
+  nav,
+  aside {
+    width: 25%;
+  }
+</style>

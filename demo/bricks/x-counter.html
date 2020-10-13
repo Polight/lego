@@ -14,7 +14,7 @@
   init() {
     this.state = { counter: 0 }
   }
-  increment() { this.state.counter++ }
-  decrement() { this.state.counter-- }
-  reset() { this.state.counter = 0 }
+  increment() { this.render({ counter: this.state.counter + 1 }) }
+  decrement() { this.render({ counter: this.state.counter - 1 }) }
+  reset() { this.render({ counter: 0 }) }
 </script>

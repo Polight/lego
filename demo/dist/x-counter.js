@@ -1,5 +1,5 @@
 
-import { h, Component } from 'https://unpkg.com/@polight/brick/dist/index.js'
+import { h, Component } from 'https://unpkg.com/@polight/brick/1.2.0/index.js'
 
 class XCounter extends Component {
   get vdom() {
@@ -17,9 +17,9 @@ class XCounter extends Component {
   init() {
     this.state = { counter: 0 }
   }
-  increment() { this.state.counter++ }
-  decrement() { this.state.counter-- }
-  reset() { this.state.counter = 0 }
+  increment() { this.render({ counter: this.state.counter + 1 }) }
+  decrement() { this.render({ counter: this.state.counter - 1 }) }
+  reset() { this.render({ counter: 0 }) }
 }
 
 export default customElements.define('x-counter', XCounter)

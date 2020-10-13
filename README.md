@@ -97,7 +97,7 @@ __bricks/user-profile.html__
   }
 
   register() {
-    this.state.registered = confirm('Do you want to register?')
+    this.render({ registered: confirm('Do you want to register?') })
   }
 </script>
 ```
@@ -241,7 +241,7 @@ If the property is initialized in the `this.state`, the attribute will be reacti
 
 A property that is not declared in the `state` won't be reactive.
 It can be accessed through `this.getAttribute()`.
-sAfter all, don't forget that these components are native! 🏡
+After all, don't forget that these components are native! 🏡
 
 
 #### Slots
@@ -320,11 +320,13 @@ Example:
   <h1>Bonjour<h1>
 </template>
 <script>
-  this.state.color = '#357';
+  init() {
+    this.state = { color: '#357' }
+  }
 </script>
 <style>
   h1 {
-    color: ${ this.color };
+    color: ${ state.color };
   }
 </style>
 ```

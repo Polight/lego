@@ -1,5 +1,5 @@
 
-import { h, Component } from 'https://unpkg.com/@polight/brick/dist/index.js'
+import { h, Component } from 'https://unpkg.com/@polight/brick/1.2.0/index.js'
 
 class XButton extends Component {
   get vdom() {
