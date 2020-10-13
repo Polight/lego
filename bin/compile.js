@@ -11,7 +11,7 @@ const args = process.argv
 const watchIndex = args.indexOf('-w')
 const watch = watchIndex >= 0 && args.splice(watchIndex, 1)
 let [sourceDir, targetDir] = args.slice(2)
-const libPath = env.LEGO_URL || '/dist/lego.min.js'
+const libPath = env.LEGO_URL || `https://unpkg.com/@polight/lego@${version}/dist/lego.min.js`
 
 
 if(!sourceDir) throw new Error("first argument 'source' is required.")

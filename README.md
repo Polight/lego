@@ -38,22 +38,7 @@ Demo: [view in action](https://lego.js.org/demo/)
 
 Lego is based on [npm](npmjs.com) and the latest [node](https://nodejs.org/).
 
-It comes with 2 parts:
-- the compiler
-- the base class
-
-To get both, run `npm i @polight/lego`
-
-Copy the base class to a path that is available through your server:
-
-```
-cp node_modules/@polight/lego/dist/lego.min.js myassets/myjs/
-```
-
-Then declare it's url when building your components:
-```
-LEGO_URL=/myassets/myjs/lego.min.js npx lego bricks
-```
+You need to install the compiler with `npm i @polight/lego`
 
 
 ## Quick start
@@ -359,10 +344,10 @@ will apply the `#357` color onto `h1`.
 ## Compiling
 
 ```sh
-npx lego <source_path> <target_file_path>
+LEGO_URL=</url/to/lego.min.js> npx lego <source_path> <target_file_path>
 ```
 
-Would compile the _source_path_ file or folder (recursively) into _target_file_path_ js file.
+Would compile the _source_path_ file or folder (recursively) into _target_file_path_ js file using lego.min.js from the declared url.
 
 As mentioned before, when developing you probably want to watch for changes with the `-w`
 option: `npx lego -w <source_path> <target_file_path>`
