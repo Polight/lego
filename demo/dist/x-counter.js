@@ -1,5 +1,5 @@
 
-// Lego version 1.3.0
+// Lego version 1.3.1
 import { h, Component } from '/lego.min.js'
 
 class XCounter extends Component {

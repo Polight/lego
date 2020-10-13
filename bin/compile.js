@@ -6,7 +6,10 @@ import { env } from 'process'
 import { execFileSync } from 'child_process'
 import { createComponent } from '../src/compiler/transpiler.js'
 
-const { version } = JSON.parse(fs.readFileSync('./package.json'))
+const packagePath = fs.existsSync('./node_modules/@polight/lego/package.json')
+  ? './node_modules/@polight/lego/package.json'
+  : './package.json'
+const { version } = JSON.parse(fs.readFileSync(packagePath))
 const args = process.argv
 const watchIndex = args.indexOf('-w')
 const watch = watchIndex >= 0 && args.splice(watchIndex, 1)

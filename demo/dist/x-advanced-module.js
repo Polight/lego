@@ -1,5 +1,5 @@
 
-// Lego version 1.3.0
+// Lego version 1.3.1
 import { h } from '/lego.min.js'
 
 // declare `type="module"` and import `Component` from the Brick package
