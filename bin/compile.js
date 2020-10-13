@@ -4,14 +4,14 @@ import fs from 'fs'
 import os from 'os'
 import { env } from 'process'
 import { execFileSync } from 'child_process'
-import { createComponent } from '../lib/transpiler.mjs'
+import { createComponent } from '../src/compiler/transpiler.js'
 
 
 const args = process.argv
 const watchIndex = args.indexOf('-w')
 const watch = watchIndex >= 0 && args.splice(watchIndex, 1)
 let [sourceDir, targetDir] = args.slice(2)
-const libPath = env.BRICK_URL || 'https://unpkg.com/@polight/brick@1.2.0/dist/index.js'
+const libPath = env.LEGO_URL || '/dist/lego.min.js'
 
 
 if(!sourceDir) throw new Error("first argument 'source' is required.")

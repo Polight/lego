@@ -6,35 +6,28 @@
 
 # LEGO: Modern Web-Components
 
-LEGO (_Lightweight Embedded Gluten-free Objects_) is a NodeJS tool to build 🚀 fast, ♻️ reactive, 🏡 **native web-component** [bricks](https://github.com/polight/brick) that are easy to digest 🌱 for your browser.
+LEGO (_Lightweight Embedded Gluten-free Objects_) is a NodeJS tool to build 🚀 fast, ♻️ reactive, 🏡 **native web-components** that are easy to digest 🌱 for your browser.
 
 Lego is inspired from the [native Web-Component spec](https://developer.mozilla.org/en-US/docs/Web/Web_Components) and some other libraries such as [Pureact](https://github.com/irony/pureact/) or [Riot](https://riot.js.org/).
 
-It's just **much lighter** with simplicity, source that are easy to read, hack and maintain.
+It's just **much lighter** with simplicity, source that are easy to read, to hack and to maintain.
+The [core lib](https://github.com/Polight/lego/blob/master/src/lib/Component.js) is only 64 LOC!
 
-Lego uses [Brick](https://github.com/polight/brick) to generate web-components. In Brick you would write JS and virtual-dom by hand. With lego you write HTML and CSS components in HTML files.
-
-It will transform your HTML in [Brick](https://github.com/polight/brick) classes run directly in your browser.
-
-
-Demo: [view in action](https://lego.js.org/demo/) – [checkout the source](https://github.com/Polight/lego/tree/master/demo/bricks)
+Demo: [view in action](https://lego.js.org/demo/)
 
 
 ## Installation
 
 Lego is based on [npm](npmjs.com) and latest [node](https://nodejs.org/).
 
-You should install the package from your project folder:
+Just install the package from your project folder:
 ```
 npm i @polight/lego
 ```
 
-That's pretty much it!
-
-
 ## Quick start
 
-## Hello World
+### Hello World
 
 Create a file called __bricks/hello-world.html__:
 
@@ -57,33 +50,26 @@ And use it in your __index.html__
 <hello-world />
 ```
 
-#### Explanation
+Run a local web server (ie: `python3 -m http.server`) and display your index.html (ie: http://localhost:8000).
 
-`npx lego bricks` created _dist/hello-world.js_. Checkout that basic JS file, that's a simple [Brick](https://github.com/polight/brick) instance that looks like:
 
-```js
-class HelloWorld extends Component {
-  init() { this.state = { name: "World!" } }
-  get vdom() {
-    return ({ state }) => h('p', {}, `Hello ${state.name}`)
-  }
-}
-customElement.define('hello-world', HelloWorkd)
-```
-
-You don't need to understand this but if you want to know more, view [how Brick works](https://github.com/Polight/brick#getting-started).
-
-### Reactive Advanced Web-Component Example
+### More Advanced Web-Component Example
 
 __bricks/user-profile.html__
 
 ```html
 <template>
-  <h1>${state.firstName} ${state.lastName}'s profile</h1>
-  <p>Welcome ${state.firstName}!</p>
-  <h3 :if="state.favorites.length">You favorite fruits:</h3>
-  <p :for="fruit in state.favorites">${fruit.name} ${fruit.icon}</p>
-  <button :if="!state.registered" @click="register">Register now</button>
+  <div :if="state.registered">
+    <h1>${state.firstName} ${state.lastName}'s profile</h1>
+    <p>Welcome ${state.firstName}!</p>
+    <section :if="state.fruits.length">
+      <h3>You favorite fruits:</h3>
+      <ul>
+        <li :for="fruit in state.fruits">${fruit.name} ${fruit.icon}</li>
+      </ul>
+    </section>
+    <button :if="!state.registered" @click="register">Register now</button>
+  </div>
 </template>
 
 <script>
@@ -92,7 +78,7 @@ __bricks/user-profile.html__
       registered: false,
       firstName: 'John',
       lastName: 'Doe',
-      favorites: [{ name: 'Apple', icon: '🍎' }, { name: 'Pineapple', icon: '🍍' }]
+      fruits: [{ name: 'Apple', icon: '🍎' }, { name: 'Pineapple', icon: '🍍' }]
     }
   }
 
@@ -102,7 +88,7 @@ __bricks/user-profile.html__
 </script>
 ```
 
-Compile this component: `npx lego ./bricks ./dist`
+Compile this component: `npx lego bricks`
 
 ### Then include it in your page:
 
@@ -113,14 +99,14 @@ _index.html_
 <script src="./dist/index.js" type="module"></script>
 ```
 
-Run your page directly in your browser!
+Run your webserver and see your little app!
 
 
 > When developing you may want to automatically watch files changes.
-> In that case pass the `-w` flag: `npx lego -w ./bricks ./dist`
+> In that case pass the `-w` flag: `npx lego -w bricks`
 
 > Tip: you probably want to store this task with a shortcut like `npm run watch`.
-> To do so just add `"watch": "lego -w ./bricks ./dist"` in you _package.json_ scripts.
+> To do so just add `"watch": "lego -w bricks"` in you _package.json_ scripts.
 
 
 ## Understanding Webcomponents
@@ -130,9 +116,7 @@ in a `<script>` tag and some CSS in a `<style>` tag.
 
 ### Template tag
 
-A template is written within a `<template>` tag.
-
-It's just HTML with some empowerments for reactiveness.
+An HTML template is written within a `<template>` tag.
 
 These superpowers can be recognized with their `:` or `@` prefixes.
 
@@ -144,14 +128,11 @@ The possible directives are:
 - `@` to bind an event
 
 > Note that `:if` and `:for` attributes, when used in the same tag should be used
-> with an order in mind: `<a :if="user" :for="user in state.users">` won't work!
+> with an order in mind: `<a :if="user" :for="user in state.users">` won't work,
+> but `<a :if="state.users.length" :for="user in state.users">` will first evaluate if the `users` array has items,
+> or `<a :for="user in users" :if="user">` will check that each individual user has a value.
 >
-> `<a :for="user in users" :if="user">` will work as expected.
->
-> You may want to use `:if` before `:for` when you want the loop to happen _if_
-> a condition is met before.
->
-> `<a :if="state.isAdmin" :for="user in state.users">` won't loop at all for non admin.
+> `<a :if="state.isAdmin" :for="user in state.users">` won't loop at all if `isAdmin` is false.
 
 #### `:if` Directive
 
@@ -224,9 +205,18 @@ init() {
 }
 ```
 
-Whenever `registered`, `user`, or some `user` property will change, the component will be automagically updated!
-
 Displaying a _state_ value is as simple as writing `${state.theValue}` in your HTML.
+
+When you need your component to react, call the `this.render()` method
+with your updated state:
+
+```
+itemSelected(event) {
+  this.render({ selected: "apple", isAdmin: true })
+}
+```
+
+This will refresh your component where needed.
 
 #### Component Attributes
 
@@ -239,9 +229,10 @@ If the property is initialized in the `this.state`, the attribute will be reacti
 
 `status` will therefore be reactive and the _thinking 🤔_ attribute value will overwrite the _Happy 😄_ default status.
 
-A property that is not declared in the `state` won't be reactive.
-It can be accessed through `this.getAttribute()`.
-After all, don't forget that these components are native! 🏡
+⚠️ A property that is not declared in the `state` won't be reactive.
+
+These properties can be accessed through `this.getAttribute()` from within the component.
+After all, these components are just native! 🏡
 
 
 #### Slots

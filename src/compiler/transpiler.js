@@ -1,5 +1,5 @@
 import jsdom from 'jsdom'
-import parse from './vdom-parser.mjs'
+import parse from './vdom-parser.js'
 
 
 function parseHtmlComponent(html) {

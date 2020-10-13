@@ -8,6 +8,6 @@
   init () { this.state = { showText: false } }
 
   toggleText() {
-    this.state.showText = !this.state.showText
+    this.render({ showText: !this.state.showText })
   }
 </script>

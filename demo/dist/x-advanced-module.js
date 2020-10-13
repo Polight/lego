@@ -1,5 +1,5 @@
 
-import { h } from 'https://unpkg.com/@polight/brick/1.2.0/index.js'
+import { h } from '/dist/lego.min.js'
 
 // declare `type="module"` and import `Component` from the Brick package
   import { Component } from 'https://unpkg.com/@polight/brick/dist/index.js'

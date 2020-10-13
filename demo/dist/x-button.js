@@ -1,5 +1,5 @@
 
-import { h, Component } from 'https://unpkg.com/@polight/brick/1.2.0/index.js'
+import { h, Component } from '/dist/lego.min.js'
 
 class XButton extends Component {
   get vdom() {
@@ -13,7 +13,7 @@ class XButton extends Component {
   init () { this.state = { showText: false } }
 
   toggleText() {
-    this.state.showText = !this.state.showText
+    this.render({ showText: !this.state.showText })
   }
 }
 
