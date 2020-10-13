@@ -8,22 +8,52 @@
 
 LEGO (_Lightweight Embedded Gluten-free Objects_) is a NodeJS tool to build 🚀 fast, ♻️ reactive, 🏡 **native web-components** that are easy to digest 🌱 for your browser.
 
-Lego is inspired from the [native Web-Component spec](https://developer.mozilla.org/en-US/docs/Web/Web_Components) and some other libraries such as [Pureact](https://github.com/irony/pureact/) or [Riot](https://riot.js.org/).
+Lego is:
+
+- 👙 Minimalist: ~74~ 61 lines of readable code in its core (non-optimised, uncompressed, no cheating)
+- 🌱 Low dependency: its single third-party is the minimalist [Petit-Dom](https://github.com/yelouafi/petit-dom) which itself has no dependency
+- ♻️ Reactive: updating the state recalculate the Virtual Dom when needed
+- 🚀 fast: using virtual dom through a thin layer makes it close to bare-metal
+- 💧 Simple: that's [Vanilla](http://vanilla-js.com/), there isn't much to know, it's a raw class to extend; no magic ✨
+- 🏡 Native: webcomponents are actual native webcomponents, you benefit from all the today's and tomorrow's possibilites (slot, encapsulation, …).
+
+Lego is not (and will never be):
+- 🏯 A full bloated frontend framework with routing. [Others do it well](https://github.com/visionmedia/page.js).
+- 🏗 A website builder with SSR or similar complexities.
+- 🔐 An HTML replacement that locks you into a specific technology.
+
+View the [demo](https://polight.github.io/brick/demo/) and [their source](https://github.com/Polight/lego/tree/master/demo) 🧪.
+
+
+Lego is inspired from the [native Web-Component spec](https://developer.mozilla.org/en-US/docs/Web/Web_Components) and [Riot](https://riot.js.org/).
 
 It's just **much lighter** with simplicity, source that are easy to read, to hack and to maintain.
-The [core lib](https://github.com/Polight/lego/blob/master/src/lib/Component.js) is only 64 LOC!
+The [core lib](https://github.com/Polight/lego/blob/master/src/lib/Component.js) is only 61 <abbr title="Lines Of Code">LOC</abbr>!
 
 Demo: [view in action](https://lego.js.org/demo/)
 
 
 ## Installation
 
-Lego is based on [npm](npmjs.com) and latest [node](https://nodejs.org/).
+Lego is based on [npm](npmjs.com) and the latest [node](https://nodejs.org/).
 
-Just install the package from your project folder:
+It comes with 2 parts:
+- the compiler
+- the base class
+
+To get both, run `npm i @polight/lego`
+
+Copy the base class to a path that is available through your server:
+
 ```
-npm i @polight/lego
+cp node_modules/@polight/lego/dist/lego.min.js myassets/myjs/
 ```
+
+Then declare it's url when building your components:
+```
+LEGO_URL=/myassets/myjs/lego.min.js npx lego bricks
+```
+
 
 ## Quick start
 

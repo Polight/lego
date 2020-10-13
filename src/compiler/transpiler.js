@@ -17,8 +17,9 @@ function parseHtmlComponent(html) {
 }
 
 const scriptContents = {
-  shorthand(className, name, dom, libPath) {
+  shorthand({ className, name, dom, libPath, version }) {
     return `
+// Lego version ${version}
 import { h, Component } from '${libPath}'
 
 class ${className} extends Component {
@@ -36,8 +37,9 @@ export default customElements.define('${name}', ${className})
 `
   },
 
-  module(className, name, dom, libPath) {
+  module({ className, name, dom, libPath, version }) {
     return `
+// Lego version ${version}
 import { h } from '${libPath}'
 
 ${dom.script.trim()}
@@ -57,11 +59,11 @@ export default customElements.define('${name}', Sub${className})
   }
 }
 
-function createComponent(html, name, libPath) {
+function createComponent({ html, name, libPath, version }) {
   const dom = parseHtmlComponent(html)
   const className = name.split('-').map(c => c.slice(0,1).toUpperCase() + c.slice(1)).join('')
   const scriptType = dom.scriptType || 'shorthand'
-  const content = scriptContents[scriptType](className, name, dom, libPath)
+  const content = scriptContents[scriptType]({ className, name, dom, libPath, version })
   return { name, content }
 }
 

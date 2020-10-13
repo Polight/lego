@@ -1,5 +1,6 @@
 
-import { h } from '/dist/lego.min.js'
+// Lego version 1.3.0
+import { h } from '/lego.min.js'
 
 // declare `type="module"` and import `Component` from the Brick package
   import { Component } from 'https://unpkg.com/@polight/brick/dist/index.js'

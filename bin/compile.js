@@ -6,7 +6,7 @@ import { env } from 'process'
 import { execFileSync } from 'child_process'
 import { createComponent } from '../src/compiler/transpiler.js'
 
-
+const { version } = JSON.parse(fs.readFileSync('./package.json'))
 const args = process.argv
 const watchIndex = args.indexOf('-w')
 const watch = watchIndex >= 0 && args.splice(watchIndex, 1)
@@ -31,7 +31,12 @@ async function compile(sourceDir, targetDir) {
   fs.mkdirSync(targetDir, { recursive: true })
   return filenames.map(f => {
     const filename = os.platform() === 'win32' ? f.replace(/.*\\(.+)\.html/, '$1') : f.replace(/.*\/(.+)\.html/, '$1')
-    const component = createComponent(fs.readFileSync(f, 'utf8'), filename, libPath)
+    const component = createComponent({
+      html: fs.readFileSync(f, 'utf8'),
+      name: filename,
+      libPath,
+      version
+    })
     fs.writeFileSync(`${targetDir}/${filename}.js`, component.content, 'utf8')
     return { component, filename }
   })

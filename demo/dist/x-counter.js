@@ -1,5 +1,6 @@
 
-import { h, Component } from '/dist/lego.min.js'
+// Lego version 1.3.0
+import { h, Component } from '/lego.min.js'
 
 class XCounter extends Component {
   get vdom() {
