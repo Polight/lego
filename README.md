@@ -10,7 +10,7 @@ LEGO (_Lightweight Embedded Gluten-free Objects_) is a NodeJS tool to build 🚀
 
 Lego is:
 
-- 👙 Minimalist: ~74~ 61 lines of readable code in its core (non-optimised, uncompressed, no cheating)
+- 👙 Minimalist: ~74~ 61 lines of readable code in its core (non-optimised, uncompressed, no cheating).
 - 🌱 Low dependency: its single third-party is the minimalist [Petit-Dom](https://github.com/yelouafi/petit-dom) which itself has no dependency
 - ♻️ Reactive: updating the state recalculate the Virtual Dom when needed
 - 🚀 fast: using virtual dom through a thin layer makes it close to bare-metal
@@ -29,6 +29,7 @@ Lego is inspired from the [native Web-Component spec](https://developer.mozilla.
 
 It's just **much lighter** with simplicity, source that are easy to read, to hack and to maintain.
 The [core lib](https://github.com/Polight/lego/blob/master/src/lib/Component.js) is only 61 <abbr title="Lines Of Code">LOC</abbr>!
+Lego is as light as 3Kb for the full bundle!
 
 Demo: [view in action](https://lego.js.org/demo/)
 
