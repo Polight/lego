@@ -5,6 +5,7 @@ export default class extends HTMLElement {
   constructor() {
     super()
     this.useShadowDOM = true
+    this.__isConnected = false
     this.__state = {}
     if(this.init) this.init()
     this.watchProps = Object.keys(this.__state)
@@ -34,6 +35,7 @@ export default class extends HTMLElement {
   }
 
   connectedCallback() {
+    this.__isConnected = true
     if(this.connected) this.connected()
     this.render()
   }
@@ -56,6 +58,7 @@ export default class extends HTMLElement {
 
   render(state) {
     this.setState(state)
+    if(!this.__isConnected) return
     return render(h('root', {}, [
       this.vdom({ state: this.__state }),
       this.vstyle({ state: this.__state }),
