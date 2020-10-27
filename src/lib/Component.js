@@ -49,8 +49,8 @@ export default class extends HTMLElement {
     await this.changed(props)
   }
 
-  async set state(value) {
-    await this.setState(value)
+  set state(value) {
+    this.setState(value)
   }
 
   get state() {
