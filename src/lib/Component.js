@@ -44,20 +44,23 @@ export default class extends HTMLElement {
     if(this.disconnected) this.disconnected()
   }
 
-  setState(props = {}) {
-    return Object.assign(this.__state, props)
+  async setState(props = {}) {
+    Object.assign(this.__state, props)
+    await this.changed(props)
   }
 
-  set state(value) {
-    Object.assign(this.__state, value)
+  async set state(value) {
+    await this.setState(value)
   }
 
   get state() {
     return this.__state
   }
 
-  render(state) {
-    this.setState(state)
+  async changed(props) {}
+
+  async render(state) {
+    await this.setState(state)
     if(!this.__isConnected) return
     return render(h('root', {}, [
       this.vdom({ state: this.__state }),

@@ -234,6 +234,10 @@ itemSelected(event) {
 
 This will refresh your component where needed.
 
+When `state` is just mutated, the `changed(changedProps)` is called.
+This `changed()` method is called before (re-)rendering.
+
+
 #### Component Attributes
 
 Attributes declared on the components will be all be accessible through the `state`.
