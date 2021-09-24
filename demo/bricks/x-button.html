@@ -2,12 +2,17 @@
   <button @click="toggleText">
     <span :if="state.showText">text displayed! 🎪</span>
     <span :if="!state.showText">text hidden 🕵️‍♀️</span>
+  </button>
 </template>
 
 <script>
-  init () { this.state = { showText: false } }
+  export default class extends _ {
+    init() {
+      this.state = { showText: false }
+    }
 
-  toggleText() {
-    this.render({ showText: !this.state.showText })
+    toggleText() {
+      this.render({ showText: !this.state.showText })
+    }
   }
 </script>

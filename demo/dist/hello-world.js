@@ -1,14 +1,17 @@
 
-// Lego version 1.3.1
-import { h, Component } from '/lego.min.js'
+// Lego version 1.4.1
+import { h, Component } from '../../dist/lego.min.js'
 
-class HelloWorld extends Component {
+class _ extends Component {
   get vdom() {
     return ({ state }) => [
   h("p", {}, `Hello ${state.name}`)]
   }
   
-  init() { this.state = { name: 'Gaia?' } }
 }
 
-export default customElements.define('hello-world', HelloWorld)
+export default class extends _ {
+    init() {
+      this.state = { name: 'world' }
+    }
+  }

@@ -1,8 +1,8 @@
 
-// Lego version 1.3.1
-import { h, Component } from '/lego.min.js'
+// Lego version 1.4.1
+import { h, Component } from '../../dist/lego.min.js'
 
-class XChat extends Component {
+class _ extends Component {
   get vdom() {
     return ({ state }) => [
   h("header", {},     h("p", {}, `Header`)),
@@ -23,7 +23,7 @@ class XChat extends Component {
   }
   get vstyle() {
     return ({ state }) => h('style', {}, `
-    root {
+    :host {
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -41,7 +41,6 @@ class XChat extends Component {
     width: 25%;
   }
   `)}
-  
 }
 
-export default customElements.define('x-chat', XChat)
+export default class extends _ {}

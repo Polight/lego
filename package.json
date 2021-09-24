@@ -6,18 +6,19 @@
   "type": "module",
   "scripts": {
     "build": "rollup -c",
-    "build-demo": "node ./bin/compile.js demo/bricks demo/dist"
+    "build-demo": "LEGO_URL=../../dist/lego.min.js node ./bin/compile.js demo/bricks demo/dist",
+    "deploy": "npm run build && npm publish"
   },
   "dependencies": {
-    "jsdom": "^16.2.1",
-    "parse5": "^5.1.1"
+    "jsdom": "^16.5.3",
+    "parse5": "^5.1.1",
+    "petit-dom": "^0.6.0"
   },
   "devDependencies": {
-    "@rollup/plugin-node-resolve": "^8.4.0",
-    "petit-dom": "^0.3.4",
-    "rollup": "^2.29.0",
-    "rollup-plugin-gzip": "^2.5.0",
-    "rollup-plugin-terser": "^6.1.0"
+    "@rollup/plugin-node-resolve": "*",
+    "rollup": "*",
+    "rollup-plugin-gzip": "*",
+    "rollup-plugin-terser": "*"
   },
   "bin": {
     "lego": "./bin/compile.js"

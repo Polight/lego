@@ -1,8 +1,8 @@
 
-// Lego version 1.3.1
-import { h, Component } from '/lego.min.js'
+// Lego version 1.4.1
+import { h, Component } from '../../dist/lego.min.js'
 
-class XButton extends Component {
+class _ extends Component {
   get vdom() {
     return ({ state }) => [
   h("button", {"onclick": this.toggleText.bind(this)}, [
@@ -11,11 +11,14 @@ class XButton extends Component {
 ])]
   }
   
-  init () { this.state = { showText: false } }
-
-  toggleText() {
-    this.render({ showText: !this.state.showText })
-  }
 }
 
-export default customElements.define('x-button', XButton)
+export default class extends _ {
+    init() {
+      this.state = { showText: false }
+    }
+
+    toggleText() {
+      this.render({ showText: !this.state.showText })
+    }
+  }

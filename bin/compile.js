@@ -4,7 +4,7 @@ import fs from 'fs'
 import os from 'os'
 import { env } from 'process'
 import { execFileSync } from 'child_process'
-import { createComponent } from '../src/compiler/transpiler.js'
+import { createComponent, generateIndex } from '../src/compiler/transpiler.js'
 
 const packagePath = fs.existsSync('./node_modules/@polight/lego/package.json')
   ? './node_modules/@polight/lego/package.json'
@@ -45,14 +45,14 @@ async function compile(sourceDir, targetDir) {
   })
 }
 
-async function generateIndex(targetDir, filenames) {
-  const content = filenames.map((f, i) => `import c${i + 1} from './${f}.js'`).join('\n')
+async function writeIndex(targetDir, filenames) {
+  const content = generateIndex(filenames)
   fs.writeFileSync(`${targetDir}/index.js`, content, 'utf8')
 }
 
 async function build() {
   const compiled = await compile(sourceDir, targetDir)
-  generateIndex(targetDir, compiled.map(c => c.filename))
+  writeIndex(targetDir, compiled.map(c => c.filename))
   const names = compiled.map(c => c.component.name)
   return console.info(`🏗  ${names.length} component${names.length > 1 ? 's were' : ' was'} compiled into "${targetDir}": ${names.join(', ')}.`)
 }
