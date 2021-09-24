@@ -10,7 +10,7 @@ function parseHtmlComponent(html) {
 
   return {
     template: templateNode ? templateNode.innerHTML : '',
-    script: scriptNode ? scriptNode.innerHTML : '',
+    script: scriptNode ? scriptNode.innerHTML : 'export default class _ {}',
     style: styleNode ? styleNode.innerHTML : '',
   }
 }
