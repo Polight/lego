@@ -53,7 +53,9 @@ Create a file called __bricks/hello-world.html__:
 </template>
 
 <script>
-  init() { this.state = { name: "World!" } }
+  export default class extends _ {
+    init() { this.state = { name: "World!" } }
+  }
 </script>
 ```
 
@@ -89,17 +91,19 @@ __bricks/user-profile.html__
 </template>
 
 <script>
-  init() {
-    this.state = {
-      registered: false,
-      firstName: 'John',
-      lastName: 'Doe',
-      fruits: [{ name: 'Apple', icon: '🍎' }, { name: 'Pineapple', icon: '🍍' }]
+  export default class extends _ {
+    init() {
+      this.state = {
+        registered: false,
+        firstName: 'John',
+        lastName: 'Doe',
+        fruits: [{ name: 'Apple', icon: '🍎' }, { name: 'Pineapple', icon: '🍍' }]
+      }
     }
-  }
 
-  register() {
-    this.render({ registered: confirm('Do you want to register?') })
+    register() {
+      this.render({ registered: confirm('Do you want to register?') })
+    }
   }
 </script>
 ```
@@ -177,7 +181,9 @@ A custom directive will interpret in JS whatever you pass as value.
   <a :href="this.getUrl('144')">Visit Profile</a>
 </template>
 <script>
-  getUrl(id) { return `/user/${id}` }
+  export default class extends _ {
+    getUrl(id) { return `/user/${id}` }
+  }
 </script>
 ```
 
@@ -200,8 +206,10 @@ With the following state: `this.state = { agreed: false, mustAgree: true }` woul
   <button @click="sayHi" name="the button">click</button>
 
 <script>
-  sayHi(event) {
-    alert(`${event.target.getAttribute('name')} says hi! 👋🏼`)
+  export default class extends _ {
+    sayHi(event) {
+      alert(`${event.target.getAttribute('name')} says hi! 👋🏼`)
+    }
   }
 </script>
 ```
@@ -299,8 +307,10 @@ Writing CSS is as easy as
 </template>
 
 <script>
-  init() {
-    this.state = { fontScale: 1 }
+  export default class extends _ {
+    init() {
+      this.state = { fontScale: 1 }
+    }
   }
 </script>
 
@@ -331,8 +341,10 @@ Example:
   <h1>Bonjour<h1>
 </template>
 <script>
-  init() {
-    this.state = { color: '#357' }
+  export default class extends _ {
+    init() {
+      this.state = { color: '#357' }
+    }
   }
 </script>
 <style>
@@ -343,6 +355,21 @@ Example:
 ```
 
 will apply the `#357` color onto `h1`.
+
+
+## Script tag
+
+The script tag is has a special behavior.
+You will create a class extending the component, that's how you build your
+full component with advanced script.
+
+To do so extend the `_`, that's a naming convention:
+
+```js
+export default class extends _ {
+  …
+}
+```
 
 
 ## Compiling
