@@ -2,23 +2,30 @@
 
 import fs from 'fs'
 import os from 'os'
-import { env } from 'process'
 import { execFileSync } from 'child_process'
 import { createComponent, generateIndex } from '../src/compiler/transpiler.js'
+import defaultConfig from '../src/compiler/config.js'
 
 const packagePath = fs.existsSync('./node_modules/@polight/lego/package.json')
   ? './node_modules/@polight/lego/package.json'
   : './package.json'
 const { version } = JSON.parse(fs.readFileSync(packagePath))
 const args = process.argv
-const watchIndex = args.indexOf('-w')
-const watch = watchIndex >= 0 && args.splice(watchIndex, 1)
-let [sourceDir, targetDir] = args.slice(2)
-const libPath = env.LEGO_URL || `https://unpkg.com/@polight/lego@${version}/dist/lego.min.js`
+const [sourceDir, targetDir] = args.slice(2)
+const argsConfig = {
+  sourceDir,
+  targetDir,
+  watch: args.indexOf('-w') >= 0
+}
 
-
-if(!sourceDir) throw new Error("first argument 'source' is required.")
-if(!targetDir) targetDir = './dist'
+function mergeObjects(native, override) {
+  return Object.keys(native).reduce((obj, key) => {
+    obj[key] = (key in override && override[key])
+      ? override[key]
+      : native[key]
+    return obj
+  }, {})
+}
 
 async function walkDir(dirname, extensions) {
   let stdout
@@ -29,16 +36,17 @@ async function walkDir(dirname, extensions) {
   return dirs.filter(d => extensions.includes(d.split('.').splice(-1)[0]))
 }
 
-async function compile(sourceDir, targetDir) {
+async function compile(sourceDir, targetDir, config) {
   const filenames = await walkDir(sourceDir, ['html'])
   fs.mkdirSync(targetDir, { recursive: true })
   return filenames.map(f => {
-    const filename = os.platform() === 'win32' ? f.replace(/.*\\(.+)\.html/, '$1') : f.replace(/.*\/(.+)\.html/, '$1')
+    const filename = os.platform() === 'win32'
+      ? f.replace(/.*\\(.+)\.html/, '$1')
+      : f.replace(/.*\/(.+)\.html/, '$1')
     const component = createComponent({
       html: fs.readFileSync(f, 'utf8'),
       name: filename,
-      libPath,
-      version
+      ...config
     })
     fs.writeFileSync(`${targetDir}/${filename}.js`, component.content, 'utf8')
     return { component, filename }
@@ -51,18 +59,29 @@ async function writeIndex(targetDir, filenames) {
 }
 
 async function build() {
-  const compiled = await compile(sourceDir, targetDir)
+  let userConfig = {}
+  try {
+    const content = await import(`${process.cwd()}/lego.config.js`)
+    userConfig = content.default
+  }
+  catch {
+    console.warn('⚠️  Missing lego.config.js file, building with defaults.')
+  }
+  const config = mergeObjects(mergeObjects(defaultConfig, userConfig), argsConfig)
+  const { sourceDir, targetDir } = config
+  const compiled = await compile(sourceDir, targetDir, config)
   writeIndex(targetDir, compiled.map(c => c.filename))
   const names = compiled.map(c => c.component.name)
-  return console.info(`🏗  ${names.length} component${names.length > 1 ? 's were' : ' was'} compiled into "${targetDir}": ${names.join(', ')}.`)
+  console.info(`⚙️  Current configuration:`, config)
+  console.info(`🏗  ${names.length} component${names.length > 1 ? 's were' : ' was'} compiled into "${config.targetDir}": ${names.join(', ')}.`)
+
+  if (config.watch) {
+    console.info(`\n👀 Watching changes in ${sourceDir}…`)
+    fs.watch(sourceDir, async (event, filename) => {
+      await compile(sourceDir, targetDir)
+      console.info(`  ♻️  ${filename} was recompiled!`)
+    })
+  }
 }
 
 build()
-
-if (watch) {
-  console.info(`\n👀 Watching changes in ${sourceDir}…`)
-  fs.watch(sourceDir, async (event, filename) => {
-    await compile(sourceDir, targetDir)
-    console.info(`  ♻️  ${filename} was recompiled!`)
-  })
-}

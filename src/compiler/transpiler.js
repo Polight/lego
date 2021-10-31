@@ -15,12 +15,12 @@ function parseHtmlComponent(html) {
   }
 }
 
-function generateFileContent({ dom, libPath, version }) {
+function generateFileContent({ dom, importPath, baseClassName, version }) {
     return `
 // Lego version ${version}
-import { h, Component } from '${libPath}'
+import { h, Component } from '${importPath}'
 
-class _ extends Component {
+class ${baseClassName} extends Component {
   ${dom.template.trim() ? `get vdom() {
     return ({ state }) => ${parse(dom.template.trim())}
   }` : ''}
@@ -38,9 +38,9 @@ function camelCase(name) {
   return name.split('-').map(c => c.slice(0,1).toUpperCase() + c.slice(1)).join('')
 }
 
-function createComponent({ html, name, libPath, version }) {
+function createComponent({ html, name, importPath, baseClassName, version }) {
   const dom = parseHtmlComponent(html)
-  const content = generateFileContent({ dom, libPath, version })
+  const content = generateFileContent({ dom, importPath, baseClassName, version })
   return { name, content }
 }
 
