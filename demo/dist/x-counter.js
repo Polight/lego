@@ -1,8 +1,8 @@
 
-// Lego version 1.4.1
+// Lego version undefined
 import { h, Component } from '../../dist/lego.min.js'
 
-class _ extends Component {
+class Lego extends Component {
   get vdom() {
     return ({ state }) => [
   h("button", {"class": `primary`, "onclick": this.decrement.bind(this)}, `-`),

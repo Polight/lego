@@ -1,8 +1,8 @@
 
-// Lego version 1.4.1
+// Lego version undefined
 import { h, Component } from '../../dist/lego.min.js'
 
-class _ extends Component {
+class Lego extends Component {
   get vdom() {
     return ({ state }) => [
   h("header", {},     h("p", {}, `Header`)),
@@ -43,4 +43,4 @@ class _ extends Component {
   `)}
 }
 
-export default class extends _ {}
+export default class _ {}

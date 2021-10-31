@@ -1,8 +1,8 @@
 
-// Lego version 1.4.1
+// Lego version undefined
 import { h, Component } from '../../dist/lego.min.js'
 
-class _ extends Component {
+class Lego extends Component {
   get vdom() {
     return ({ state }) => [
   h("button", {"onclick": this.toggleText.bind(this)}, [
@@ -18,17 +18,12 @@ class _ extends Component {
   `)}
 }
 
-const Methods = {
-  init() {
-    this.state = { showText: false }
-  },
-  toggleText() {
-    this.render({ showText: !this.state.showText })
+export default class extends _ {
+    init() {
+      this.state = { showText: false }
+    }
+
+    toggleText() {
+      this.render({ showText: !this.state.showText })
+    }
   }
-}
-
-Methods.prototype = new _
-
-debugger
-
-export default _
