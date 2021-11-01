@@ -11,7 +11,7 @@ const packagePath = fs.existsSync('./node_modules/@polight/lego/package.json')
   : './package.json'
 const { version } = JSON.parse(fs.readFileSync(packagePath))
 const args = process.argv
-const [sourceDir, targetDir] = args.slice(2)
+const [sourceDir, targetDir] = args.slice(2).filter(a => !a.startsWith('-'))
 const argsConfig = {
   sourceDir,
   targetDir,
