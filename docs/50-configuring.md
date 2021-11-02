@@ -1,0 +1,44 @@
+---
+layout: page
+title: Configuring compilation for Web-Components
+label: Configuring
+permalink: /configuring-components/
+nav_order: 50
+---
+
+The compiler can take serveral parameters: `sourceDir`, `destDist`, `watch`…
+
+These will allow you to fine grain your configuration when compiling.
+
+The full list of parameters is available in the [compiler config](https://github.com/Polight/lego/blob/master/src/compiler/config.js#L1).
+You should see that file to know the exhaustive list of parameters and
+what they do.
+
+## Setup a Custom Configuration File
+
+Create a _lego.config.js_ file at the root of your project with the following:
+
+```
+export default {
+  // Your custom settings here
+}
+```
+
+This file will override the default [config.js](https://github.com/Polight/lego/blob/master/src/compiler/config.js#L1) settings when declared.
+
+
+### ⚠️  Missing lego.config.js file, building with defaults.
+
+If reading  in the console, it means the _/lego.config.js_ was not found
+in the root folder of the project from where the compiler is called.
+
+It's very fine if you don't need to customize configuration and
+run with defaults.
+
+
+## Configuring on compile time
+
+Passing parameters in the CLI will override default parameters and custom configuration.
+
+The command line accepts the following parameters: `npx lego <sourceDir> <destDir> <options>`.
+The only option for now is `-w` (stading for the `watch` config property).

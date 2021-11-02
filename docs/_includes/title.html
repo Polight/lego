@@ -1,0 +1,5 @@
+{% if site.logo %}
+  <div class="site-logo"></div>
+{% else %}
+  {{ site.logo_title or site.title }}
+{% endif %}
