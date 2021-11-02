@@ -10,9 +10,18 @@ export default {
 
   // Folder where HTML bricks are stored
   sourceDir: 'demo/bricks',
+
   // Folder where to store built js bricks
   targetDir: 'demo/dist',
 
   // Boolean value to watch for file changes. `null` for using command line
-  watch: false
+  watch: false,
+
+  // Inject this lines first when creating a component.
+  // Ideal for importing modules in all components.
+  preScript: ``,
+
+  // Inject this lines first in <style> tag when creating a component.
+  // Ideal for importing stylesheets in all components.
+  preStyle: ``,
 }

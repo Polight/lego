@@ -23,6 +23,7 @@ class Lego extends Component {
   }
   get vstyle() {
     return ({ state }) => h('style', {}, `
+    @import url('https://google.com.style.css');
     :host {
     display: flex;
     flex-direction: column;
@@ -43,4 +44,6 @@ class Lego extends Component {
   `)}
 }
 
-export default class _ {}
+import {store} from 'store'
+
+export default class Lego {}

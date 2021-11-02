@@ -15,5 +15,13 @@ export default {
   targetDir: './dist',
 
   // Boolean value to watch for file changes. `null` for using command line
-  watch: null
+  watch: false,
+
+  // Inject this lines first in <script> tag when creating a component.
+  // Ideal for importing modules in all components.
+  preScript: '',
+
+  // Inject this lines first in <style> tag when creating a component.
+  // Ideal for importing stylesheets in all components.
+  preStyle: '',
 }

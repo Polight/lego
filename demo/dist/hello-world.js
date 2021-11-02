@@ -7,8 +7,14 @@ class Lego extends Component {
     return ({ state }) => [
   h("p", {}, `Hello ${state.name}`)]
   }
-  
+  get vstyle() {
+    return ({ state }) => h('style', {}, `
+    @import url('https://google.com.style.css');
+    
+  `)}
 }
+
+import {store} from 'store'
 
 export default class extends Lego {
     init() {

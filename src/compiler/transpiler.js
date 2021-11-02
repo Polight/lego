@@ -10,12 +10,12 @@ function parseHtmlComponent(html) {
 
   return {
     template: templateNode ? templateNode.innerHTML : '',
-    script: scriptNode ? scriptNode.innerHTML : 'export default class _ {}',
+    script: scriptNode ? scriptNode.innerHTML : '',
     style: styleNode ? styleNode.innerHTML : '',
   }
 }
 
-function generateFileContent({ dom, importPath, baseClassName, version }) {
+function generateFileContent({ dom, importPath, baseClassName, preScript, preStyle, version }) {
     return `
 // Lego version ${version}
 import { h, Component } from '${importPath}'
@@ -24,13 +24,16 @@ class ${baseClassName} extends Component {
   ${dom.template.trim() ? `get vdom() {
     return ({ state }) => ${parse(dom.template.trim())}
   }` : ''}
-  ${dom.style.trim() ? `get vstyle() {
+  ${dom.style.trim() || preStyle ? `get vstyle() {
     return ({ state }) => h('style', {}, \`
+    ${preStyle}
     ${dom.style.trim()}
   \`)}` : ''}
 }
 
-${dom.script.trim()}
+${preScript}
+
+${dom.script.trim() || `export default class ${baseClassName} {}`}
 `
 }
 
@@ -38,9 +41,9 @@ function camelCase(name) {
   return name.split('-').map(c => c.slice(0,1).toUpperCase() + c.slice(1)).join('')
 }
 
-function createComponent({ html, name, importPath, baseClassName, version }) {
+function createComponent({ html, name, importPath, baseClassName, preScript, preStyle, version }) {
   const dom = parseHtmlComponent(html)
-  const content = generateFileContent({ dom, importPath, baseClassName, version })
+  const content = generateFileContent({ dom, importPath, baseClassName, preScript, preStyle, version })
   return { name, content }
 }
 

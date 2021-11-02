@@ -12,11 +12,14 @@ class Lego extends Component {
   }
   get vstyle() {
     return ({ state }) => h('style', {}, `
+    @import url('https://google.com.style.css');
     button {
     cursor: pointer;
   }
   `)}
 }
+
+import {store} from 'store'
 
 export default class extends Lego {
     init() {
