@@ -6,7 +6,7 @@ export default {
 
   // When building a Component, set the default name of the class to extend.
   // This is the name that you will use to extend your components with
-  `export default class extends Xxx {`
+  // `export default class extends Xxx {`
   baseClassName: 'Lego',
 
   // Folder where HTML bricks are stored
