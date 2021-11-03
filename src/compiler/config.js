@@ -2,10 +2,11 @@ export default {
   // Path to the Lego Component class.
   // When relative, it should be referenced from within the dist folder
   // where the compiled bricks reside
-  importPath: 'https://unpkg.com/@polight/lego@$master/dist/lego.min.js',
+  importPath: 'https://unpkg.com/@polight/lego/dist/lego.min.js',
 
   // When building a Component, set the default name of the class to extend.
-  // This is the name that you will extend with `export default class extends Xxx`
+  // This is the name that you will use to extend your components with
+  `export default class extends Xxx {`
   baseClassName: 'Lego',
 
   // Folder where HTML bricks are stored
