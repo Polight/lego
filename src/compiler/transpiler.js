@@ -15,7 +15,7 @@ function parseHtmlComponent(html) {
   }
 }
 
-function generateFileContent({ dom, importPath, baseClassName, preScript, preStyle, version }) {
+function generateFileContent({ dom, importPath, baseClassName, version, preScript = '', preStyle = '' }) {
     return `
 // Lego version ${version}
 import { h, Component } from '${importPath}'
