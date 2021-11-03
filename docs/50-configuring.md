@@ -26,6 +26,8 @@ export default {
 
 This file will override the default [config.js](https://github.com/Polight/lego/blob/master/src/compiler/config.js#L1) settings when declared.
 
+> If your _/lego.config.js_ file is not found, please ensure to have `"type": "module"` in your package.json file in order to read `.js` files
+as modules.
 
 ### ⚠️  Missing lego.config.js file, building with defaults.
 
