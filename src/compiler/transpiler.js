@@ -33,7 +33,7 @@ class ${baseClassName} extends Component {
 
 ${preScript}
 
-${dom.script.trim() || `export default class ${baseClassName} {}`}
+${dom.script.trim() || `export default class extends ${baseClassName} {}`}
 `
 }
 

@@ -1,6 +1,6 @@
 {
   "name": "@polight/lego",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "description": "Tiny webcomponent lib for future-proof HTML mentors",
   "main": "index.js",
   "type": "module",
