@@ -74,9 +74,8 @@ async function compile(sourceDir, targetDir, config) {
   const filenames = await walkDir(sourceDir, ['html'])
   fs.mkdirSync(targetDir, { recursive: true })
   return filenames.map(f => {
-    const filename = isWindows()
-      ? f.replace(/.*\\(.+)\.html/, '$1')
-      : f.replace(/.*\/(.+)\.html/, '$1')
+    const pattern = isWindows() ? /.*\\(.+)\.html/ : /.*\/(.+)\.html/
+    const filename = f.replace(pattern, '$1')
     const component = createComponent({
       html: fs.readFileSync(f, 'utf8'),
       name: filename,
