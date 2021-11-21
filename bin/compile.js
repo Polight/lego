@@ -106,7 +106,7 @@ async function writeIndex(targetDir, filenames) {
 async function build() {
   let userConfig = {}
   try {
-    const pathPrefix = process.platform === 'win32' ? 'file://' : ''
+    const pathPrefix = isWindows() ? 'file://' : ''
     const content = await import(`${pathPrefix + process.cwd()}/lego.config.js`)
     userConfig = content.default
   }
