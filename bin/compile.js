@@ -55,7 +55,7 @@ function isWindows() {
  */
 async function walkDir(dirname, extensions) {
   const stdout = isWindows()
-    ? execFileSync('cmd', ['/c', 'dir', '/s', '/b', dirname])
+    ? execFileSync('cmd', ['/c', 'dir', '/s', '/b', fs.realpathSync(dirname)])
     : execFileSync('find', [dirname])
   const dirs = String(stdout).split(os.EOL).filter(d => d)
   if(!extensions) return dirs
