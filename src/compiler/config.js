@@ -10,10 +10,10 @@ export default {
   baseClassName: 'Lego',
 
   // Folder where HTML bricks are stored
-  sourceDir: './bricks',
+  sourceDir: 'bricks',
 
   // Folder where to store built js bricks
-  targetDir: './dist',
+  targetDir: 'dist',
 
   // Boolean value to watch for file changes. `null` for using command line
   watch: false,
