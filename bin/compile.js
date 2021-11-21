@@ -39,6 +39,14 @@ function mergeObjects(native, override) {
 }
 
 /**
+ * Detect if the running system is a Microsoft Windows®
+ * @returns boolean
+ */
+function isWindows() {
+  return os.platform() === 'win32'
+}
+
+/**
  * Browse files in a directory considering some extensions.
  *
  * @param {string} dirname Name of the directory from where to list
@@ -46,7 +54,7 @@ function mergeObjects(native, override) {
  * @returns {Array} list of file path
  */
 async function walkDir(dirname, extensions) {
-  const stdout = (os.platform() === 'win32')
+  const stdout = isWindows()
     ? execFileSync('cmd', ['/c', 'dir', '/s', '/b', dirname])
     : execFileSync('find', [dirname])
   const dirs = String(stdout).split(os.EOL).filter(d => d)
@@ -66,7 +74,7 @@ async function compile(sourceDir, targetDir, config) {
   const filenames = await walkDir(sourceDir, ['html'])
   fs.mkdirSync(targetDir, { recursive: true })
   return filenames.map(f => {
-    const filename = os.platform() === 'win32'
+    const filename = isWindows()
       ? f.replace(/.*\\(.+)\.html/, '$1')
       : f.replace(/.*\/(.+)\.html/, '$1')
     const component = createComponent({
