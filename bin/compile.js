@@ -79,6 +79,7 @@ async function compile(sourceDir, targetDir, config) {
     const component = createComponent({
       html: fs.readFileSync(f, 'utf8'),
       name: filename,
+      version,
       ...config
     })
     fs.writeFileSync(`${targetDir}/${filename}.js`, component.content, 'utf8')
