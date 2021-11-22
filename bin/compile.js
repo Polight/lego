@@ -79,6 +79,7 @@ async function compile(sourceDir, targetDir, config) {
     const component = createComponent({
       html: fs.readFileSync(f, 'utf8'),
       name: filename,
+      version,
       ...config
     })
     fs.writeFileSync(`${targetDir}/${filename}.js`, component.content, 'utf8')
@@ -106,7 +107,7 @@ async function writeIndex(targetDir, filenames) {
 async function build() {
   let userConfig = {}
   try {
-    const pathPrefix = process.platform === 'win32' ? 'file://' : ''
+    const pathPrefix = isWindows() ? 'file://' : ''
     const content = await import(`${pathPrefix + process.cwd()}/lego.config.js`)
     userConfig = content.default
   }
