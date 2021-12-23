@@ -55,7 +55,7 @@ function isWindows() {
  */
 async function walkDir(dirname, extensions) {
   const stdout = isWindows()
-    ? execFileSync('cmd', ['/c', 'dir', '/s', '/b', dirname])
+    ? execFileSync('cmd', ['/c', 'dir', '/s', '/b', fs.realpathSync(dirname)])
     : execFileSync('find', [dirname])
   const dirs = String(stdout).split(os.EOL).filter(d => d)
   if(!extensions) return dirs
@@ -79,6 +79,7 @@ async function compile(sourceDir, targetDir, config) {
     const component = createComponent({
       html: fs.readFileSync(f, 'utf8'),
       name: filename,
+      version,
       ...config
     })
     fs.writeFileSync(`${targetDir}/${filename}.js`, component.content, 'utf8')
