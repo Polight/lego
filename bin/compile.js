@@ -107,6 +107,7 @@ async function build() {
   let userConfig = {}
   try {
     const pathPrefix = isWindows() ? 'file://' : ''
+    console.debug(`${pathPrefix + process.cwd()}/lego.config.js`)
     const content = await import(`${pathPrefix + process.cwd()}/lego.config.js`)
     userConfig = content.default
   }

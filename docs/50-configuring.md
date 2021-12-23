@@ -14,6 +14,10 @@ The full list of parameters is available in the [compiler config](https://github
 You should see that file to know the exhaustive list of parameters and
 what they do.
 
+You can either setup each of these values from a custom config file or directly
+from the command line arguments.
+
+
 ## Setup a Custom Configuration File
 
 Create a _lego.config.js_ file at the root of your project with the following:
