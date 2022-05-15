@@ -39,7 +39,7 @@ Lego is not (and will never be):
 - 🔐 An HTML replacement that locks you into a specific technology.
 - 🧓 An old browsers or IE compatible library (you may try [webcomponent polyfills](https://github.com/webcomponents/polyfills) if you feel wild).
 
-View the [demo](https://polight.github.io/brick/demo/) and [their source](https://github.com/Polight/lego/tree/master/demo) 🧪.
+View the [demo](https://polight.github.io/lego-demo/) and [their source](https://github.com/Polight/lego-demo) 🧪.
 
 Lego is inspired from the [native Web-Component spec](https://developer.mozilla.org/en-US/docs/Web/Web_Components) and [Riot](https://riot.js.org/).
 
@@ -49,4 +49,4 @@ Lego is as light as **3Kb** for the full bundle!
 
 No Babel transpiler, no Parcel, no Webpack… it just works out of the box.
 
-Demo: [view in action](https://polight.github.io/brick/demo/)
+Demo: [view in action]https://polight.github.io/lego-demo/)
