@@ -2,7 +2,7 @@ export default {
   // Path to the Lego Component class.
   // When relative, it should be referenced from within the dist folder
   // where the compiled bricks reside
-  importPath: 'https://cdn.jsdelivr.net/gh/Polight/lego@master/dist/lego.min.js.gz',
+  importPath: 'https://cdn.jsdelivr.net/gh/Polight/lego@master/dist/lego.min.js',
 
   // When building a Component, set the default name of the class to extend.
   // This is the name that you will use to extend your components with
