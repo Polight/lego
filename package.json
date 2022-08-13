@@ -1,6 +1,6 @@
 {
   "name": "@polight/lego",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "description": "Tiny webcomponent lib for future-proof HTML mentors",
   "main": "index.js",
   "type": "module",
@@ -16,6 +16,7 @@
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "*",
+    "@tauri-apps/cli": "^1.0.5",
     "rollup": "*",
     "rollup-plugin-gzip": "*",
     "rollup-plugin-terser": "*"
