@@ -42,11 +42,6 @@ __bricks/user-profile.html__
         fruits: [{ name: 'Apple', icon: '🍎' }, { name: 'Pineapple', icon: '🍍' }]
       }
     }
-        
-    edit() {
-       console.log("Edit my profile..")
-    }
-        
 
     register() {
       this.render({ registered: confirm('You are about to register…') })
