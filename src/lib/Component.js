@@ -1,6 +1,15 @@
 import { h, render } from './index.js'
 
 
+function toCamelCase(name) {
+  if(name.includes('-')) {
+    const parts = name.split('-')
+    name = parts[0] + parts.splice(1).map(s => s[0].toUpperCase() + s.substr(1)).join('')
+  }
+  return name
+}
+
+
 export default class extends HTMLElement {
   constructor() {
     super()
@@ -14,7 +23,7 @@ export default class extends HTMLElement {
   }
 
   __attributesToState() {
-    Object.assign(this.state, Array.from(this.attributes).reduce((obj, attr) => Object.assign(obj, {[attr.name]: attr.value}), {}))
+    Object.assign(this.state, Array.from(this.attributes).reduce((obj, attr) => Object.assign(obj, {[toCamelCase(attr.name)]: attr.value}), {}))
   }
 
   get vdom() { return ({ state }) => '' }
@@ -22,11 +31,13 @@ export default class extends HTMLElement {
   get vstyle() { return ({ state }) => '' }
 
   setAttribute(name, value) {
-    super.setAttribute(name, value)
-    if(this.watchProps.includes(name)) this.render({ [name]: value })
+    name = toCamelCase(name)
+    super.setAttribute(name, value);
+    if(this.watchProps.includes(name)) this.render({ [name]: value });
   }
 
   removeAttribute(name) {
+    name = toCamelCase(name)
     super.removeAttribute(name)
     if(this.watchProps.includes(name) && name in this.state) {
       this.render({ [name]: null })

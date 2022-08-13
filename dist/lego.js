@@ -632,6 +632,15 @@ function render(vnode, parentDomNode, options = {}) {
   }
 }
 
+function toCamelCase(name) {
+  if(name.includes('-')) {
+    const parts = name.split('-');
+    name = parts[0] + parts.splice(1).map(s => s[0].toUpperCase() + s.substr(1)).join('');
+  }
+  return name
+}
+
+
 class Component extends HTMLElement {
   constructor() {
     super();
@@ -645,7 +654,7 @@ class Component extends HTMLElement {
   }
 
   __attributesToState() {
-    Object.assign(this.state, Array.from(this.attributes).reduce((obj, attr) => Object.assign(obj, {[attr.name]: attr.value}), {}));
+    Object.assign(this.state, Array.from(this.attributes).reduce((obj, attr) => Object.assign(obj, {[toCamelCase(attr.name)]: attr.value}), {}));
   }
 
   get vdom() { return ({ state }) => '' }
@@ -653,11 +662,13 @@ class Component extends HTMLElement {
   get vstyle() { return ({ state }) => '' }
 
   setAttribute(name, value) {
+    name = toCamelCase(name);
     super.setAttribute(name, value);
     if(this.watchProps.includes(name)) this.render({ [name]: value });
   }
 
   removeAttribute(name) {
+    name = toCamelCase(name);
     super.removeAttribute(name);
     if(this.watchProps.includes(name) && name in this.state) {
       this.render({ [name]: null });
@@ -672,12 +683,14 @@ class Component extends HTMLElement {
   }
 
   disconnectedCallback() {
+    this.__isConnected = false;
+    this.setState({});
     if(this.disconnected) this.disconnected();
   }
 
   async setState(props = {}) {
     Object.assign(this.__state, props);
-    await this.changed(props);
+    if(this.changed && this.__isConnected) await this.changed(props);
   }
 
   set state(value) {
@@ -687,8 +700,6 @@ class Component extends HTMLElement {
   get state() {
     return this.__state
   }
-
-  async changed(props) {}
 
   async render(state) {
     await this.setState(state);
