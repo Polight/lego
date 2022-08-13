@@ -6,7 +6,6 @@
   "type": "module",
   "scripts": {
     "build": "rollup -c && rollup -c rollup.config.minified.js",
-    "build-demo": "node ./bin/compile.js",
     "deploy": "npm run build && npm publish",
     "test": "echo 'test still need to be implemented, contribution needed :)'"
   },
