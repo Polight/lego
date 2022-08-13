@@ -1,2 +1,8 @@
 /node_modules/
 /package-lock.json
+/yarn.lock
+/.jekyll-cache/
+/_site/
+/docs/Gemfile.lock
+*.log
+
