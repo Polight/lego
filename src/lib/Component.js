@@ -24,8 +24,8 @@ export default class extends HTMLElement {
 
   __attributesToState() {
     Object.assign(this.state, Array.from(this.attributes).reduce((obj, attr) => {
-      return Object.assign(obj, { [toCamelCase(attr.name)]: attr.value }
-    ), {}))
+      return Object.assign(obj, { [toCamelCase(attr.name)]: attr.value })
+    }, {}))
   }
 
   get vdom() { return ({ state }) => '' }
@@ -75,9 +75,9 @@ export default class extends HTMLElement {
   async render(state) {
     await this.setState(state)
     if(!this.__isConnected) return
-    return render(h('root', {}, [
+    return render([
       this.vdom({ state: this.__state }),
       this.vstyle({ state: this.__state }),
-    ]), this.document)
+    ], this.document)
   }
 }
