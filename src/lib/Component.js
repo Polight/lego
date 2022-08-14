@@ -23,7 +23,9 @@ export default class extends HTMLElement {
   }
 
   __attributesToState() {
-    Object.assign(this.state, Array.from(this.attributes).reduce((obj, attr) => Object.assign(obj, {[toCamelCase(attr.name)]: attr.value}), {}))
+    Object.assign(this.state, Array.from(this.attributes).reduce((obj, attr) => {
+      return Object.assign(obj, { [toCamelCase(attr.name)]: attr.value }
+    ), {}))
   }
 
   get vdom() { return ({ state }) => '' }
@@ -31,17 +33,17 @@ export default class extends HTMLElement {
   get vstyle() { return ({ state }) => '' }
 
   setAttribute(name, value) {
-    name = toCamelCase(name)
-    super.setAttribute(name, value);
-    if(this.watchProps.includes(name)) this.render({ [name]: value });
+    super.setAttribute(name, value)
+    const prop = toCamelCase(name)
+    if(this.watchProps.includes(prop)) this.render({ [prop]: value })
   }
 
   removeAttribute(name) {
-    name = toCamelCase(name)
     super.removeAttribute(name)
-    if(this.watchProps.includes(name) && name in this.state) {
-      this.render({ [name]: null })
-      delete this.state[name]
+    const prop = toCamelCase(name)
+    if(this.watchProps.includes(prop) && prop in this.state) {
+      this.render({ [prop]: null })
+      delete this.state[prop]
     }
   }
 
