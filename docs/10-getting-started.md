@@ -19,7 +19,9 @@ If you don't have a _package.json_ file yet, initialize first with `npm init` (o
 
 Install the compiler with `npm i @polight/lego` (or `yarn add @polight/lego`).
 
-We will end with the following file tree:
+### Basic Example
+
+This is the file tree we will need for this example:
 
 ```
 index.html
