@@ -1,19 +1,14 @@
-import jsdom from 'jsdom'
-import parser from 'parse5'
 import parse from './vdom-parser.js'
 
 
 function parseHtmlComponent(html) {
-  const nodes = parser.parseFragment(html).childNodes
-  const templateNode = nodes.filter((a) => a.nodeName === 'template')
-  const scriptNode = nodes.filter((a) => a.nodeName === 'script')
-  const styleNode = nodes.filter((a) => a.nodeName === 'style')
-  console.debug(templateNode)
-  return {
-    template: templateNode ? templateNode.innerHTML : '',
-    script: scriptNode ? scriptNode.innerHTML : '',
-    style: styleNode ? styleNode.innerHTML : '',
-  }
+  const templateMatch = html.match(/<template\s*>([\s\S]*)<\/template>/m)
+  const scriptMatch = html.match(/<script\s*>([\s\S]*)<\/script>/m)
+  const styleMatch = html.match(/<style\s*>([\s\S]*)<\/style>/m)
+  const template = templateMatch ? templateMatch[1].trim() : ''
+  const script = scriptMatch ? scriptMatch[1].trim() : ''
+  const style = styleMatch ? styleMatch[1].trim() : ''
+  return { template, script, style }
 }
 
 function generateFileContent({ dom, importPath, baseClassName, version, preScript = '', preStyle = '' }) {
