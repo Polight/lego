@@ -1,6 +1,6 @@
 {
   "name": "@polight/lego",
-  "version": "1.8.0",
+  "version": "1.8.1",
   "description": "Tiny webcomponent lib for future-proof HTML mentors",
   "main": "index.js",
   "type": "module",
@@ -10,7 +10,6 @@
     "test": "echo 'test still need to be implemented, contribution needed :)'"
   },
   "dependencies": {
-    "jsdom": "^16.5.3",
     "parse5": "^5.1.1",
     "petit-dom": "^0.6.0"
   },
