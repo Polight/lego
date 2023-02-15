@@ -1,13 +1,14 @@
 import jsdom from 'jsdom'
+import parser from 'parse5'
 import parse from './vdom-parser.js'
 
 
 function parseHtmlComponent(html) {
-  const root = jsdom.JSDOM.fragment(html)
-  const templateNode = root.querySelector('template')
-  const scriptNode = root.querySelector('script')
-  const styleNode = root.querySelector('style')
-
+  const nodes = parser.parseFragment(html).childNodes
+  const templateNode = nodes.filter((a) => a.nodeName === 'template')
+  const scriptNode = nodes.filter((a) => a.nodeName === 'script')
+  const styleNode = nodes.filter((a) => a.nodeName === 'style')
+  console.debug(templateNode)
   return {
     template: templateNode ? templateNode.innerHTML : '',
     script: scriptNode ? scriptNode.innerHTML : '',
