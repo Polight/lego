@@ -30,4 +30,3 @@ It is still fully compatible with native _custom elements_. No magic behind the 
 no complexity, just a couple of useful methods to write native web-components easier.
 
 Using a compiled component has no dependency, nothing extra injected in the browser.
-Compiling depends on [jsdom](https://www.npmjs.com/package/jsdom).
