@@ -53,6 +53,15 @@ The [documentation](https://lego.js.org/) will guide you 📓
 _Pretty neat!_
 
 
+## Getting Started in 3 minutes
+
+You can just hop in and experiment your first HTML Element.
+
+[Follow this Getting Started guide](https://lego.js.org/getting-started/#quick-start) for installing and writing your first component.
+
+Once you're done with it you can write more components the same way and play with [daily usage guide](https://lego.js.org/usage-web-components/) for passing advanced arguments, writing conditions and loops, dynamic styling, connecting to APIs…
+
+
 ## What Can You **Actually** Do With It?
 
 You can create a simple reusable web-components for your HTML website or build a full fledge app with it.
