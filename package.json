@@ -1,6 +1,6 @@
 {
   "name": "@polight/lego",
-  "version": "1.8.3",
+  "version": "1.8.4",
   "description": "Tiny webcomponent lib for future-proof HTML mentors",
   "main": "index.js",
   "type": "module",
@@ -9,10 +9,10 @@
     "deploy": "npm run build && npm publish",
     "test": "echo 'test still need to be implemented, contribution needed :)'"
   },
-  "dependencies": {
-    "parse5": "^7.1.2"
-  },
+  "dependencies": {},
   "devDependencies": {
+    "parse5": "^7.1.2",
+    "petit-dom": "^0.6.0",
     "@rollup/plugin-node-resolve": "*",
     "rollup": "*",
     "rollup-plugin-gzip": "*",
