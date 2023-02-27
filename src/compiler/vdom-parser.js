@@ -1,4 +1,4 @@
-import parser from 'parse5'
+import { parseFragment } from 'parse5' 
 
 class Node {
   constructor(nodeName = "", sibling = new Node(), content = "", attributes = [], children = [], indentSize = 0) {
@@ -125,7 +125,7 @@ function convert(node, indentSize = 0, sibling) {
 }
 
 function parse(html) {
-  const document = parser.parseFragment(html)
+  const document = parseFragment(html)
   return convert(document)
 }
 
