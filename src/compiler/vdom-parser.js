@@ -71,8 +71,9 @@ function convert(node, indentSize = 0) {
   return wrapDirectives(directives, vnode(node.nodeName, attributes, childrenIndent), indent)
 }
 
-function parse(html) {
-  const document = parseFragment(html)
+function parse(html, isSetup) {
+  isSetupMode = isSetup
+  const document = parser.parseFragment(html)
   return convert(document)
 }
 
