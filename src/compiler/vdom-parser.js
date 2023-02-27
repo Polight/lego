@@ -16,7 +16,8 @@ function cleanChildren(children = []) {
   })
 }
 
-function extractDirectives(node) {
+let isSetupMode = false
+function extractDirectives(node, isSetup = isSetupMode) {
   const directives = []
   node.attrs = node.attrs.reduce((attrs, attr) => {
     let name = attr.name
@@ -29,7 +30,7 @@ function extractDirectives(node) {
     }
     else if(name.startsWith('@')) {
       name = `on${name.slice(1)}`
-      value = `this.${value}.bind(this)`
+      value = isSetup === true ? `${value}.bind(this)` : `this.${value}.bind(this)`
       attrs.push({ name, value })
     }
     else attrs.push({ name, value: `\`${value}\`` })
@@ -68,8 +69,9 @@ function convert(node, indentSize = 0) {
   return wrapDirectives(directives, vnode(node.nodeName, attributes, childrenIndent), indent)
 }
 
-function parse(html) {
-  const document = parseFragment(html)
+function parse(html, isSetup) {
+  isSetupMode = isSetup
+  const document = parser.parseFragment(html)
   return convert(document)
 }
 
