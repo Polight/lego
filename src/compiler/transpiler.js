@@ -3,13 +3,14 @@ import parse from './vdom-parser.js'
 
 function parseHtmlComponent(html) {
   const templateMatch = html.match(/<template[^>]*>([\s\S]*)<\/template>/m)
-  const scriptMatch = html.match(/<script[^>]*>([\s\S]*)<\/script>/m)
-  const isSetup = html.match(/<script\s*(.*?)\s*>/s)[1].includes('setup');
+  const scriptMatch = html.match(/<script([^>]*)>([\s\S]*)<\/script>/m)
+  const scriptSetupMatch = html.match(/<script[^>]*setup[^>]*>([\s\S]*)<\/script>/m)
   const styleMatch = html.match(/<style[^>]*>([\s\S]*)<\/style>/m)
   const template = templateMatch ? templateMatch[1].trim() : ''
   const script = scriptMatch ? scriptMatch[1].trim() : ''
+  const scriptSetup = scriptSetupMatch ? scriptSetupMatch[1].trim() : ''
   const style = styleMatch ? styleMatch[1].trim() : ''
-  return { template, script, style, isSetup }
+  return { template, script, style, scriptSetup }
 }
 
 function generateFileContent({ dom, importPath, baseClassName, version, preScript = '', preStyle = '' }) {
@@ -19,7 +20,8 @@ import { h, Component } from '${importPath}'
 
 class ${baseClassName} extends Component {
   ${dom.template.trim() ? `get vdom() {
-    return ({ ${dom.isSetup? '' : 'state'} }) => ${parse(dom.template.trim(), dom.isSetup)}
+    ${ dom.scriptSetup }
+    return (${ dom.scriptSetup ? '' : '{ state }' }) => ${parse(dom.template.trim(), dom.isSetup)}
   }` : ''}
   ${dom.style.trim() || preStyle ? `get vstyle() {
     return ({ state }) => h('style', {}, \`
@@ -31,7 +33,6 @@ class ${baseClassName} extends Component {
 ${preScript}
 
 ${dom.script.trim() || `export default class extends ${baseClassName} {}`}
-${dom.isSetup? 'export default class extends Lego {}' : ''}
 `
 }
 
