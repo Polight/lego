@@ -71,9 +71,9 @@ function convert(node, indentSize = 0) {
   return wrapDirectives(directives, vnode(node.nodeName, attributes, childrenIndent), indent)
 }
 
-function parse(html, indent) {
+function parse(html) {
   const document = parseFragment(html)
-  return convert(document, indent)
+  return convert(document)
 }
 
 export default parse
