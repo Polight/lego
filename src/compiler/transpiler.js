@@ -1,38 +1,67 @@
 import parse from './vdom-parser.js'
+import { parseFragment, serialize } from 'parse5'
 
 
 function parseHtmlComponent(html) {
-  const templateMatch = html.match(/<template[^>]*>([\s\S]*)<\/template>/m)
-  const scriptMatch = html.match(/<script([^>]*)>([\s\S]*)<\/script>/m)
-  const scriptSetupMatch = html.match(/<script[^>]*setup[^>]*>([\s\S]*)<\/script>/m)
-  const styleMatch = html.match(/<style[^>]*>([\s\S]*)<\/style>/m)
-  const template = templateMatch ? templateMatch[1].trim() : ''
-  const script = scriptMatch ? scriptMatch[1].trim() : ''
-  const scriptSetup = scriptSetupMatch ? scriptSetupMatch[1].trim() : ''
-  const style = styleMatch ? styleMatch[1].trim() : ''
-  return { template, script, style, scriptSetup }
+  const scriptNodes = parseFragment(html).childNodes.filter(n => n.tagName === 'script')
+  const importScript = scriptNodes.find(s => s.attrs.find(a => a.name === 'import'))?.childNodes[0].value.trim()
+  const setupScript = scriptNodes.find(s => s.attrs.find(a => a.name === 'setup'))?.childNodes[0].value.trim()
+  const classScript = scriptNodes.find(s => s.attrs.length === 0)?.childNodes[0].value.trim()
+  const template = serialize(parseFragment(html).childNodes.find(n => n.tagName === 'template')?.content).trim()
+  const style = parseFragment(html).childNodes.find(n => n.tagName === 'style')?.childNodes[0].value
+  return { importScript, setupScript, classScript, template, style }
+}
+
+function indent(text, size = 0) {
+  return text.split('\n').join('\n' + Array(size).join(' '))
 }
 
 function generateFileContent({ dom, importPath, baseClassName, version, preScript = '', preStyle = '' }) {
-    return `
-// Lego version ${version}
-import { h, Component } from '${importPath}'
+  if(dom.setupScript) return generateFileContentWithSetup(arguments[0])
+  else return `
+// Lego version ${ version }
+import { h, Component } from '${ importPath }'
 
-class ${baseClassName} extends Component {
-  ${dom.template.trim() ? `get vdom() {
-    ${ dom.scriptSetup }
-    return (${ dom.scriptSetup ? '' : '{ state }' }) => ${parse(dom.template.trim(), dom.isSetup)}
-  }` : ''}
-  ${dom.style.trim() || preStyle ? `get vstyle() {
+class ${ baseClassName } extends Component {
+  ${ dom.template ? `get vdom() {
+    return ({ state }) => ${ parse(dom.template, 6, 'class') }
+  }` : '' }
+  ${ dom.style || preStyle ? `get vstyle() {
     return ({ state }) => h('style', {}, \`
-    ${preStyle}
-    ${dom.style.trim()}
-  \`)}` : ''}
+    ${ preStyle }
+    ${ dom.style }
+  \`)}` : '' }
 }
 
-${preScript}
+${ preScript }
 
-${dom.script.trim() || `export default class extends ${baseClassName} {}`}
+${ dom.classScript || `export default class extends ${baseClassName} {}` }
+`
+}
+
+function generateFileContentWithSetup({ dom, importPath, baseClassName, version, preScript = '', preStyle = '' }) {
+  return `
+// Lego version ${version}
+import { h, Component } from '${ importPath }'
+${ preScript }
+${ dom.importScript }
+
+export default class extends Component {
+  get vdom() {
+    ${ indent(dom.setupScript, 4) }
+    if(state) this.__state = state
+    return ({ state }) => {
+      return ${parse(dom.template, 4, 'setup')}
+    }
+  }
+  ${dom.style || preStyle ? `get vstyle() {
+    return ({ state }) => h('style', {}, \`
+      ${preStyle}
+      ${indent(dom.style, 0)}
+    \`)}`
+    : ''
+  }
+}
 `
 }
 

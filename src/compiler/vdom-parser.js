@@ -16,8 +16,7 @@ function cleanChildren(children = []) {
   })
 }
 
-let isSetupMode = false
-function extractDirectives(node, isSetup = isSetupMode) {
+function extractDirectives(node, scriptType = 'class') {
   const directives = []
   node.attrs = node.attrs.reduce((attrs, attr) => {
     let name = attr.name
@@ -30,7 +29,7 @@ function extractDirectives(node, isSetup = isSetupMode) {
     }
     else if(name.startsWith('@')) {
       name = `on${name.slice(1)}`
-      value = isSetup === true ? `${value}.bind(this)` : `this.${value}.bind(this)`
+      if(scriptType === 'class') value = `this.${value}.bind(this)`
       attrs.push({ name, value })
     }
     else attrs.push({ name, value: `\`${value}\`` })
@@ -50,18 +49,18 @@ function wrapDirectives(directives, content, indent = '') {
   return indent + content
 }
 
-function convert(node, indentSize = 0) {
+function convert(node, indentSize = 0, scriptType) {
   const indent = ' '.repeat(indentSize)
   if(node.nodeName === '#text') {
     return node.value.trim() ? `\`${node.value}\`` : ''
   }
   if(node.nodeName === '#document-fragment') {
-    return `[${indent}\n${cleanChildren(node.childNodes).map(c => convert(c, indentSize + 2)).join(',\n')}]`
+    return `[${indent}\n${cleanChildren(node.childNodes).map(c => convert(c, indentSize + 2, scriptType)).join(',\n')}]`
   }
   let directives
-  [node, directives] = extractDirectives(node)
+  [node, directives] = extractDirectives(node, scriptType)
   const attributes = node.attrs.reduce((attrs, attr) => Object.assign(attrs, {[attr.name]: attr.value }), {})
-  const children = node.childNodes ? cleanChildren(node.childNodes).map(c => convert(c, indent + 4)).join(',\n') : ''
+  const children = node.childNodes ? cleanChildren(node.childNodes).map(c => convert(c, indent + 4, scriptType)).join(',\n') : ''
   let childrenIndent
   if(!node.childNodes || node.childNodes.length === 0) childrenIndent = JSON.stringify('')
   else if(node.childNodes.length === 1) childrenIndent = children
@@ -69,10 +68,9 @@ function convert(node, indentSize = 0) {
   return wrapDirectives(directives, vnode(node.nodeName, attributes, childrenIndent), indent)
 }
 
-function parse(html, isSetup) {
-  isSetupMode = isSetup
-  const document = parser.parseFragment(html)
-  return convert(document)
+function parse(html, indent, scriptType) {
+  const document = parseFragment(html)
+  return convert(document, indent, scriptType)
 }
 
 export default parse
