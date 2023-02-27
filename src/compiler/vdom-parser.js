@@ -16,7 +16,8 @@ function cleanChildren(children = []) {
   })
 }
 
-function extractDirectives(node) {
+let isSetupMode = false
+function extractDirectives(node, isSetup = isSetupMode) {
   const directives = []
   node.attrs = node.attrs.reduce((attrs, attr) => {
     let name = attr.name
