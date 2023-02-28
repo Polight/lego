@@ -9,9 +9,10 @@
     "deploy": "npm run build && npm publish",
     "test": "echo 'test still need to be implemented, contribution needed :)'"
   },
-  "dependencies": {},
+  "dependencies": {
+    "parse5": "^7.1.2"
+  },
   "devDependencies": {
-    "parse5": "^7.1.2",
     "petit-dom": "^0.6.0",
     "@rollup/plugin-node-resolve": "*",
     "rollup": "*",
