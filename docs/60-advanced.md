@@ -43,8 +43,11 @@ __bricks/user-profile.html__
       }
     }
 
-    register() {
-      this.render({ registered: confirm('You are about to register…') })
+    edit() {
+      this.render({
+        firstName: prompt('First name', this.state.firstName),
+        lastName: prompt('Last name', this.state.lastName)
+      })
     }
   }
 </script>
