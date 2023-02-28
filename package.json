@@ -1,7 +1,7 @@
 {
   "name": "@polight/lego",
-  "version": "1.8.3",
-  "description": "Tiny webcomponent lib for future-proof HTML mentors",
+  "version": "1.8.5",
+  "description": "Tiny Web-Components lib for future-proof HTML mentors",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -10,12 +10,11 @@
     "test": "echo 'test still need to be implemented, contribution needed :)'"
   },
   "dependencies": {
-    "parse5": "^5.1.1",
-    "petit-dom": "^0.6.0"
+    "parse5": "^7.1.2"
   },
   "devDependencies": {
+    "petit-dom": "^0.6.0",
     "@rollup/plugin-node-resolve": "*",
-    "@tauri-apps/cli": "^1.0.5",
     "rollup": "*",
     "rollup-plugin-gzip": "*",
     "rollup-plugin-terser": "*"
