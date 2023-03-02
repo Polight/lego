@@ -4,12 +4,18 @@ import { parseFragment, serialize } from 'parse5'
 
 function parseHtmlComponent(html) {
   const scriptNodes = parseFragment(html).childNodes.filter(n => n.tagName === 'script')
-  const importScript = scriptNodes.find(s => s.attrs.find(a => a.name === 'import'))?.childNodes[0].value.trim()
-  const setupScript = scriptNodes.find(s => s.attrs.find(a => a.name === 'setup'))?.childNodes[0].value.trim()
-  const classScript = scriptNodes.find(s => s.attrs.length === 0)?.childNodes[0].value.trim()
-  const template = serialize(parseFragment(html).childNodes.find(n => n.tagName === 'template')?.content).trim()
+  let extendScript = scriptNodes.find(s => s.attrs.find(a => a.name.startsWith('extend')))?.childNodes[0].value || ''
+  let script = scriptNodes.find(s => s.attrs.length === 0)?.childNodes[0].value
+  const template = serialize(parseFragment(html).childNodes.find(n => n.tagName === 'template')?.content)
   const style = parseFragment(html).childNodes.find(n => n.tagName === 'style')?.childNodes[0].value
-  return { importScript, setupScript, classScript, template, style }
+
+  // Make it compatible with previous full class versions
+  if(script && !extendScript && script.includes('export default class')) {
+    extendScript = script
+    script = ""
+  }
+
+  return { script, extendScript, template, style }
 }
 
 function indent(text, size = 0) {
@@ -17,51 +23,41 @@ function indent(text, size = 0) {
 }
 
 function generateFileContent({ dom, importPath, baseClassName, version, preScript = '', preStyle = '' }) {
-  if(dom.setupScript) return generateFileContentWithSetup(arguments[0])
-  else return `
-// Lego version ${ version }
-import { h, Component } from '${ importPath }'
-
-class ${ baseClassName } extends Component {
-  ${ dom.template ? `get vdom() {
-    return ({ state }) => ${ parse(dom.template, 6, 'class') }
-  }` : '' }
-  ${ dom.style || preStyle ? `get vstyle() {
-    return ({ state }) => h('style', {}, \`
-    ${ preStyle }
-    ${ dom.style }
-  \`)}` : '' }
-}
-
-${ preScript }
-
-${ dom.classScript || `export default class extends ${baseClassName} {}` }
-`
-}
-
-function generateFileContentWithSetup({ dom, importPath, baseClassName, version, preScript = '', preStyle = '' }) {
-  return `
-// Lego version ${version}
+  return "" +
+`// Lego version ${ version }
 import { h, Component } from '${ importPath }'
 ${ preScript }
-${ dom.importScript }
 
-export default class extends Component {
-  get vdom() {
-    ${ indent(dom.setupScript, 4) }
-    if(state) this.__state = state
-    return ({ state }) => {
-      return ${parse(dom.template, 4, 'setup')}
-    }
-  }
-  ${dom.style || preStyle ? `get vstyle() {
-    return ({ state }) => h('style', {}, \`
-      ${preStyle}
-      ${indent(dom.style, 0)}
-    \`)}`
-    : ''
-  }
+${ dom.script }
+
+const __template = function({ state }) {
+  return ${parse(dom.template, 2)}
 }
+
+const __style = function({ state }) {
+  return h('style', {}, \`
+    ${ indent(preStyle, 4) }
+    ${ indent(dom.style, 4) }
+  \`)
+}
+
+// -- Lego Core
+let render = async (state) => {}
+
+${ dom.extendScript ? '' : 'export default ' }class ${baseClassName} extends Component {
+  constructor() {
+    super()
+    render = this.render
+    try {
+      this.__state = state
+    } catch {}
+  }
+  get vdom() { return __template }
+  get vstyle() { return __style }
+}
+// -- End Lego Core
+
+${ dom.extendScript }
 `
 }
 

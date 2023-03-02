@@ -16,8 +16,6 @@ export default class extends HTMLElement {
     this.useShadowDOM = true
     this.__isConnected = false
     this.__state = {}
-    this.__vdom = this.vdom
-    this.__vstyle = this.vstyle
     if(this.init) this.init()
     this.watchProps = Object.keys(this.__state)
     this.__attributesToState()
@@ -78,8 +76,8 @@ export default class extends HTMLElement {
     await this.setState(state)
     if(!this.__isConnected) return
     return render([
-      this.__vdom({ state: this.__state }),
-      this.__vstyle({ state: this.__state }),
+      this.vdom({ state: this.__state }),
+      this.vstyle({ state: this.__state }),
     ], this.document)
   }
 }
