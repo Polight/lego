@@ -15,39 +15,33 @@ Let's write a web-component that:
 __bricks/user-profile.html__
 
 ```html
-<template>
-  <div>
-    <h1>${state.firstName} ${state.lastName}'s profile</h1>
-    <p>Welcome ${state.firstName}!</p>
-    <section :if="state.fruits.length">
-      <h3>You favorite fruits:</h3>
-      <ul>
-        <li :for="fruit in state.fruits">${fruit.name} ${fruit.icon}</li>
-      </ul>
-    </section>
-
-    <p :if="state.registered">You are registered!</p>
-
-    <button @click="edit">Edit my profile</button>
-  </div>
-</template>
-
 <script>
-  export default class extends Lego {
-    init() {
-      this.state = {
-        registered: false,
-        firstName: 'John',
-        lastName: 'Doe',
-        fruits: [{ name: 'Apple', icon: '🍎' }, { name: 'Pineapple', icon: '🍍' }]
-      }
-    }
+  const state = {
+    registered: false,
+    firstName: 'John',
+    lastName: 'Doe',
+    fruits: [{ name: 'Apple', icon: '🍎' }, { name: 'Pineapple', icon: '🍍' }]
+  }
 
-    register() {
-      this.render({ registered: confirm('You are about to register…') })
-    }
+  function register() {
+    render({ registered: confirm('You are about to register…') })
   }
 </script>
+
+<template>
+  <h1>${ state.firstName } ${ state.lastName }'s profile</h1>
+  <p>Welcome ${ state.firstName }!</p>
+  <section :if="state.fruits.length">
+    <h3>The best ${ state.fruits.length } fruit you like:</h3>
+    <ul>
+      <li :for="fruit in state.fruits">${ fruit.name } ${ fruit.icon }</li>
+    </ul>
+  </section>
+
+  <p :if="state.registered">You are registered!</p>
+
+  <button @click="register">Register now</button>
+</template>
 ```
 
 Compile this component: `npx lego bricks`
@@ -61,7 +55,7 @@ _index.html_
 <script src="./dist/index.js" type="module"></script>
 ```
 
-Run your webserver and see your little app!
+Run your web server and see your little app!
 
 
 > When developing you may want to automatically watch files changes.

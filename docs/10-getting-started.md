@@ -35,15 +35,13 @@ index.html
 Create a file called __bricks/hello-world.html__:
 
 ```html
-<template>
-  <p>Hello ${state.name}</p>
-</template>
-
 <script>
-  export default class extends Lego {
-    init() { this.state = { name: "World!" } }
-  }
+  const state = { name: "World!" } }
 </script>
+
+<template>
+  <p>Hello ${ state.name }</p>
+</template>
 ```
 
 Compile with `npx lego` (or `yarn lego`)

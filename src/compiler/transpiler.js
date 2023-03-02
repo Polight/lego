@@ -18,7 +18,7 @@ function parseHtmlComponent(html) {
   return { script, extendScript, template, style }
 }
 
-function indent(text, size = 0) {
+function indent(text = '', size = 0) {
   return text.split('\n').join('\n' + Array(size).join(' '))
 }
 
@@ -47,7 +47,7 @@ let render = async (state) => {}
 ${ dom.extendScript ? '' : 'export default ' }class ${baseClassName} extends Component {
   constructor() {
     super()
-    render = this.render
+    render = this.render.bind(this)
     try {
       this.__state = state
     } catch {}
