@@ -80,7 +80,8 @@ just_the_docs:
       details: Version 2.0 pre-release
 
 # Build settings
-theme: just-the-docs
+## Commented out so Github can build. Uncomment for local development :shrug:
+# theme: just-the-docs
 remote_theme: pmarsceill/just-the-docs
 plugins:
   - jekyll-feed
