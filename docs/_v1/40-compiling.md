@@ -6,7 +6,7 @@ permalink: /:collection/compile-components/
 nav_order: 40
 ---
 
-Compiling Lego component is built-in with no extra installation; pretty straighforward.
+Compiling Lego component is built-in with no extra installation; pretty straightforward.
 
 ```sh
 npx lego [-w] [source_path] [target_path]
