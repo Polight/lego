@@ -6,6 +6,8 @@
 
 # LEGO: Modern Web-Components
 
+LEGO (_Lightweight Embedded Gluten-free Objects_) is a base class that you extend and provide you with methods to use ♻️ reactive and 🏡 **native web-components** that are easy to digest 🌱 for your browser.
+
 ## Native Web-Components?
 
 Yes, you write native HTML, CSS and JS and create a native web-components [W3C](https://en.wikipedia.org/wiki/World_Wide_Web_Consortium) compliant.
@@ -107,4 +109,4 @@ Lego is not (and will never be):
 
 🔧 Customizing and contributing is just **much lighter** with simplicity, source that are easy to read, to hack and to maintain.
 
-🎈 You can [read the core code](https://github.com/Polight/lego/blob/master/src/lib/Component.js) that is only 61 <abbr title="Lines Of Code">LOC</abbr> resulting that Lego is **as light as 3Kb** for the full bundle!
+🎈 You can [read the core code](https://github.com/Polight/lego/blob/master/src/lib/Component.js) that is only 61 <abbr title="Lines Of Code">LOC</abbr> resulting that Lego is **as light as 3kb** for the full bundle!
