@@ -11,7 +11,7 @@ layout: ""
   <img class="d-block mx-auto mb-4" src="./assets/images/lego.svg" alt="Lego Web components">
   <h1 class="display-5 fw-bold">Web-Components for Low-Tech Lovers</h1>
   <div class="col-lg-6 mx-auto">
-    <p class="lead mb-4">Lego is a minimalist 🪶 native Web-Components library for low-tech lovers ♥️ 
+    <p class="lead mb-4">Lego is a minimalist 🪶 native Web-Components library for low-tech lovers ♥️
       with serious needs of long-term future-proof applications.</p>
     <p class="lead mb-4">Read the documentation for installation, usage instruction and hacking the tool.</p>
     <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
