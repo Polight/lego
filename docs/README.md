@@ -1,3 +1,4 @@
+<!-- FIXME: what is the purpose of this README? -->
 Documentation was moved to https://github.com/Polight/lego/tree/master/docs
 
 ```html

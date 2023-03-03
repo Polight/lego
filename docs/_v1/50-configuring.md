@@ -6,7 +6,7 @@ permalink: /:collection/configuring-components/
 nav_order: 50
 ---
 
-The compiler can take serveral parameters: `sourceDir`, `destDist`, `watch`…
+The compiler can take several parameters: `sourceDir`, `destDist`, `watch`…
 
 These will allow you to fine grain your configuration when compiling.
 
@@ -48,3 +48,4 @@ Passing parameters in the CLI will override default parameters and custom config
 
 The command line accepts the following parameters: `npx lego <sourceDir> <destDir> <options>`.
 The only option for now is `-w` (stading for the `watch` config property).
+<!-- FIXME: stading is unknown -->
