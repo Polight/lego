@@ -1,0 +1,9 @@
+.banner {
+  padding: 1rem;
+  text-align: center;
+}
+
+.banner.warning {
+  background-color: #ffd863;
+  color: #776325;
+}
