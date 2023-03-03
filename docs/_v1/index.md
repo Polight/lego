@@ -61,4 +61,4 @@ Lego is not (and will never be):
 
 🔧 Customizing and contributing is just **much lighter** with simplicity, source that are easy to read, to hack and to maintain.
 
-🎈 You can [read the core code](https://github.com/Polight/lego/blob/master/src/lib/Component.js) that is only 61 <abbr title="Lines Of Code">LOC</abbr> resulting that Lego is **as light as 3Kb** for the full bundle!
+🎈 You can [read the core code](https://github.com/Polight/lego/blob/master/src/lib/Component.js) that is only 61 <abbr title="Lines Of Code">LOC</abbr> resulting that Lego is **as light as 3kb** for the full bundle!
