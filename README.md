@@ -99,7 +99,7 @@ Lego is not (and will never be):
 
 ## Next Steps, Demo and Doc
 
- 🧪 View the [demo](https://polight.github.io/lego-demo/) and [their source](https://github.com/Polight/lego-demo/).
+🧪 View the [demo](https://polight.github.io/lego-demo/) and [their source](https://github.com/Polight/lego-demo/).
 
 📕 [Read the full documentation at https://lego.js.org](https://lego.js.org)
 
