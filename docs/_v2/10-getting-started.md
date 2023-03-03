@@ -17,7 +17,7 @@ Create the folder to host your future components: `mkdir bricks`.
 
 If you don't have a _package.json_ file yet, initialize first with `npm init` (or `yarn init`).
 
-Install the compiler with `npm i @polight/lego` (or `yarn add @polight/lego`).
+Install the compiler with `npm i @polight/lego@beta` (or `yarn add @polight/lego@beta`).
 
 ### Basic Example
 
