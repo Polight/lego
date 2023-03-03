@@ -16,8 +16,7 @@ function cleanChildren(children = []) {
   })
 }
 
-let isSetupMode = false
-function extractDirectives(node, isSetup = isSetupMode) {
+function extractDirectives(node) {
   const directives = []
   node.attrs = node.attrs.reduce((attrs, attr) => {
     let name = attr.name
@@ -71,8 +70,7 @@ function convert(node, indentSize = 0) {
   return wrapDirectives(directives, vnode(node.nodeName, attributes, childrenIndent), indent)
 }
 
-function parse(html, isSetup) {
-  isSetupMode = isSetup
+function parse(html) {
   const document = parser.parseFragment(html)
   return convert(document)
 }
