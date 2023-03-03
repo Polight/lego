@@ -14,7 +14,7 @@ It's stable and predictable.
 
 If you have ever played with Web-Component-like frameworks (not to name Vue, React, Svelte…), you may know how debugging gets tricky and requires extra tooling.
 
-Because LEGO is native, your browser developper toobar is all you need.
+Because LEGO is native, your browser developer toolbar is all you need.
 - `debugger` works as expected,
 - _step-by-step_ debugging,
 - element inspector,
@@ -85,12 +85,12 @@ There's no [Vite](https://vitejs.dev/) nor other 3rd parties, it's [just an inte
 ## What is LEGO Behind?
 
 - 👙 Minimalist: ~74~ 61 lines of readable code in its core (non-optimised, uncompressed, no cheating)
-- 🌱 Zero dependency: it uses [Petit-Dom](https://github.com/yelouafi/petit-dom) which is stable and embedded, so no bad suprise in the future
+- 🌱 Zero dependency: it uses [Petit-Dom](https://github.com/yelouafi/petit-dom) which is stable and embedded, so no bad surprise in the future
 - ♻️ Reactive: updating the state recalculate the Virtual Dom when needed
 - 🚀 fast: using virtual dom through a thin layer makes it close to bare-metal
 - 💧 Simple: that's [Vanilla](http://vanilla-js.com/), there isn't much to know, it's a raw class to extend; no magic ✨
 - 🪶 3 directives to enhance HTML: `:if` for conditions, `:for` for loops, `@myfuncname` to call an action
-- 🏡 Native: LEGO components are actual native web-components, you benefit from all the today's and tomorrow's possibilites ([slot](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots), [Shadow DOM](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM), …).
+- 🏡 Native: LEGO components are actual native web-components, you benefit from all the today's and tomorrow's possibilities ([slot](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots), [Shadow DOM](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM), …).
 
 Lego is not (and will never be):
 - 🏯 A full bloated frontend framework with routing. [Others do it well](https://github.com/visionmedia/page.js).
