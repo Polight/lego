@@ -19,7 +19,7 @@ function parseHtmlComponent(html) {
 }
 
 function indent(text = '', size = 0) {
-  return text.split('\n').join('\n' + Array(size).join(' '))
+  return text.split('\n').join('\n' + ' '.repeat(size))
 }
 
 function generateFileContent({ dom, importPath, baseClassName, version, preScript = '', preStyle = '' }) {

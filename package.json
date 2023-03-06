@@ -1,12 +1,7 @@
 {
   "name": "@polight/lego",
-<<<<<<< HEAD
   "version": "2.0.0-beta.1",
   "description": "Low-Tech & Future-Proof Web-Components library",
-=======
-  "version": "1.8.5",
-  "description": "Tiny Web-Components lib for future-proof HTML mentors",
->>>>>>> master
   "main": "index.js",
   "type": "module",
   "scripts": {
