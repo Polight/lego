@@ -25,11 +25,11 @@ function indent(text = '', size = 0) {
   return text.split('\n').join('\n' + ' '.repeat(size))
 }
 
-function generateFileContent({ dom, importPath, baseClassName, version, preScript = '', preStyle = '' }) {
+function generateFileContent({ dom, config, version }) {
   return "" +
 `// Lego version ${ version }
-import { h, Component } from '${ importPath }'
-${ preScript }
+import { h, Component } from './${ config.distFile }'
+${ config.preScript }
 
 ${ dom.script }
 
@@ -39,7 +39,7 @@ const __template = function({ state }) {
 
 const __style = function({ state }) {
   return h('style', {}, \`
-    ${ indent(preStyle, 4) }
+    ${ indent(config.preStyle, 4) }
     ${ indent(dom.style, 4) }
   \`)
 }
@@ -47,14 +47,16 @@ const __style = function({ state }) {
 // -- Lego Core
 let render = async function (state) {}
 
-${ dom.extendScript ? '' : 'export default ' }class ${baseClassName} extends Component {
+${ dom.extendScript ? '' : 'export default ' }class ${ config.baseClassName } extends Component {
   constructor() {
     super()
     try {
       this.__state = state
     } catch {}
     render = this.render.bind(this)
-    if(typeof constructed !== 'undefined') constructed(this)
+    try {
+      constructed(this)
+    } catch {}
   }
   get vdom() { return __template }
   get vstyle() { return __style }
@@ -69,9 +71,9 @@ function camelCase(name) {
   return name.split('-').map(c => c.slice(0,1).toUpperCase() + c.slice(1)).join('')
 }
 
-function createComponent({ html, name, importPath, baseClassName, preScript, preStyle, version }) {
+function createComponent({ html, name, config, version }) {
   const dom = parseHtmlComponent(html)
-  const content = generateFileContent({ dom, importPath, baseClassName, preScript, preStyle, version })
+  const content = generateFileContent({ dom, config, version })
   return { name, content }
 }
 
@@ -86,15 +88,17 @@ function generateIndex(fileNames) {
   .join('\n\n')
 }
 
-function copyDistFiles(targetDir) {
-  const legoDistFile = 'lego.min.js.gz'
+function copyDistFiles(config) {
   const __filename = fileURLToPath(import.meta.url)
-  const legoRootPath = dirname(dirname(dirname(__filename)))
-  const legoDistPath = join(legoRootPath, 'dist', legoDistFile)
+  const legoModulePath = dirname(dirname(dirname(__filename)))
+  const projectDistPath = config.targetDir
   try {
-    fs.copyFileSync(legoDistPath, join(targetDir, legoDistFile))
+    fs.copyFileSync(
+      join(legoModulePath, 'dist', config.distFile),
+      join(projectDistPath, config.distFile)
+    )
   } catch(error) {
-    console.error(`🛟 Cannot copy ${legoDistFile}`, error)
+    console.error(`🛟 Cannot copy ${config.distFile}`, error)
   }
 }
 

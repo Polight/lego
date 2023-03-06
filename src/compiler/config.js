@@ -1,10 +1,8 @@
 export default {
-  // Path to the Lego Component class.
-  // When relative, it should be referenced from within the dist folder
-  // where the compiled bricks reside
-  importPath: './lego/lego.min.js.gz',
+  // Path to the Lego Core file from within the dist folder
+  distFile: 'lego.min.js',
 
-  // When building a Component, set the default name of the class to extend.
+  // When extending the Lego class, set the default name of the class to extend.
   // This is the name that you will use to extend your components with
   // `export default class extends Xxx {`
   baseClassName: 'Lego',
@@ -19,7 +17,7 @@ export default {
   watch: false,
 
   // Inject this lines first in <script> tag when creating a component.
-  // Ideal for importing modules in all components.
+  // Ideal for importing modules automatically in all components.
   preScript: '',
 
   // Inject this lines first in <style> tag when creating a component.

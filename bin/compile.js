@@ -79,8 +79,8 @@ async function compile(sourceDir, targetDir, config) {
     const component = createComponent({
       html: fs.readFileSync(f, 'utf8'),
       name: filename,
-      version,
-      ...config
+      config,
+      version
     })
     fs.writeFileSync(`${targetDir}/${filename}.js`, component.content, 'utf8')
     return { component, filename }
@@ -109,7 +109,6 @@ async function build() {
   let userConfig = {}
   try {
     const pathPrefix = isWindows() ? 'file://' : ''
-    console.debug(`${pathPrefix + process.cwd()}/lego.config.js`)
     const content = await import(`${pathPrefix + process.cwd()}/lego.config.js`)
     userConfig = content.default
   }
@@ -120,7 +119,7 @@ async function build() {
   const { sourceDir, targetDir } = config
   const compiled = await compile(sourceDir, targetDir, config)
   writeIndex(targetDir, compiled.map(c => c.filename))
-  copyDistFiles(targetDir)
+  copyDistFiles(config)
   const names = compiled.map(c => c.component.name)
   console.info(`⚙️  Current configuration:`, config)
   console.info(`🏗  ${names.length} component${names.length > 1 ? 's were' : ' was'} compiled into "${config.targetDir}": ${names.join(', ')}.`)
