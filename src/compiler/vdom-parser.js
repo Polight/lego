@@ -57,22 +57,22 @@ function convert(node, indentSize = 0) {
     return node.value.trim() ? `\`${node.value}\`` : ''
   }
   if(node.nodeName === '#document-fragment') {
-    return `[${indent}\n${cleanChildren(node.childNodes).map(c => convert(c, indentSize + 2)).join(',\n')}]`
+    return `[${indent}\n${cleanChildren(node.childNodes).map(c => convert(c, indentSize + 2)).join(',\n')}\n  ]`
   }
   let directives
   [node, directives] = extractDirectives(node)
   const attributes = node.attrs.reduce((attrs, attr) => Object.assign(attrs, {[attr.name]: attr.value }), {})
-  const children = node.childNodes ? cleanChildren(node.childNodes).map(c => convert(c, indent + 4)).join(',\n') : ''
+  const children = node.childNodes ? cleanChildren(node.childNodes).map(c => convert(c, indentSize + 2)).join(',\n') : ''
   let childrenIndent
   if(!node.childNodes || node.childNodes.length === 0) childrenIndent = JSON.stringify('')
   else if(node.childNodes.length === 1) childrenIndent = children
-  else childrenIndent = `[\n${children}\n]`
+  else childrenIndent = `[\n${children}\n${indent}]`
   return wrapDirectives(directives, vnode(node.nodeName, attributes, childrenIndent), indent)
 }
 
-function parse(html, indent) {
+function parse(html, indentSize) {
   const document = parseFragment(html)
-  return convert(document, indent)
+  return convert(document, indentSize)
 }
 
 export default parse
