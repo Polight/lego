@@ -1,5 +1,8 @@
 import parse from './vdom-parser.js'
 import { parseFragment, serialize } from 'parse5'
+import fs from 'fs'
+import { join, dirname } from 'path'
+import { fileURLToPath } from 'url'
 
 
 function parseHtmlComponent(html) {
@@ -83,4 +86,16 @@ function generateIndex(fileNames) {
   .join('\n\n')
 }
 
-export { createComponent, generateIndex }
+function copyDistFiles(targetDir) {
+  const legoDistFile = 'lego.min.js.gz'
+  const __filename = fileURLToPath(import.meta.url)
+  const legoRootPath = dirname(dirname(dirname(__filename)))
+  const legoDistPath = join(legoRootPath, 'dist', legoDistFile)
+  try {
+    fs.copyFileSync(legoDistPath, join(targetDir, legoDistFile))
+  } catch(error) {
+    console.error(`🛟 Cannot copy ${legoDistFile}`, error)
+  }
+}
+
+export { createComponent, generateIndex, copyDistFiles }

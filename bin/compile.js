@@ -3,7 +3,7 @@
 import fs from 'fs'
 import os from 'os'
 import { execFileSync } from 'child_process'
-import { createComponent, generateIndex } from '../src/compiler/transpiler.js'
+import { createComponent, generateIndex, copyDistFiles } from '../src/compiler/transpiler.js'
 import defaultConfig from '../src/compiler/config.js'
 
 // Read the version from package.json
@@ -103,6 +103,7 @@ async function writeIndex(targetDir, filenames) {
  * 2. compile sourceDir to targetDir
  * 3. create the index.js and its content
  * 4. if `watch`ing for changes, run `compile` over again
+ * 5. copy the lego dist files to the project dist folder
  */
 async function build() {
   let userConfig = {}
@@ -119,6 +120,7 @@ async function build() {
   const { sourceDir, targetDir } = config
   const compiled = await compile(sourceDir, targetDir, config)
   writeIndex(targetDir, compiled.map(c => c.filename))
+  copyDistFiles(targetDir)
   const names = compiled.map(c => c.component.name)
   console.info(`⚙️  Current configuration:`, config)
   console.info(`🏗  ${names.length} component${names.length > 1 ? 's were' : ' was'} compiled into "${config.targetDir}": ${names.join(', ')}.`)
