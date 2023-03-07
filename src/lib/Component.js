@@ -1,4 +1,4 @@
-import { h, render } from './index.js'
+import { render } from '../../node_modules/petit-dom/src/index.js'
 
 
 function toCamelCase(name) {
