@@ -31,7 +31,7 @@ function extractDirectives(node) {
       name = `on${name.slice(1)}`
       // Complexity due to retro-compatibility (class version).
       // Short will be: const func = `${value}.bind(this)`
-      const func = `(typeof ${value} !== 'undefined' ? ${value} : this.${value}).bind(this)`
+      const func = `(typeof ${value} === 'function' ? ${value}.bind(this) : this.${value}).bind(this)`
       attrs.push({ name, value: func })
     }
     else attrs.push({ name, value: `\`${value}\`` })

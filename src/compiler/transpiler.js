@@ -48,16 +48,12 @@ const __style = function({ state }) {
 let render = async function (state) {}
 
 ${ dom.extendScript ? '' : 'export default ' }class ${ config.baseClassName } extends Component {
-  init() {
-    super()
-    try {
-      this.__state = state
-    } catch {}
+  constructed() {
     render = this.render.bind(this)
-    try {
-      constructed.bind(this)
-    } catch {}
+    if(state) this.__state = Object.assign({}, state, this.__state)
+    if(typeof constructed === 'function') constructed.bind(this)(this.__state)
   }
+  
   get vdom() { return __template }
   get vstyle() { return __style }
 }

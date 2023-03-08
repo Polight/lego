@@ -20,6 +20,7 @@ export default class extends HTMLElement {
     this.watchProps = Object.keys(this.__state)
     this.__attributesToState()
     this.document = this.useShadowDOM ? this.attachShadow({mode: 'open'}) : this
+    if(this.constructed) this.constructed()
   }
 
   __attributesToState() {
