@@ -45,15 +45,11 @@ const __style = function({ state }) {
 }
 
 // -- Lego Core
-let render = async function (state) {}
-
 ${ dom.extendScript ? '' : 'export default ' }class ${ config.baseClassName } extends Component {
   constructed() {
-    render = this.render.bind(this)
-    if(state) this.__state = Object.assign({}, state, this.__state)
+    if(typeof state === 'object') this.__state = Object.assign({}, state, this.__state)
     if(typeof constructed === 'function') constructed.bind(this)(this.__state)
   }
-  
   get vdom() { return __template }
   get vstyle() { return __style }
 }
