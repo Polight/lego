@@ -29,9 +29,9 @@ function generateFileContent({ dom, config, version }) {
   return "" +
 `// Lego version ${ version }
 import { h, Component } from './${ config.distFile }'
-${ config.preScript }
+${ config.preScript || '' }
 
-${ dom.script }
+${ dom.script || '' }
 
 const __template = function({ state }) {
   return ${parse(dom.template, 2)}
@@ -46,9 +46,13 @@ const __style = function({ state }) {
 
 // -- Lego Core
 ${ dom.extendScript ? '' : 'export default ' }class ${ config.baseClassName } extends Component {
-  constructed() {
+  init() {
     if(typeof state === 'object') this.__state = Object.assign({}, state, this.__state)
-    if(typeof constructed === 'function') constructed.bind(this)()
+    if(typeof setup === 'function') setup.bind(this)()
+  }
+  connectedCallback() {
+    if(typeof connected === 'function') connected.bind(this)()
+    super.connectedCallback()
   }
   get vdom() { return __template }
   get vstyle() { return __style }
