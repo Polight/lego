@@ -27,39 +27,36 @@ function indent(text = '', size = 0) {
 
 function generateFileContent({ dom, config, version }) {
   return "" +
-`// Lego version ${ version }
-import { h, Component } from './${ config.distFile }'
-${ config.preScript || '' }
+` // Lego version ${ version }
+  import { h, Component } from './${ config.distFile }'
+  ${ config.preScript || '' }
 
-${ dom.script || '' }
+  ${ dom.script || '' }
 
-const __template = function({ state }) {
-  return ${parse(dom.template, 2)}
-}
-
-const __style = function({ state }) {
-  return h('style', {}, \`
-    ${ indent(config.preStyle, 4) }
-    ${ indent(dom.style, 4) }
-  \`)
-}
-
-// -- Lego Core
-${ dom.extendScript ? '' : 'export default ' }class ${ config.baseClassName } extends Component {
-  init() {
-    if(typeof state === 'object') this.__state = Object.assign({}, state, this.__state)
-    if(typeof setup === 'function') setup.bind(this)()
+  const __template = function({ state }) {
+    return ${parse(dom.template, 2)}
   }
-  connectedCallback() {
-    if(typeof connected === 'function') connected.bind(this)()
-    super.connectedCallback()
-  }
-  get vdom() { return __template }
-  get vstyle() { return __style }
-}
-// -- End Lego Core
 
-${ dom.extendScript }
+  const __style = function({ state }) {
+    return h('style', {}, \`
+      ${ indent(config.preStyle, 4) }
+      ${ indent(dom.style, 4) }
+    \`)
+  }
+
+  // -- Lego Core
+  ${ dom.extendScript ? '' : 'export default ' }class ${ config.baseClassName } extends Component {
+    init() {
+      if(typeof state === 'object') this.__state = Object.assign({}, state, this.__state)
+      if(typeof connected === 'function') this.connected = connected
+      if(typeof setup === 'function') setup.bind(this)()
+    }
+    get vdom() { return __template }
+    get vstyle() { return __style }
+  }
+  // -- End Lego Core
+
+  ${ dom.extendScript }
 `
 }
 
