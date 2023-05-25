@@ -47,6 +47,7 @@ function generateFileContent({ dom, config, version }) {
   // -- Lego Core
   ${ dom.extendScript ? '' : 'export default ' }class ${ config.baseClassName } extends Component {
     init() {
+      this.useShadowDOM = ${ Boolean(config.useShadowDOM) }
       if(typeof state === 'object') this.__state = Object.assign({}, state, this.__state)
       if(typeof connected === 'function') this.connected = connected
       if(typeof setup === 'function') setup.bind(this)()

@@ -7,14 +7,18 @@ export default {
   // `export default class extends Xxx {`
   baseClassName: 'Lego',
 
-  // Folder where HTML bricks are stored
+  // Folder where HTML bricks are stored.
   sourceDir: 'bricks',
 
-  // Folder where to store built js bricks
+  // Folder where to store built js bricks.
   targetDir: 'dist',
 
-  // Boolean value to watch for file changes. `null` for using command line
+  // Boolean value to watch for file changes. `null` for using command line.
   watch: false,
+
+  // Use ShadowDOM or LightDOM. ShadowDOM ensures DOM and styles isolation
+  // away from parents and other components.
+  useShadowDOM: true,
 
   // Inject this lines first in <script> tag when creating a component.
   // Ideal for importing modules automatically in all components.
