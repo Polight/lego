@@ -678,10 +678,11 @@ class Component extends HTMLElement {
     }
   }
 
-  connectedCallback() {
+  async connectedCallback() {
     this.__isConnected = true;
+    await this.render();
+    // First rendering of the component
     if(this.connected) this.connected();
-    this.render();
   }
 
   disconnectedCallback() {

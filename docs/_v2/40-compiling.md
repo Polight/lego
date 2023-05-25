@@ -22,3 +22,6 @@ Therefore `npx lego` would compile the _source_path_ files or folder (recursivel
 As mentioned before, when developing you probably want to watch for changes with the `-w`
 option: `npx lego -w <source_path> <target_file_path>`
 
+> ⚠️ the `watch` (`-w`) option will refresh the existing components.
+> However in order to refresh the _dist/index.js_ you will need to stop and start
+> the command line or any new component won't be available!

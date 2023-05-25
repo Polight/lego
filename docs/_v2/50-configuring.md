@@ -10,7 +10,7 @@ The compiler can take serveral parameters: `sourceDir`, `destDist`, `watch`…
 
 These will allow you to fine grain your configuration when compiling.
 
-The full list of parameters is available in the [compiler config](https://github.com/Polight/lego/blob/master/src/compiler/config.js#L1).
+The full list of parameters is available in the [compiler config](https://github.com/Polight/lego/blob/master/src/compiler/config.js).
 You should see that file to know the exhaustive list of parameters and
 what they do.
 
@@ -47,4 +47,5 @@ run with defaults.
 Passing parameters in the CLI will override default parameters and custom configuration.
 
 The command line accepts the following parameters: `npx lego <sourceDir> <destDir> <options>`.
-The only option for now is `-w` (stading for the `watch` config property).
+The only option for now is `-w` (standing for the `watch` config property)
+which is especially useful when developing.
