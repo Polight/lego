@@ -31,7 +31,7 @@ const argsConfig = {
  */
 function mergeObjects(native, override) {
   return Object.keys(native).reduce((obj, key) => {
-    obj[key] = (key in override && override[key])
+    obj[key] = (key in override && typeof override[key] != 'undefined')
       ? override[key]
       : native[key]
     return obj
