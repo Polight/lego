@@ -5,7 +5,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "build": "rollup -c && rollup -c rollup.config.minified.js",
+    "build": "npm run build-lego && npm run build-store",
+    "build-lego": "rollup -c && rollup -c rollup.config.minified.js",
+    "build-store": "rollup -c rollup.config.store.js && rollup -c rollup.config.store.minified.js",
     "deploy": "git switch main && npm run build && npm publish",
     "deploy-beta": "git switch v2 && npm run build && npm publish --tag beta",
     "test": "echo 'test still need to be implemented, contribution needed :)'"
