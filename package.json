@@ -1,12 +1,12 @@
 {
   "name": "@polight/lego",
-  "version": "2.0.0-beta.5",
+  "version": "2.0.0-beta.6",
   "description": "Low-Tech & Future-Proof Web-Components library",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "build": "rollup -c && rollup -c rollup.config.minified.js",
-    "deploy": "npm run build && npm publish",
+    "deploy": "git switch main && npm run build && npm publish",
     "deploy-beta": "git switch v2 && npm run build && npm publish --tag beta",
     "test": "echo 'test still need to be implemented, contribution needed :)'"
   },
