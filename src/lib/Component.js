@@ -60,10 +60,11 @@ export default class extends HTMLElement {
     if(this.disconnected) this.disconnected()
   }
 
-  setState(props = {}) {
-    Object.assign(this.__state, props)
-    if(this.changed && this.__isConnected) this.changed(props)
-  }
+    setState(updated = {}) {
+      const previous = Object.keys(updated).reduce((obj, key) => Object.assign(obj, { [key]: this.__state[key] }), {})
+      Object.assign(this.__state, updated)
+      if(this.changed && this.__isConnected) this.changed(updated, previous)
+    }
 
   set state(value) {
     this.setState(value)

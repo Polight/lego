@@ -23,8 +23,10 @@ __bricks/user-profile.html__
     fruits: [{ name: 'Apple', icon: '🍎' }, { name: 'Pineapple', icon: '🍍' }]
   }
 
-  function register() {
-    render({ registered: confirm('You are about to register…') })
+  const methods = {
+    register() {
+      this.render({ registered: confirm('You are about to register…') })
+    }
   }
 </script>
 

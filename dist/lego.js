@@ -678,9 +678,9 @@ class Component extends HTMLElement {
     }
   }
 
-  async connectedCallback() {
+  connectedCallback() {
     this.__isConnected = true;
-    await this.render();
+    this.render();
     // First rendering of the component
     if(this.connected) this.connected();
   }
@@ -691,10 +691,11 @@ class Component extends HTMLElement {
     if(this.disconnected) this.disconnected();
   }
 
-  async setState(props = {}) {
-    Object.assign(this.__state, props);
-    if(this.changed && this.__isConnected) await this.changed(props);
-  }
+    setState(updated = {}) {
+      const previous = Object.keys(updated).reduce((obj, key) => Object.assign(obj, { [key]: this.__state[key] }), {});
+      Object.assign(this.__state, updated);
+      if(this.changed && this.__isConnected) this.changed(updated, previous);
+    }
 
   set state(value) {
     this.setState(value);
@@ -704,8 +705,8 @@ class Component extends HTMLElement {
     return this.__state
   }
 
-  async render(state) {
-    await this.setState(state);
+  render(state) {
+    this.setState(state);
     if(!this.__isConnected) return
     return render([
       this.vdom({ state: this.__state }),

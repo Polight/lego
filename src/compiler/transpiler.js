@@ -12,10 +12,10 @@ function parseHtmlComponent(html) {
   const template = serialize(parseFragment(html).childNodes.find(n => n.tagName === 'template')?.content)
   const style = parseFragment(html).childNodes.find(n => n.tagName === 'style')?.childNodes[0].value
 
-  // Make it compatible with previous full class versions
+  // Make it backward compatible with previous full class versions (Lego v1)
   if(script && !extendScript && script.includes('export default class')) {
     extendScript = script
-    script = ""
+    script = ''
   }
 
   return { script, extendScript, template, style }
@@ -49,6 +49,7 @@ function generateFileContent({ dom, config, version }) {
     init() {
       this.useShadowDOM = ${ Boolean(config.useShadowDOM) }
       if(typeof state === 'object') this.__state = Object.assign({}, state, this.__state)
+      if(typeof methods === 'object') Object.keys(methods).forEach(methodName => this[methodName] = methods[methodName])
       if(typeof connected === 'function') this.connected = connected
       if(typeof setup === 'function') setup.bind(this)()
     }
