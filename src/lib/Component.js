@@ -9,7 +9,6 @@ function toCamelCase(name) {
   return name
 }
 
-
 export default class extends HTMLElement {
   constructor() {
     super()
@@ -18,6 +17,10 @@ export default class extends HTMLElement {
     this.__state = {}
     if(this.init) this.init()
     this.watchProps = Object.keys(this.__state)
+    this.computedProps = Object.fromEntries(
+      Object.entries(this.__state)
+            .filter(([_, value]) => typeof value === 'function')
+    )
     this.__attributesToState()
     this.document = this.useShadowDOM ? this.attachShadow({mode: 'open'}) : this
   }
@@ -35,6 +38,7 @@ export default class extends HTMLElement {
   setAttribute(name, value) {
     super.setAttribute(name, value)
     const prop = toCamelCase(name)
+    if(typeof value === 'function') value = value.bind(this)(this.state)
     if(this.watchProps.includes(prop)) this.render({ [prop]: value })
   }
 
@@ -60,11 +64,11 @@ export default class extends HTMLElement {
     if(this.disconnected) this.disconnected()
   }
 
-    setState(updated = {}) {
-      const previous = Object.keys(updated).reduce((obj, key) => Object.assign(obj, { [key]: this.__state[key] }), {})
-      Object.assign(this.__state, updated)
-      if(this.changed && this.__isConnected) this.changed(updated, previous)
-    }
+  setState(updated = {}) {
+    const previous = Object.keys(updated).reduce((obj, key) => Object.assign(obj, { [key]: this.__state[key] }), {})
+    Object.assign(this.__state, updated)
+    if(this.changed && this.__isConnected) this.changed(updated, previous)
+  }
 
   set state(value) {
     this.setState(value)
