@@ -4,7 +4,7 @@
 </p>
 
 
-# LEGO: Modern Web-Components
+# LEGO: Modern Buildless Web-Components
 
 ## Native Web-Components?
 
@@ -21,6 +21,10 @@ Because LEGO is native, your browser developper toobar is all you need.
 - the console with the live JS in the context…
 
 It's all just normal!
+
+## Buildless
+
+Because [buildless](https://duckduckgo.com/?q=buildless) is becoming a thing, we can know give it a name that speaks to all.
 
 
 #### What does LEGO actually look like?
