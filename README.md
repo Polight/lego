@@ -84,6 +84,7 @@ LEGO (_Lightweight Embedded Gluten-free Objects_) is a base class that you exten
 
 A small CLI in NodeJS come along to build 🚀 your component.
 There's no [Vite](https://vitejs.dev/) nor other 3rd parties, it's [just an interpreter of ±180 lines of readable code](https://github.com/Polight/lego/blob/master/src/compiler/transpiler.js).
+I also works with [https://bun.sh](Bun) and probably other interpreters.
 
 
 ## What is LEGO Behind?
