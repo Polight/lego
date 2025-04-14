@@ -55,8 +55,9 @@ export default class extends HTMLElement {
 
   connectedCallback() {
     this.#isConnected = true
-    this.connected?.()
+    // Load the DOM
     this.render()
+    this.connected?.()
   }
 
   disconnectedCallback() {
@@ -65,9 +66,9 @@ export default class extends HTMLElement {
     this.disconnected?.()
   }
 
-  async setState(props = {}) {
+  setState(props = {}) {
     Object.assign(this.state, props)
-    if (this.changed && this.#isConnected) await this.changed(props)
+    if (this.changed && this.#isConnected) this.changed(props)
   }
 
   set state(value) {
@@ -78,8 +79,8 @@ export default class extends HTMLElement {
     return this.state
   }
 
-  async render(state) {
-    await this.setState(state)
+  render(state) {
+    this.setState(state)
     if (!this.#isConnected) return
 
     return render(
