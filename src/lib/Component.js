@@ -11,18 +11,20 @@ function toCamelCase(name) {
 
 
 export default class extends HTMLElement {
+  
+  state = {}
+  useShadowDOM = true
+  #isConnected = false
+
   constructor() {
     super()
-    this.useShadowDOM = true
-    this.__isConnected = false
-    this.__state = {}
     if(this.init) this.init()
-    this.watchProps = Object.keys(this.__state)
-    this.__attributesToState()
+    this.watchProps = Object.keys(this.state)
+    this.#attributesToState()
     this.document = this.useShadowDOM ? this.attachShadow({mode: 'open'}) : this
   }
 
-  __attributesToState() {
+  #attributesToState() {
     Object.assign(this.state, Array.from(this.attributes).reduce((obj, attr) => {
       return Object.assign(obj, { [toCamelCase(attr.name)]: attr.value })
     }, {}))
@@ -48,20 +50,20 @@ export default class extends HTMLElement {
   }
 
   connectedCallback() {
-    this.__isConnected = true
+    this.#isConnected = true
     if(this.connected) this.connected()
     this.render()
   }
 
   disconnectedCallback() {
-    this.__isConnected = false
+    this.#isConnected = false
     this.setState({})
     if(this.disconnected) this.disconnected()
   }
 
   async setState(props = {}) {
-    Object.assign(this.__state, props)
-    if(this.changed && this.__isConnected) await this.changed(props)
+    Object.assign(this.state, props)
+    if(this.changed && this.#isConnected) await this.changed(props)
   }
 
   set state(value) {
@@ -69,15 +71,15 @@ export default class extends HTMLElement {
   }
 
   get state() {
-    return this.__state
+    return this.state
   }
 
   async render(state) {
     await this.setState(state)
-    if(!this.__isConnected) return
+    if(!this.#isConnected) return
     return render([
-      this.vdom({ state: this.__state }),
-      this.vstyle({ state: this.__state }),
+      this.vdom({ state: this.state }),
+      this.vstyle({ state: this.state }),
     ], this.document)
   }
 }
