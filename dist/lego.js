@@ -633,66 +633,74 @@ function render(vnode, parentDomNode, options = {}) {
 }
 
 function toCamelCase(name) {
-  if(name.includes('-')) {
-    const parts = name.split('-');
-    name = parts[0] + parts.splice(1).map(s => s[0].toUpperCase() + s.substr(1)).join('');
-  }
-  return name
+  if (!name.includes("-")) return name
+  return name.replace(/-([a-z])/g, (match, letter) => letter.toUpperCase())
 }
 
-
 class Component extends HTMLElement {
+  state = {}
+  useShadowDOM = true
+  #isConnected = false
+
   constructor() {
     super();
-    this.useShadowDOM = true;
-    this.__isConnected = false;
-    this.__state = {};
-    if(this.init) this.init();
-    this.watchProps = Object.keys(this.__state);
-    this.__attributesToState();
-    this.document = this.useShadowDOM ? this.attachShadow({mode: 'open'}) : this;
+    this.init?.();
+    this.watchProps = Object.keys(this.state);
+    this.#syncAttributesToState();
+    this.document = this.useShadowDOM
+      ? this.attachShadow({ mode: "open" })
+      : this;
   }
 
-  __attributesToState() {
-    Object.assign(this.state, Array.from(this.attributes).reduce((obj, attr) => {
-      return Object.assign(obj, { [toCamelCase(attr.name)]: attr.value })
-    }, {}));
+  #syncAttributesToState() {
+    this.state = Array.from(this.attributes).reduce(
+      (state, attr) => ({
+        ...state,
+        [toCamelCase(attr.name)]: attr.value,
+      }),
+      this.state
+    );
   }
 
-  get vdom() { return ({ state }) => '' }
+  get vdom() {
+    return ({ state }) => ""
+  }
 
-  get vstyle() { return ({ state }) => '' }
+  get vstyle() {
+    return ({ state }) => ""
+  }
 
   setAttribute(name, value) {
     super.setAttribute(name, value);
     const prop = toCamelCase(name);
-    if(this.watchProps.includes(prop)) this.render({ [prop]: value });
+    if (this.watchProps.includes(prop)) this.render({ [prop]: value });
   }
 
   removeAttribute(name) {
     super.removeAttribute(name);
     const prop = toCamelCase(name);
-    if(this.watchProps.includes(prop) && prop in this.state) {
+    if (this.watchProps.includes(prop) && prop in this.state) {
       this.render({ [prop]: null });
       delete this.state[prop];
     }
   }
 
   connectedCallback() {
-    this.__isConnected = true;
-    if(this.connected) this.connected();
+    this.#isConnected = true;
+    // Load the DOM
     this.render();
+    this.connected?.();
   }
 
   disconnectedCallback() {
-    this.__isConnected = false;
+    this.#isConnected = false;
     this.setState({});
-    if(this.disconnected) this.disconnected();
+    this.disconnected?.();
   }
 
-  async setState(props = {}) {
-    Object.assign(this.__state, props);
-    if(this.changed && this.__isConnected) await this.changed(props);
+  setState(props = {}) {
+    Object.assign(this.state, props);
+    if (this.changed && this.#isConnected) this.changed(props);
   }
 
   set state(value) {
@@ -700,16 +708,17 @@ class Component extends HTMLElement {
   }
 
   get state() {
-    return this.__state
+    return this.state
   }
 
-  async render(state) {
-    await this.setState(state);
-    if(!this.__isConnected) return
-    return render([
-      this.vdom({ state: this.__state }),
-      this.vstyle({ state: this.__state }),
-    ], this.document)
+  render(state) {
+    this.setState(state);
+    if (!this.#isConnected) return
+
+    return render(
+      [this.vdom({ state: this.state }), this.vstyle({ state: this.state })],
+      this.document
+    )
   }
 }
 
