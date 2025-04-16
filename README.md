@@ -57,9 +57,9 @@ _Pretty neat!_
 
 You can just hop in and experiment your first HTML Element.
 
-[Follow this Getting Started guide](https://lego.js.org/v2/getting-started/#quick-start) for installing and writing your first component.
+[Follow this Getting Started guide](https://lego.js.org/v1/getting-started/#quick-start) for installing and writing your first component.
 
-Once you're done with it you can write more components the same way and play with [daily usage guide](https://lego.js.org/v2/usage-web-components/) for passing advanced arguments, writing conditions and loops, dynamic styling, connecting to APIs…
+Once you're done with it you can write more components the same way and play with [daily usage guide](https://lego.js.org/v1/usage-web-components/) for passing advanced arguments, writing conditions and loops, dynamic styling, connecting to APIs…
 
 
 ## What Can You **Actually** Do With It?
