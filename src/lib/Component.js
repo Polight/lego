@@ -4,20 +4,20 @@ function toCamelCase(name) {
   if (!name.includes("-")) return name
   return name.replace(/-([a-z])/g, (match, letter) => letter.toUpperCase())
 }
-
 export default class extends HTMLElement {
   state = {}
   useShadowDOM = true
   #isConnected = false
+  #isInitialized = false
 
-  constructor() {
-    super()
+  #ready() {
     this.init?.()
     this.watchProps = Object.keys(this.state)
     this.#syncAttributesToState()
     this.document = this.useShadowDOM
       ? this.attachShadow({ mode: "open" })
       : this
+    this.#isInitialized = true
   }
 
   #syncAttributesToState() {
@@ -54,6 +54,7 @@ export default class extends HTMLElement {
   }
 
   connectedCallback() {
+    if (!this.#isInitialized) this.#ready()
     this.#isConnected = true
     // Load the DOM
     this.render()
@@ -62,7 +63,6 @@ export default class extends HTMLElement {
 
   disconnectedCallback() {
     this.#isConnected = false
-    this.setState({})
     this.disconnected?.()
   }
 
