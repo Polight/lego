@@ -126,7 +126,10 @@ async function build() {
   if (config.watch) {
     console.info(`\n👀 Watching changes in ${sourceDir}…`)
     fs.watch(sourceDir, async (event, filename) => {
-      await compile(sourceDir, targetDir, config)
+      const compiled = await compile(sourceDir, targetDir, config)
+      if (event === 'rename') {
+        writeIndex(targetDir, compiled.map(c => c.filename))
+      }
       console.info(`  ♻️  ${filename} was recompiled!`)
     })
   }
