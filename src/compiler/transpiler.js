@@ -17,19 +17,19 @@ function generateFileContent({ dom, importPath, baseClassName, version, preScrip
 import { h, Component } from '${importPath}'
 
 class ${baseClassName} extends Component {
-  ${dom.template.trim() ? `get vdom() {
-    return ({ state }) => ${parse(dom.template.trim())}
+  ${dom.template ? `get vdom() {
+    return ({ state }) => ${parse(dom.template)}
   }` : ''}
-  ${dom.style.trim() || preStyle ? `get vstyle() {
+  ${dom.style || preStyle ? `get vstyle() {
     return ({ state }) => h('style', {}, \`
     ${preStyle}
-    ${dom.style.trim()}
+    ${dom.style}
   \`)}` : ''}
 }
 
 ${preScript}
 
-${dom.script.trim() || `export default class extends ${baseClassName} {}`}
+${dom.script || `export default class extends ${baseClassName} {}`}
 `
 }
 
