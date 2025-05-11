@@ -91,7 +91,6 @@ class Component extends HTMLElement {
 
   setState(props = {}) {
     Object.assign(this.state, props)
-    if (this.changed && this.#isConnected) this.changed(props)
   }
 
   set state(value) {
@@ -103,13 +102,15 @@ class Component extends HTMLElement {
   }
 
   render(state) {
-    this.setState(state)
     if (!this.#isConnected) return
+    if (state) this.setState(state)
 
-    return render(
+    render(
       [this.vdom({ state: this.state }), this.vstyle({ state: this.state })],
       this.document
     )
+
+    this.changed?.(state)
   }
 }
 
