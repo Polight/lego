@@ -7,6 +7,7 @@ function toCamelCase(name) {
 class Component extends HTMLElement {
   state = {}
   useShadowDOM = true
+  watchProps = []
   #isConnected = false
   #isInitialized = false
 
