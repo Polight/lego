@@ -4,6 +4,15 @@ function toCamelCase(name) {
   if (!name.includes("-")) return name
   return name.replace(/-([a-z])/g, (match, letter) => letter.toUpperCase())
 }
+
+function sanitizeJsonAttribute(attr) {
+  try {
+    return JSON.parse(attr)
+  } catch (_) {
+    return attr
+  }
+}
+
 export default class extends HTMLElement {
   state = {}
   useShadowDOM = true
@@ -24,7 +33,7 @@ export default class extends HTMLElement {
     this.state = Array.from(this.attributes).reduce(
       (state, attr) => ({
         ...state,
-        [toCamelCase(attr.name)]: attr.value,
+        [toCamelCase(attr.name)]: sanitizeJsonAttribute(attr.value),
       }),
       this.state
     )
@@ -39,7 +48,7 @@ export default class extends HTMLElement {
   }
 
   setAttribute(name, value) {
-    super.setAttribute(name, value)
+    super.setAttribute(name, typeof value === 'object' ? JSON.stringify(value) : value)
     const prop = toCamelCase(name)
     if (this.watchProps.includes(prop)) this.render({ [prop]: value })
   }
