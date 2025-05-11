@@ -1,10 +1,10 @@
-import { h, render } from "./index.js"
+import { h, render } from 'petit-dom'
 
 function toCamelCase(name) {
   if (!name.includes("-")) return name
   return name.replace(/-([a-z])/g, (match, letter) => letter.toUpperCase())
 }
-export default class extends HTMLElement {
+class Component extends HTMLElement {
   state = {}
   useShadowDOM = true
   #isConnected = false
@@ -89,3 +89,5 @@ export default class extends HTMLElement {
     )
   }
 }
+
+export { h, render, Component }
