@@ -32,12 +32,23 @@ class Component extends HTMLElement {
 
   #syncAttributesToState() {
     this.state = Array.from(this.attributes).reduce(
-      (state, attr) => ({
-        ...state,
-        [toCamelCase(attr.name)]: sanitizeJsonAttribute(attr.value),
-      }),
+      (state, attr) => {
+        const camelCaseName = toCamelCase(attr.name)
+        return {
+          ...state,
+          [camelCaseName]: this.#sanitizeAttribute(camelCaseName, attr.value),
+        }
+      },
       this.state
     )
+  }
+
+  #sanitizeAttribute(attrName, attrValue) {
+    const attrType = typeof this.state[attrName]
+    if (attrType === 'object') return sanitizeJsonAttribute(attrValue)
+    if (attrType === 'boolean') return attrValue === "" || !!attrValue
+    if (attrType === 'number') return parseInt(attrValue)
+    return attrValue
   }
 
   get vdom() {
@@ -51,15 +62,14 @@ class Component extends HTMLElement {
   setAttribute(name, value) {
     super.setAttribute(name, typeof value === 'object' ? JSON.stringify(value) : value)
     const prop = toCamelCase(name)
-    if (this.#watchProps.includes(prop)) this.render({ [prop]: value })
+    if (this.#watchProps.includes(prop)) this.render({ [prop]: this.#sanitizeAttribute(prop, value) })
   }
 
   removeAttribute(name) {
     super.removeAttribute(name)
     const prop = toCamelCase(name)
     if (this.#watchProps.includes(prop) && prop in this.state) {
-      this.render({ [prop]: null })
-      delete this.state[prop]
+      this.render({ [prop]: this.#sanitizeAttribute(prop, null) })
     }
   }
 
