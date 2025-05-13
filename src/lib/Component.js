@@ -1,4 +1,4 @@
-import { h, render } from "./index.js"
+import { h, render } from 'petit-dom'
 
 function toCamelCase(name) {
   if (!name.includes("-")) return name
@@ -13,15 +13,16 @@ function sanitizeJsonAttribute(attr) {
   }
 }
 
-export default class extends HTMLElement {
+class Component extends HTMLElement {
   state = {}
   useShadowDOM = true
+  #watchProps = []
   #isConnected = false
   #isInitialized = false
 
   #ready() {
     this.init?.()
-    this.watchProps = Object.keys(this.state)
+    this.#watchProps = Object.keys(this.state)
     this.#syncAttributesToState()
     this.document = this.useShadowDOM
       ? this.attachShadow({ mode: "open" })
@@ -50,13 +51,13 @@ export default class extends HTMLElement {
   setAttribute(name, value) {
     super.setAttribute(name, typeof value === 'object' ? JSON.stringify(value) : value)
     const prop = toCamelCase(name)
-    if (this.watchProps.includes(prop)) this.render({ [prop]: value })
+    if (this.#watchProps.includes(prop)) this.render({ [prop]: value })
   }
 
   removeAttribute(name) {
     super.removeAttribute(name)
     const prop = toCamelCase(name)
-    if (this.watchProps.includes(prop) && prop in this.state) {
+    if (this.#watchProps.includes(prop) && prop in this.state) {
       this.render({ [prop]: null })
       delete this.state[prop]
     }
@@ -98,3 +99,5 @@ export default class extends HTMLElement {
     )
   }
 }
+
+export { h, render, Component }
