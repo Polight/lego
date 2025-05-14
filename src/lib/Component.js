@@ -103,13 +103,15 @@ class Component extends HTMLElement {
   }
 
   render(state) {
-    this.setState(state)
+    if (state) this.setState(state)
     if (!this.#isConnected) return
 
-    return render(
+    render(
       [this.vdom({ state: this.state }), this.vstyle({ state: this.state })],
       this.document
     )
+
+    this.rendered?.(state)
   }
 }
 
