@@ -8,7 +8,7 @@ function toCamelCase(name) {
 function sanitizeAttribute(attrType, attrValue) {
   if (attrType === 'object') return sanitizeJsonAttribute(attrValue)
   if (attrType === 'boolean') return attrValue === "" || !!attrValue
-  if (attrType === 'number') return parseInt(attrValue)
+  if (attrType === 'number') return Number(attrValue)
   return attrValue
 }
 
