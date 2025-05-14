@@ -81,12 +81,10 @@ class Component extends HTMLElement {
     this.#isConnected = true
     // Load the DOM
     this.render()
-    this.connected?.()
   }
 
   disconnectedCallback() {
     this.#isConnected = false
-    this.disconnected?.()
   }
 
   setState(props = {}) {
