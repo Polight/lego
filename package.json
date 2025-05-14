@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "build": "rollup -c && rollup -c rollup.config.minified.js",
-    "publish": "npm run build && git commit dist -m 'new build' && npm publish",
+    "publish": "npm run build && npm publish",
     "test": "echo 'test still need to be implemented, contribution needed :)'"
   },
   "dependencies": {
