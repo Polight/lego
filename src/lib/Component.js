@@ -5,11 +5,18 @@ function toCamelCase(name) {
   return name.replace(/-([a-z])/g, (match, letter) => letter.toUpperCase())
 }
 
-function sanitizeJsonAttribute(attr) {
+function sanitizeAttribute(attrType, attrValue) {
+  if (attrType === 'object') return sanitizeJsonAttribute(attrValue)
+  if (attrType === 'boolean') return attrValue === "" || !!attrValue
+  if (attrType === 'number') return Number(attrValue)
+  return attrValue
+}
+
+function sanitizeJsonAttribute(attrValue) {
   try {
-    return JSON.parse(attr)
+    return JSON.parse(attrValue)
   } catch (_) {
-    return attr
+    return attrValue
   }
 }
 
@@ -32,13 +39,18 @@ class Component extends HTMLElement {
 
   #syncAttributesToState() {
     this.state = Array.from(this.attributes).reduce(
-      (state, attr) => ({
-        ...state,
-        [toCamelCase(attr.name)]: sanitizeJsonAttribute(attr.value),
-      }),
+      (state, attr) => {
+        const camelCaseName = toCamelCase(attr.name)
+        const attrType = typeof this.state[camelCaseName]
+        return {
+          ...state,
+          [camelCaseName]: sanitizeAttribute(attrType, attr.value),
+        }
+      },
       this.state
     )
   }
+
 
   get vdom() {
     return ({ state }) => ""
@@ -51,15 +63,16 @@ class Component extends HTMLElement {
   setAttribute(name, value) {
     super.setAttribute(name, typeof value === 'object' ? JSON.stringify(value) : value)
     const prop = toCamelCase(name)
-    if (this.#watchProps.includes(prop)) this.render({ [prop]: value })
+    const attrType = typeof this.state[prop]
+    if (this.#watchProps.includes(prop)) this.render({ [prop]: sanitizeAttribute(attrType, value) })
   }
 
   removeAttribute(name) {
     super.removeAttribute(name)
     const prop = toCamelCase(name)
+    const attrType = typeof this.state[prop]
     if (this.#watchProps.includes(prop) && prop in this.state) {
-      this.render({ [prop]: null })
-      delete this.state[prop]
+      this.render({ [prop]: sanitizeAttribute(attrType, null) })
     }
   }
 
