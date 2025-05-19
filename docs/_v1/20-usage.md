@@ -16,7 +16,7 @@ has_children: true
 A web-component can optionally have 3 parts: some HTML in a `<template>` tag, some JavaScript
 in a `<script>` tag and some CSS in a `<style>` tag.
 
-You can make a web-component for muliple reasons.
+You can make a web-component for multiple reasons.
 
 If you just want to re-use a piece of HTML, the `<template>`
 tag is all you need.
@@ -26,3 +26,4 @@ Bonus: it's fully scoped with no leaking out of context.
 
 When some user interaction or reactiveness is demanded, `<script>`
 is going to be the guy.
+<!-- FIXME: reactiveness is unknown -->
