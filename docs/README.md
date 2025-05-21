@@ -20,6 +20,8 @@ The whole library runs within the browser.
 
 To know more, go to [the documentation](https://lego.js.org/) to install and create native web-components.
 
+--
+
 Following instructions describes how to update the documentation.
 
 ## Requirements
