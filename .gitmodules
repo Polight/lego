@@ -1,0 +1,3 @@
+[submodule "docs/themes/docs"]
+	path = docs/themes/docs
+	url = https://github.com/zkreations/docs

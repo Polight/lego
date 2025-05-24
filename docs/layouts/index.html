@@ -1,0 +1,25 @@
+{{ define "main"}}
+<main class="main-section">
+  <div class="container">
+    <div class="section-info">
+      {{ $legoLogo := resources.Get "lego.svg" }}
+      <img src="{{ $legoLogo.RelPermalink }}" alt="" />
+      <h1>Web-Components for Low-Tech Lovers</h1>
+      <p class="lead">
+        Lego is a minimalist <span aria-hidden="true">🪶</span> native
+        Web-Components library for low-tech lovers
+        <span aria-hidden="true">♥️</span> with serious needs of long-term
+        future-proof applications.
+      </p>
+      <p class="lead">
+        Read the documentation for installation, usage instruction and hacking
+        the tool.
+      </p>
+      <div class="button-group" role="group">
+        <a href="./v1" class="btn btn-primary">Version 1 - Stable</a>
+        <a href="./v2" class="btn btn">(Archive) Version 2 - Alpha</a>
+      </div>
+    </div>
+  </div>
+</main>
+{{ end }}
