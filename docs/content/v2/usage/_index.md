@@ -1,6 +1,6 @@
 ---
 title: Usage
-weight: 2
+weight: 3
 ---
 
 ## Usage of Lego web-components

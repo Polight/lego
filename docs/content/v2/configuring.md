@@ -1,6 +1,6 @@
 ---
 title: Configuring
-weight: 5
+weight: 6
 ---
 
 The compiler can take several parameters: `sourceDir`, `destDist`, `watch`…

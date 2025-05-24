@@ -1,6 +1,6 @@
 ---
 title: Getting started
-weight: 1
+weight: 3
 ---
 
 Lego requires [npm](https://npmjs.com) or [yarn](https://yarnpkg.com) and [node](https://nodejs.org/).

@@ -1,6 +1,6 @@
 ---
 title: Naming conventions
-weight: 3
+weight: 4
 ---
 
 The name of the file will be the name of the component.

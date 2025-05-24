@@ -1,6 +1,6 @@
 ---
 title: Getting deep
-weight: 8
+weight: 9
 ---
 
 ### Native web-components

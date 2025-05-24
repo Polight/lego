@@ -1,6 +1,6 @@
 ---
 title: Advanced example
-weight: 6
+weight: 7
 ---
 
 Let's write a web-component that:

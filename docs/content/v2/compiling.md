@@ -1,6 +1,6 @@
 ---
 title: Compiling
-weight: 4
+weight: 5
 ---
 
 Compiling Lego component is built-in with no extra installation; pretty straightforward.

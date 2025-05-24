@@ -1,6 +1,6 @@
 ---
 title: Testing
-weight: 7
+weight: 8
 ---
 
 ## Running tests [![CircleCI](https://circleci.com/gh/Polight/lego.svg?style=svg)](https://circleci.com/gh/Polight/lego)
