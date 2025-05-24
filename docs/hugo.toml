@@ -1,6 +1,6 @@
 baseURL = 'https://lego.js.org/'
 languageCode = 'en-us'
-title = 'LEGO – Native Web-Components for Low-Tech Lovers ♥️'
+title = '🚀 Lego Web-Components'
 theme = 'docs'
 
 enableRobotsTXT = true
@@ -24,7 +24,6 @@ enableInlineShortcodes = true
   # description = "Documenta tus proyectos con Hugo"
   # github_repo_edit = "https://github.com/zkreations/docs/blob/master/demo/content"
   # date_format = "January 2, 2006"
-  versions = [ "1.0" ]
   # badge_url = "https://www.zkreations.com"
   # main_icon = "book-open"
-  # main_logo = "tu-logo.svg"
+  main_logo = "lego.svg"
