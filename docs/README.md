@@ -6,7 +6,7 @@
 <script>
   export default class extends Lego {
     init() {
-      this.state = { duration: "Future-Proof" }
+      this.state = { duration: 'Future-Proof' }
     }
   }
 </script>
