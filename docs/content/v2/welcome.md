@@ -68,4 +68,4 @@ Lego is not (and will never be):
 From March 2023, we have started to work on a new version to simplify the `<script>` block by removing the `class` syntax.
 It has finally added too much magic 🪄 and we have decided to drop this version on April 2025 and keep on developing the version 1.
 
-The current documentation you are reading relates to this version. This documentation is no longer maintained. However, as underlying Lego working is pretty close between version 1 and 2, most of the missing documentation in version 2 can be found within the version 1 documentation.
+The current documentation you are reading relates to this version. This documentation is no longer maintained. However, as underlying Lego working is pretty close between version 1 and 2, most of the missing documentation in version 2 can be found within the [version 1 documentation](/v1).
