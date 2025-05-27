@@ -26,5 +26,5 @@ enableInlineShortcodes = true
   versions = [ "v1", "v2" ]
   # badge_url = "https://www.zkreations.com"
   # main_icon = "book-open"
-  main_logo = "lego.svg"
   description = "Lego is a minimalist native Web-Components library for low-tech lovers with serious needs of long-term future-proof applications. This documentation describes how to install, use and hack the tool."
+  main_logo = "/lego.svg"
