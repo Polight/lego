@@ -21,10 +21,7 @@ enableInlineShortcodes = true
     endLevel = 3
 
 [params]
-  # github_repo_edit = "https://github.com/zkreations/docs/blob/master/demo/content"
-  # date_format = "January 2, 2006"
-  versions = [ "v1", "v2" ]
-  # badge_url = "https://www.zkreations.com"
-  # main_icon = "book-open"
   description = "Lego is a minimalist native Web-Components library for low-tech lovers with serious needs of long-term future-proof applications. This documentation describes how to install, use and hack the tool."
+  # github_repo_edit = "https://github.com/Polight/lego/tree/master/docs/content" # FIXME: To enable once merged
+  date_format = "January 2, 2006"
   main_logo = "/lego.svg"
