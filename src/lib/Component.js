@@ -26,6 +26,7 @@ class Component extends HTMLElement {
   #watchProps = []
   #isConnected = false
   #isInitialized = false
+  #customEvents = []
 
   #ready() {
     this.init?.()
@@ -51,7 +52,6 @@ class Component extends HTMLElement {
     )
   }
 
-
   get vdom() {
     return ({ state }) => ""
   }
@@ -62,6 +62,7 @@ class Component extends HTMLElement {
 
   setAttribute(name, value) {
     super.setAttribute(name, typeof value === 'object' ? JSON.stringify(value) : value)
+    if (name.match(/@(\w*-\w*)+/)) return this.#customEvents.push([toCamelCase(name.slice(1)), value])
     const prop = toCamelCase(name)
     const attrType = typeof this.state[prop]
     if (this.#watchProps.includes(prop)) this.render({ [prop]: sanitizeAttribute(attrType, value) })
@@ -81,11 +82,13 @@ class Component extends HTMLElement {
     this.#isConnected = true
     // Load the DOM
     this.render()
+    this.#customEvents.forEach(([customEvent, listener]) => this.addEventListener(customEvent, listener))
     this.connected?.()
   }
 
   disconnectedCallback() {
     this.#isConnected = false
+    this.#customEvents.forEach(([customEvent, listener]) => this.removeEventListener(customEvent, listener))
     this.disconnected?.()
   }
 

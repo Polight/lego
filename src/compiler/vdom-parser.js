@@ -28,7 +28,7 @@ function extractDirectives(node) {
       attrs.push({ name, value })
     }
     else if(name.startsWith('@')) {
-      name = `on${name.slice(1)}`
+      if (!name.includes('-')) name = `on${name.slice(1)}`
       value = `this.${value}.bind(this)`
       attrs.push({ name, value })
     }
