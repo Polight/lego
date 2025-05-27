@@ -13,7 +13,7 @@ You can make a web-component for multiple reasons.
 If you just want to re-use a piece of HTML, the `<template>`
 tag is all you need.
 
-If you want to polish it's look 💅, `<style>` is your friend.
+If you want to polish it's look {{< emoji "💅" >}}, `<style>` is your friend.
 Bonus: it's fully scoped with no leaking out of context.
 
 When some user interaction or reactiveness is demanded, `<script>`

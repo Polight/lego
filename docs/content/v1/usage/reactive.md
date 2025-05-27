@@ -23,7 +23,7 @@ Displaying a _state_ value is as simple as writing `${state.theValue}` in your H
 When you need your component to react, call the `this.render()` method
 with your updated state:
 
-```
+```js
 updateStatus(event) {
   this.render({ status: "Laughing 😂" })
 }
