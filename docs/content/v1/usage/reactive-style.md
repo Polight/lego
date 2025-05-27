@@ -9,7 +9,7 @@ CSS is much more fun when it's scoped.
 Here it come with the web-components.
 
 Here again, no trick, just the full power of web-components and scoping styles.
-Well, you should know that the css is reactive too! 😲
+Well, you should know that the css is reactive too! {{< emoji "😲" >}}
 
 Writing CSS is as easy as
 

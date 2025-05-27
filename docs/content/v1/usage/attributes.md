@@ -12,12 +12,12 @@ If the property is initialized in the `this.state`, the attribute will be reacti
 <x-user status="thinking 🤔"><x-user></x-user></x-user>
 ```
 
-`status` will therefore be reactive and the _thinking 🤔_ attribute value will overwrite the _Happy 😄_ default status.
+`status` will therefore be reactive and the _thinking {{< emoji "🤔" >}}_ attribute value will overwrite the _Happy {{< emoji "😄" >}}_ default status.
 
-⚠️ A property that is not declared in the `state` won't be reactive.
+{{< emoji "⚠️" >}} A property that is not declared in the `state` won't be reactive.
 
 These properties can be accessed through `this.getAttribute()` from within the component.
-After all, these components are just native! 🏡
+After all, these components are just native! {{< emoji "🏡" >}}
 
 #### Slots
 
@@ -55,7 +55,7 @@ CSS is much more fun when it's scoped.
 Here it come with the web-components.
 
 Here again, no trick, just the full power of web-components and scoping styles.
-Well, you should know that the css is reactive too! 😲
+Well, you should know that the css is reactive too! {{< emoji "😲" >}}
 
 Writing CSS is as easy as
 

@@ -66,6 +66,6 @@ Here's what you just did with this simple code:
 3. you imported all components from `./dist/index.js` (well, only 1 for now)
 4. you used the HTML element `<hello-world></hello-world>`
 
-No magic 🪄 here, just a couple of [default configuration that you can override](/configuring-components/).
+No magic {{< emoji "🪄" >}} here, just a couple of [default configuration that you can override](/configuring-components/).
 
 You website is ready to be published on any _static_ host, even Github Pages.
