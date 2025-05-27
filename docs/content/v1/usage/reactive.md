@@ -5,7 +5,7 @@ weight: 6
 
 #### Reactive Properties
 
-The `state` is where the reactiveness takes place.
+The `state` is where the reactivity takes place.
 
 declare a `state` object in the `init()` function with default values:
 

@@ -16,5 +16,5 @@ tag is all you need.
 If you want to polish it's look 💅, `<style>` is your friend.
 Bonus: it's fully scoped with no leaking out of context.
 
-When some user interaction or reactiveness is demanded, `<script>`
+When some user interaction or reactivity is demanded, `<script>`
 is going to be the guy.
