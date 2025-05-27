@@ -4,7 +4,7 @@ title = '🚀 Lego Web-Components'
 theme = 'docs'
 
 enableRobotsTXT = true
-enableGitInfo = false
+enableGitInfo = true
 
 enableInlineShortcodes = true
 
@@ -25,3 +25,4 @@ enableInlineShortcodes = true
   # github_repo_edit = "https://github.com/Polight/lego/tree/master/docs/content" # FIXME: To enable once merged
   date_format = "January 2, 2006"
   main_logo = "/lego.svg"
+  versions = [ "v1", "v2" ]
