@@ -42,4 +42,5 @@ run with defaults.
 Passing parameters in the CLI will override default parameters and custom configuration.
 
 The command line accepts the following parameters: `npx lego <sourceDir> <destDir> <options>`.
-The only option for now is `-w` (standing for the `watch` config property).
+
+The only option for now is `-w`. It relates to the `watch` config property and will rebuild your components when they change.
