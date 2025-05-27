@@ -1,5 +1,3 @@
-Documentation was moved to https://github.com/Polight/lego/tree/master/docs
-
 ```html
 <template>
   <p>Welcome to Lego, the native and ${duration} web-components library.</p>
@@ -8,7 +6,7 @@ Documentation was moved to https://github.com/Polight/lego/tree/master/docs
 <script>
   export default class extends Lego {
     init() {
-      this.state = { duration: "Future-Proof" }
+      this.state = { duration: 'Future-Proof' }
     }
   }
 </script>
@@ -22,3 +20,28 @@ The whole library runs within the browser.
 
 To know more, go to [the documentation](https://lego.js.org/) to install and create native web-components.
 
+--
+
+Following instructions describes how to update the documentation.
+
+## Requirements
+
+This documentation is generated using Hugo and [zkreations/docs](https://github.com/zkreations/docs) theme.
+
+It requires Hugo 0.138.0 or higher (**extended version** - it has its importance to transpile SCSS files). See [installation instructions](https://gohugo.io/installation/).
+
+## Getting started
+
+Go to this folder (`docs`) and run the following command to install the theme:
+
+```bash
+git submodule update --init
+```
+
+Start the local Hugo server running:
+
+```bash
+hugo -D server
+```
+
+🚀 The documentation is now accessible on [localhost:1313](http://localhost:1313).
