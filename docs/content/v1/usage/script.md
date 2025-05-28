@@ -1,5 +1,5 @@
 ---
-title: Script Tag
+title: Script tag
 weight: 10
 ---
 

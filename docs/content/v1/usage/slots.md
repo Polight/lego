@@ -1,5 +1,4 @@
 ---
-layout: page
 title: Using slots
 weight: 8
 ---
