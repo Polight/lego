@@ -3,8 +3,6 @@ title: Usage
 weight: 3
 ---
 
-## Usage of Lego web-components
-
 A web-component can optionally have 3 parts: some HTML in a `<template>` tag, some JavaScript
 in a `<script>` tag and some CSS in a `<style>` tag.
 

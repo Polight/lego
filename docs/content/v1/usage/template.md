@@ -3,7 +3,7 @@ title: Template tag
 weight: 1
 ---
 
-### `<template>` tag
+## `<template>` tag
 
 An HTML content is written within a `<template>` tag.
 It's just basic HTML augmented with a little of superpowers {{< emoji "🦸" >}}.

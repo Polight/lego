@@ -3,7 +3,7 @@ title: Loop :for
 weight: 3
 ---
 
-#### `:for` Directive
+## `:for` directive
 
 Repeat a tag based on a property.
 

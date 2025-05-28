@@ -3,7 +3,7 @@ title: Binding events
 weight: 5
 ---
 
-#### `@` Directive for binding Events
+## `@` Directive for binding events
 
 ```html
 <template>

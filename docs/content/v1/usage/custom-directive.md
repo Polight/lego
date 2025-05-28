@@ -3,7 +3,7 @@ title: Custom directives
 weight: 4
 ---
 
-#### `:` Custom Directive
+## `:` Custom directive
 
 A custom directive will interpret in JS whatever you pass as value.
 

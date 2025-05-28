@@ -56,7 +56,7 @@ Let's write a web-component that:
 
 Compile this component: `npx lego bricks`
 
-### Then include it in your page:
+## Then include it in your page
 
 _index.html_
 

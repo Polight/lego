@@ -3,7 +3,7 @@ title: Reactive CSS
 weight: 9
 ---
 
-### Reactive CSS `<style>`
+## Reactive CSS `<style>`
 
 CSS is much more fun when it's scoped.
 Here it come with the web-components.
@@ -37,13 +37,13 @@ Writing CSS is as easy as
 </style>
 ```
 
-#### Host
+### Host
 
 [`:host` is a native selector](<https://developer.mozilla.org/en-US/docs/Web/CSS/:host()>)
 for web-components.
 It allows to select the current component itself.
 
-#### Variables
+### Variables
 
 You can use variables in your CSS just like in your templates.
 

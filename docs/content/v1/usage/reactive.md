@@ -3,7 +3,7 @@ title: Reactive properties
 weight: 6
 ---
 
-#### Reactive Properties
+## Reactive properties
 
 The `state` is where the reactivity takes place.
 

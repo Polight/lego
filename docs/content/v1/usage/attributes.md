@@ -3,7 +3,7 @@ title: Pass attributes
 weight: 7
 ---
 
-#### Component Attributes
+## Component attributes
 
 Attributes declared on the components will be all be accessible through the `state`.
 If the property is initialized in the `this.state`, the attribute will be reactive:

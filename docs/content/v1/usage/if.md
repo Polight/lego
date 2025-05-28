@@ -3,7 +3,7 @@ title: Condition :if
 weight: 2
 ---
 
-#### `:if` Directive
+## `:if` directive
 
 Conditionally display a tag and its descendants.
 
