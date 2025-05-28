@@ -62,7 +62,7 @@ class Component extends HTMLElement {
 
   setAttribute(name, value) {
     super.setAttribute(name, typeof value === 'object' ? JSON.stringify(value) : value)
-    if (name.match(/@(\w*-\w*)+/)) return this.#customEvents.push([toCamelCase(name.slice(1)), value])
+    if (name.match(/@([a-z]*-[a-z]*)+/)) return this.#customEvents.push([name.slice(1), value])
     const prop = toCamelCase(name)
     const attrType = typeof this.state[prop]
     if (this.#watchProps.includes(prop)) this.render({ [prop]: sanitizeAttribute(attrType, value) })

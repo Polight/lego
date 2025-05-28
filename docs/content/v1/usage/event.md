@@ -21,9 +21,7 @@ weight: 5
 
 #### Binding custom events
 
-Lego can bind custom events that follow the following conventions:
-- The custom event type should be defined in `camelCase` ;
-- The `@`  directive should be defined in `kebab-case`.
+Lego can bind custom events. However, the custom event type should **not** be defined in `camelCase`, because of case-sensitivity issues. It is recommended to use `kebab-case`.
 
 Example:
 
@@ -37,7 +35,7 @@ Example:
 <script>
   export default class extends Lego {
     sayHi() {
-      dispatchEvent(new CustomEvent('sayHi'))
+      dispatchEvent(new CustomEvent('say-hi'))
     }
   }
 </script>
