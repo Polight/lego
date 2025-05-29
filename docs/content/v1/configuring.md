@@ -37,7 +37,7 @@ in the root folder of the project from where the compiler is called.
 It's very fine if you don't need to customize configuration and
 run with defaults.
 
-## Configuring on compile time
+## Configuring on Compile Time
 
 Passing parameters in the CLI will override default parameters and custom configuration.
 

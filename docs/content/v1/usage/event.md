@@ -1,9 +1,9 @@
 ---
-title: Binding events
+title: Binding Events
 weight: 5
 ---
 
-## `@` Directive for binding events
+`@` directive allows to bind events.
 
 ```html
 <template>

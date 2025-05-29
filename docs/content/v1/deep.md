@@ -1,15 +1,15 @@
 ---
-title: Getting deep
+title: Getting Deep
 weight: 9
 ---
 
-## Native web-components
+## Native Web-Components
 
 Because Lego is actual native web-components, all its native possibilities (like [slots](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots#Adding_flexibility_with_slots)),
 [:host](https://developer.mozilla.org/en-US/docs/Web/CSS/:host)
 and whatever exists or will exist are on board.
 
-## Browser compatibility
+## Browser Compatibility
 
 Lego is based on native _customElements_.
 [Support for customElement is spreading](https://caniuse.com/#feat=custom-elementsv1) and

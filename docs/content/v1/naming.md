@@ -1,5 +1,5 @@
 ---
-title: Naming conventions
+title: Naming Conventions
 weight: 4
 ---
 

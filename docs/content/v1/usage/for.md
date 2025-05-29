@@ -3,9 +3,7 @@ title: Loop :for
 weight: 3
 ---
 
-## `:for` directive
-
-Repeat a tag based on a property.
+`:for` directive allows to repeat a tag based on a property.
 
 The syntax is as follow: `:for="item in state.items"`.
 The _item_ value will be available trough `${item}` within the loop.
