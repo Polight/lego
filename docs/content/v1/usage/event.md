@@ -19,7 +19,7 @@ weight: 5
 </script>
 ```
 
-#### Binding custom events
+#### Binding Custom Events
 
 Lego can bind custom events. However, the custom event type should **not** be defined in `camelCase`, because of case-sensitivity issues. It is recommended to use `kebab-case`.
 
