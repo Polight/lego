@@ -1,5 +1,5 @@
 ---
-title: Advanced example
+title: Advanced Example
 weight: 7
 ---
 
@@ -56,7 +56,7 @@ Let's write a web-component that:
 
 Compile this component: `npx lego bricks`
 
-### Then include it in your page:
+## Then Include It in Your Page
 
 _index.html_
 

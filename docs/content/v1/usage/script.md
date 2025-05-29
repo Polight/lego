@@ -3,8 +3,6 @@ title: Script Tag
 weight: 10
 ---
 
-## `<script>` tag
-
 The script tag is has a special behavior.
 You will create a class extending the component, that's how you build your
 full component with advanced script.
@@ -17,7 +15,7 @@ export default class extends Lego {
 }
 ```
 
-### Accessing the component's DOM
+## Accessing the component's DOM
 
 Even if it's not the most recommended way it might occur that you need to access a DOM element from the script tag.
 

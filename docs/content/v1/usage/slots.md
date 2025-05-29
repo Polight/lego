@@ -1,10 +1,7 @@
 ---
-layout: page
-title: Using slots
+title: Using Slots
 weight: 8
 ---
-
-#### Slots
 
 [Slots](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) are part of the
 native web-component.

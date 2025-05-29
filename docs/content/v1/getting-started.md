@@ -1,5 +1,5 @@
 ---
-title: Getting started
+title: Getting Started
 weight: 2
 ---
 
@@ -8,7 +8,7 @@ Lego requires [npm](https://npmjs.com) or [yarn](https://yarnpkg.com) and [node]
 By default Lego compiles HTML components from the HTML files within the _/bricks_ folder.
 Create the folder to host your future components: `mkdir bricks`.
 
-## Quick start
+## Quick Start
 
 ### Installation
 
@@ -55,7 +55,7 @@ And use you component in your _/index.html_:
 
 Run a local web server, eg: `npx sirv-cli` and open http://localhost:5000.
 
-## Let's get a step back
+## Let's Get a Step Back
 
 What did just happen?
 

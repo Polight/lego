@@ -27,7 +27,7 @@ It's all just normal!
 Because [buildless](https://duckduckgo.com/?q=buildless) is becoming a thing, we can know give it a name that speaks to all.
 
 
-#### What does LEGO actually look like?
+#### What Does LEGO Actually Look Like?
 
 _/bricks/lean-welcome.html_:
 
@@ -57,7 +57,7 @@ The [documentation](https://lego.js.org/) will guide you 📓
 _Pretty neat!_
 
 
-## Getting Started in 3 minutes
+## Getting Started in 3 Minutes
 
 You can just hop in and experiment your first HTML Element.
 
@@ -87,7 +87,7 @@ There's no [Vite](https://vitejs.dev/) nor other 3rd parties, it's [just an inte
 I also works with [https://bun.sh](Bun) and probably other interpreters.
 
 
-## What is LEGO Behind?
+## What Is LEGO Behind?
 
 - 👙 Minimalist: ~74~ 61 lines of readable code in its core (non-optimised, uncompressed, no cheating)
 - 🌱 Zero dependency: it uses [Petit-Dom](https://github.com/yelouafi/petit-dom) which is stable and embedded, so no bad suprise in the future

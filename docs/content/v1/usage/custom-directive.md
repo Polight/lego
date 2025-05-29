@@ -1,11 +1,9 @@
 ---
-title: Custom directives
+title: Custom Directives
 weight: 4
 ---
 
-#### `:` Custom Directive
-
-A custom directive will interpret in JS whatever you pass as value.
+A `:` custom directive will interpret in JS whatever you pass as value.
 
 ```html
 <template>

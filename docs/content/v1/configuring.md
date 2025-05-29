@@ -29,7 +29,7 @@ This file will override the default [config.js](https://github.com/Polight/lego/
 > If your _/lego.config.js_ file is not found, please ensure to have `"type": "module"` in your package.json file in order to read `.js` files
 > as modules.
 
-### {{< emoji "⚠️" >}} Missing lego.config.js file, building with defaults.
+### {{< emoji "⚠️" >}} Missing lego.config.js file, building with defaults
 
 If reading in the console, it means the _/lego.config.js_ was not found
 in the root folder of the project from where the compiler is called.
@@ -37,7 +37,7 @@ in the root folder of the project from where the compiler is called.
 It's very fine if you don't need to customize configuration and
 run with defaults.
 
-## Configuring on compile time
+## Configuring on Compile Time
 
 Passing parameters in the CLI will override default parameters and custom configuration.
 
