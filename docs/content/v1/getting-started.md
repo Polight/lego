@@ -44,7 +44,7 @@ Create a file called **bricks/hello-world.html**:
 </script>
 ```
 
-Compile with `npx lego` (or `yarn lego`)
+Compile with `npm exec lego` (or `yarn lego`)
 
 And use you component in your _/index.html_:
 
@@ -53,7 +53,7 @@ And use you component in your _/index.html_:
 <hello-world></hello-world>
 ```
 
-Run a local web server, eg: `npx sirv-cli` and open http://localhost:5000.
+Run a local web server, eg: `npm exec sirv-cli` and open http://localhost:5000.
 
 ## Let's Get a Step Back
 

@@ -54,7 +54,7 @@ Let's write a web-component that:
 </script>
 ```
 
-Compile this component: `npx lego bricks`
+Compile this component: `npm exec lego bricks`
 
 ## Then Include It in Your Page
 
@@ -68,7 +68,7 @@ _index.html_
 Run your webserver and see your little app!
 
 > When developing you may want to automatically watch files changes.
-> In that case pass the `-w` flag: `npx lego -w bricks`
+> In that case pass the `-w` flag: `npm exec lego -w bricks`
 
 > Tip: you probably want to store this task with a shortcut like `npm run watch`.
 > To do so just add `"watch": "lego -w bricks"` in you _package.json_ scripts.
