@@ -1,9 +1,5 @@
 import { h, render } from 'petit-dom'
-
-function toCamelCase(name) {
-  if (!name.includes("-")) return name
-  return name.replace(/-([a-z])/g, (match, letter) => letter.toUpperCase())
-}
+import { toCamelCase } from '../utils'
 
 function sanitizeAttribute(attrType, attrValue) {
   if (attrType === 'object') return sanitizeJsonAttribute(attrValue)
