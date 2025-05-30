@@ -3,22 +3,19 @@ title: Configuring
 weight: 6
 ---
 
-The compiler can take several parameters: `sourceDir`, `destDist`, `watch`…
+The compiler can take several parameters: `sourceDir`, `targetDir`, `watch`…
 
 These will allow you to fine grain your configuration when compiling.
 
-The full list of parameters is available in the [compiler config](https://github.com/Polight/lego/blob/master/src/compiler/config.js#L1).
-You should see that file to know the exhaustive list of parameters and
-what they do.
+The full list of parameters is available in the [compiler config](https://github.com/Polight/lego/blob/master/src/compiler/config.js#L1). You should check that file to know the exhaustive list of parameters and what they do.
 
-You can either setup each of these values from a custom config file or directly
-from the command line arguments.
+You can either setup each of these values from a custom config file or directly from the command line arguments.
 
 ## Setup a Custom Configuration File
 
 Create a _lego.config.js_ file at the root of your project with the following:
 
-```
+```js
 export default {
   // Your custom settings here
 }
@@ -26,16 +23,11 @@ export default {
 
 This file will override the default [config.js](https://github.com/Polight/lego/blob/master/src/compiler/config.js#L1) settings when declared.
 
-> If your _/lego.config.js_ file is not found, please ensure to have `"type": "module"` in your package.json file in order to read `.js` files
-> as modules.
+> If your _/lego.config.js_ file is not found, please ensure to have `"type": "module"` in your package.json file in order to read `.js` files as modules.
 
-### {{< emoji "⚠️" >}} Missing lego.config.js file, building with defaults
+If reading in the console `⚠️ Missing lego.config.js file, building with defaults`, it means the _/lego.config.js_ was not found in the root folder of the project from where the compiler is called.
 
-If reading in the console, it means the _/lego.config.js_ was not found
-in the root folder of the project from where the compiler is called.
-
-It's very fine if you don't need to customize configuration and
-run with defaults.
+It's very fine if you don't need to customize configuration and run with defaults.
 
 ## Configuring on Compile Time
 
