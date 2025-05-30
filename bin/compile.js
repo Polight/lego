@@ -6,12 +6,6 @@ import { execFileSync } from 'child_process'
 import { createComponent, generateIndex } from '../src/compiler/transpiler.js'
 import defaultConfig from '../src/compiler/config.js'
 
-// Read the version from package.json
-const packagePath = fs.existsSync('./node_modules/@polight/lego/package.json')
-  ? './node_modules/@polight/lego/package.json'
-  : './package.json'
-const { version } = JSON.parse(fs.readFileSync(packagePath))
-
 // Read the config from the args
 const args = process.argv
 const [sourceDir, targetDir] = args.slice(2).filter(a => !a.startsWith('-'))
@@ -79,7 +73,6 @@ async function compile(sourceDir, targetDir, config) {
     const component = createComponent({
       html: fs.readFileSync(f, 'utf8'),
       name: filename,
-      version,
       ...config
     })
     fs.writeFileSync(`${targetDir}/${filename}.js`, component.content, 'utf8')

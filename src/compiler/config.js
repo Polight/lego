@@ -1,4 +1,5 @@
-import {version} from '../../package.json';
+import packageJson from '../../package.json' with { type: "json" };
+const version = packageJson.version
 
 export default {
   // Path to the Lego Component class.
@@ -27,4 +28,7 @@ export default {
   // Inject this lines first in <style> tag when creating a component.
   // Ideal for importing stylesheets in all components.
   preStyle: '',
+
+  // Export the version for easy access
+  version
 }

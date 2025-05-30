@@ -114,6 +114,22 @@ Lego is not (and will never be):
 
 🎈 You can [read the core code](https://github.com/Polight/lego/blob/master/src/lib/Component.js) that is only 61 <abbr title="Lines Of Code">LOC</abbr> resulting that Lego is **as light as 3Kb** for the full bundle!
 
+## Developing and Contributing to Lego
+
+Lego codebase is small so navigating through its code should be pretty straightforward.
+
+### Updating the Compiler
+
+For any changes within the `src/compiler` folder, you can test it by running it from one of your Lego project. From this project, simply run `[path-from-your-project-to-lego-folder]/bin/compile.js` and see the result on your compiled Lego components.
+
+### Updating the Library
+
+For any changes within the `src/lib` folder, you can test it by building it with `npm run build` and using files from `dist` folder within one of your Lego project.
+
+### Contributing
+
+Before opening a pull request with your changes, you don't need to build and commit the `dist` folder with the `npm run build` command. It is achieved when deploying a new version of Lego.
+
 ## Latest News
 
 - April 2025: [Lego v1](https://lego.js.org/v1/) will remain in place and stable as it remains more flexible than ~~[the Lego v2 proposal](https://lego.js.org/v2/)~~.
