@@ -128,7 +128,7 @@ For any changes within the `src/lib` folder, you can test it by building it with
 
 ### Contributing
 
-Before opening a pull request with your changes, make sure you have built the `dist` package with the `npm run build` command.
+Before opening a pull request with your changes, you don't need to build and commit the `dist` folder with the `npm run build` command. It is achieved when deploying a new version of Lego.
 
 ## Latest News
 
