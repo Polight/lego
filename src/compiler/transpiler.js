@@ -1,5 +1,5 @@
 import parse from './vdom-parser.js'
-
+import { toCamelCase } from '../utils.js'
 
 function parseHtmlComponent(html) {
   const templateMatch = html.match(/<template[^>]*>([\s\S]*)<\/template>/m)
@@ -33,10 +33,6 @@ ${dom.script || `export default class extends ${baseClassName} {}`}
 `
 }
 
-function camelCase(name) {
-  return name.split('-').map(c => c.slice(0,1).toUpperCase() + c.slice(1)).join('')
-}
-
 function createComponent({ html, name, importPath, baseClassName, preScript, preStyle, version }) {
   const dom = parseHtmlComponent(html)
   const content = generateFileContent({ dom, importPath, baseClassName, preScript, preStyle, version })
@@ -45,7 +41,7 @@ function createComponent({ html, name, importPath, baseClassName, preScript, pre
 
 function generateIndex(fileNames) {
   return fileNames.map((fileName) => {
-    const className = camelCase(fileName)
+    const className = toCamelCase(fileName)
     return [
       `import ${className} from './${fileName}.js'`,
       `customElements.define('${fileName}', ${className})`

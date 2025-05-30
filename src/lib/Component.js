@@ -1,9 +1,5 @@
 import { h, render } from 'petit-dom'
-
-function toCamelCase(name) {
-  if (!name.includes("-")) return name
-  return name.replace(/-([a-z])/g, (match, letter) => letter.toUpperCase())
-}
+import { toCamelCase } from '../utils'
 
 function sanitizeAttribute(attrType, attrValue) {
   if (attrType === 'object') return sanitizeJsonAttribute(attrValue)
@@ -26,6 +22,7 @@ class Component extends HTMLElement {
   #watchProps = []
   #isConnected = false
   #isInitialized = false
+  #customEvents = []
 
   #ready() {
     this.init?.()
@@ -51,7 +48,6 @@ class Component extends HTMLElement {
     )
   }
 
-
   get vdom() {
     return ({ state }) => ""
   }
@@ -61,6 +57,7 @@ class Component extends HTMLElement {
   }
 
   setAttribute(name, value) {
+    if (name.match(/@[a-z]+(?:-[a-z]+)*/)) return this.#customEvents.push([name.slice(1), value])
     super.setAttribute(name, typeof value === 'object' ? JSON.stringify(value) : value)
     const prop = toCamelCase(name)
     const attrType = typeof this.state[prop]
@@ -81,11 +78,13 @@ class Component extends HTMLElement {
     this.#isConnected = true
     // Load the DOM
     this.render()
+    this.#customEvents.forEach(([customEvent, listener]) => this.addEventListener(customEvent, listener))
     this.connected?.()
   }
 
   disconnectedCallback() {
     this.#isConnected = false
+    this.#customEvents.forEach(([customEvent, listener]) => this.removeEventListener(customEvent, listener))
     this.disconnected?.()
   }
 

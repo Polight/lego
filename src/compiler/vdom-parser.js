@@ -1,5 +1,5 @@
-import { parseFragment } from 'parse5' 
-
+import { parseFragment } from 'parse5'
+import { isNativeEvent } from './native-events'
 
 function vnode(name, attributes = {}, children = '', indent = '') {
   const attrs = Object.keys(attributes).reduce((acc, name) => {
@@ -28,7 +28,8 @@ function extractDirectives(node) {
       attrs.push({ name, value })
     }
     else if(name.startsWith('@')) {
-      name = `on${name.slice(1)}`
+      const onEventName = `on${name.slice(1)}`
+      if (isNativeEvent(onEventName)) name = onEventName
       value = `this.${value}.bind(this)`
       attrs.push({ name, value })
     }
