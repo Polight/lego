@@ -11,31 +11,33 @@ function parseHtmlComponent(html) {
   return { template, script, style }
 }
 
-function generateFileContent({ dom, importPath, baseClassName, version, preScript = '', preStyle = '' }) {
+function generateFileContent({ dom, config }) {
     return `
-// Lego version ${version}
-import { h, Component } from '${importPath}'
+// Lego version ${config.version}
+import { h, Component } from '${config.importPath}'
 
-class ${baseClassName} extends Component {
+class ${config.baseClassName} extends Component {
+  useShadowDOM = ${Boolean(config.useShadowDOM)}
+
   ${dom.template ? `get vdom() {
     return ({ state }) => ${parse(dom.template)}
   }` : ''}
-  ${dom.style || preStyle ? `get vstyle() {
+  ${dom.style || config.preStyle ? `get vstyle() {
     return ({ state }) => h('style', {}, \`
-    ${preStyle}
+    ${config.preStyle || ''}
     ${dom.style}
   \`)}` : ''}
 }
 
-${preScript}
+${config.preScript || ''}
 
-${dom.script || `export default class extends ${baseClassName} {}`}
+${dom.script || `export default class extends ${config.baseClassName} {}`}
 `
 }
 
-function createComponent({ html, name, importPath, baseClassName, preScript, preStyle, version }) {
+function createComponent({ html, name, config }) {
   const dom = parseHtmlComponent(html)
-  const content = generateFileContent({ dom, importPath, baseClassName, preScript, preStyle, version })
+  const content = generateFileContent({ dom, config })
   return { name, content }
 }
 

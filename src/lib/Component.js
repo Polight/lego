@@ -18,7 +18,6 @@ function sanitizeJsonAttribute(attrValue) {
 
 class Component extends HTMLElement {
   state = {}
-  useShadowDOM = true
   #watchProps = []
   #isConnected = false
   #isInitialized = false
