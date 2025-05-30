@@ -120,7 +120,7 @@ Lego codebase is small so navigating through its code should be pretty straightf
 
 ### Updating the Compiler
 
-For any changes within the `src/compiler` folder, you can test it by running it from one of your Lego project. From this project, simply run `bun [path-from-your-project-to-lego-folder]/bin/compile.js` and see the result on your compiled Lego components.
+For any changes within the `src/compiler` folder, you can test it by running it from one of your Lego project. From this project, simply run `[path-from-your-project-to-lego-folder]/bin/compile.js` and see the result on your compiled Lego components.
 
 ### Updating the Library
 
