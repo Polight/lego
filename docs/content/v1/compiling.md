@@ -3,7 +3,7 @@ title: Compiling
 weight: 5
 ---
 
-Compiling Lego component is built-in with no extra installation; pretty straighforward.
+Compiling Lego component is built-in with no extra installation; pretty straightforward.
 
 ```sh
 LEGO_URL=</url/to/lego.min.js> npx lego <source_path> <target_file_path>
