@@ -5,12 +5,19 @@ weight: 1
 
 LEGO (_Lightweight Embedded Gluten-free Objects_) is a library for writing fast {{< emoji "♻️" >}} reactive, {{< emoji "📦" >}} scoped and predictable {{< emoji "🏡" >}} **native Web Components** in HTML/CSS/JS, that are easy to digest {{< emoji "🌱" >}} for your browser.
 
-Example (`my-example.html`):
+Example (`bricks/my-example.html`):
 
 ```html
 <template>
-  <p>Hey Joe</p>
+  <h1>Welcome to LEGO</h1>
+  <p>The lean way to make ${state.duration} Web Components <slot></slot></p>
 </template>
+
+<script>
+  export default class extends Lego {
+    state = { duration: 'Future-Proof' }
+  }
+</script>
 
 <style>
   p {

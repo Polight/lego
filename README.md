@@ -40,6 +40,12 @@ _/bricks/lean-welcome.html_:
     state = { duration: 'Short-Term' }
   }
 </script>
+
+<style>
+  p {
+    color: chocolate;
+  }
+</style>
 ```
 
 Later, when builded and loaded as a plain JS-file, you can use it anywhere in your HTML:

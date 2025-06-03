@@ -6,7 +6,8 @@ Here is an example of LEGO component:
 
 ```html
 <template>
-  <p>Welcome to LEGO, the Native and ${duration} Web Components Library.</p>
+  <h1>Welcome to LEGO</h1>
+  <p>The lean way to make ${state.duration} Web Components <slot></slot></p>
 </template>
 
 <script>
@@ -14,6 +15,12 @@ Here is an example of LEGO component:
     state = { duration: 'Future-Proof' }
   }
 </script>
+
+<style>
+  p {
+    color: chocolate;
+  }
+</style>
 ```
 
 To know more, go to [the documentation](https://lego.js.org/) to install and create native Web Components using LEGO.
