@@ -1,6 +1,6 @@
 ```html
 <template>
-  <p>Welcome to Lego, the native and ${duration} web-components library.</p>
+  <p>Welcome to Lego, the Native and ${duration} Web Components Library.</p>
 </template>
 
 <script>
@@ -12,13 +12,13 @@
 </script>
 ```
 
-🚀 Lego Web-Components, the Native and Future-Proof Web-Components Library.
+🚀 Lego Web Components, the Native and Future-Proof Web Components Library.
 
-Lego is a web-component library that allows you to build HTML elements easily and compile them to native HTML elements.
+Lego is a Web Component library that allows you to build HTML elements easily and compile them to native HTML elements.
 
 The whole library runs within the browser.
 
-To know more, go to [the documentation](https://lego.js.org/) to install and create native web-components.
+To know more, go to [the documentation](https://lego.js.org/) to install and create native Web Components.
 
 --
 

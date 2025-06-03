@@ -20,5 +20,5 @@ _components/x-button.html_:
 
 Will make `<my-super-button>` component available.
 
-> Note that because it builds native web-components, the naming convention must respect
+> Note that because it builds native Web Components, the naming convention must respect
 > [the ones from the standards](http://w3c.github.io/webcomponents/spec/custom/#valid-custom-element-name) (lowercase, with a dash in the name, starting with a letter, …)

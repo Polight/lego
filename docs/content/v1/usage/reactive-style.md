@@ -4,9 +4,9 @@ weight: 9
 ---
 
 CSS is much more fun when it's scoped.
-Here it come with the web-components.
+Here it come with the Web Components.
 
-Here again, no trick, just the full power of web-components and scoping styles.
+Here again, no trick, just the full power of Web Components and scoping styles.
 Well, you should know that the css is reactive too! {{< emoji "😲" >}}
 
 Writing CSS is as easy as
@@ -37,8 +37,8 @@ Writing CSS is as easy as
 
 ## Host
 
-[`:host` is a native selector](<https://developer.mozilla.org/en-US/docs/Web/CSS/:host()>)
-for web-components.
+[`:host` is a native selector](<https://developer.mozilla.org/en-US/docs/Web/CSS/:host()>) for Web Components.
+
 It allows to select the current component itself.
 
 ## Variables

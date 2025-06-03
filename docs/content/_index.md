@@ -1,3 +1,3 @@
 ---
-title: LEGO – Native Web-Components for Low-Tech Lovers ♥️
+title: LEGO – Native Web Components for Low-Tech Lovers ♥️
 ---
