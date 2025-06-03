@@ -32,21 +32,27 @@ _/bricks/lean-welcome.html_:
 ```html
 <template>
   <h1>Welcome to LEGO</h1>
-  <p>The lean way to make Web Components <slot></slot></p>
+  <p>The lean way to make ${state.duration} Web Components <slot></slot></p>
 </template>
+
+<script>
+  export default class extends Lego {
+    state = { duration: 'Short-Term' }
+  }
+</script>
 ```
 
 Later, when builded and loaded as a plain JS-file, you can use it anywhere in your HTML:
 
 ```html
-<lean-welcome>powerful and easy</lean-welcome>
+<lean-welcome duration="Future-Proof">powerful and easy</lean-welcome>
 ```
 
 Will read in your HTML:
 
-```
-Welcome to LEGO
-The lean way to make Web Components powerful and easy
+```html
+<h1>Welcome to LEGO</h1>
+<p>The lean way to make Future-Proof Web Components powerful and easy</p>
 ```
 
 Of course there's **so much** more you can do. The [documentation](https://lego.js.org/) is here to guide you. 📓
