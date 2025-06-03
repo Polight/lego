@@ -16,7 +16,7 @@ It's stable and predictable.
 
 If you have ever played with Web Component-like frameworks (not to name Vue, React, Svelte…), you may know how debugging gets tricky and requires extra tooling.
 
-Because LEGO is native, your browser developper toobar is all you need.
+Because LEGO is native, your browser developer toolbar is all you need.
 - `debugger` works as expected,
 - _step-by-step_ debugging,
 - element inspector,
@@ -91,8 +91,8 @@ I also works with [https://bun.sh](Bun) and probably other interpreters.
 
 ## What Is LEGO Behind?
 
-- 👙 Minimalist: ~74~ 61 lines of readable code in its core (non-optimised, uncompressed, no cheating)
-- 🌱 Zero dependency: it uses [Petit-Dom](https://github.com/yelouafi/petit-dom) which is stable and embedded, so no bad suprise in the future
+- 👙 Minimalist: ~74~ 61 lines of readable code in its core (non-optimized, uncompressed, no cheating)
+- 🌱 Zero dependency: it uses [Petit-Dom](https://github.com/yelouafi/petit-dom) which is stable and embedded, so no bad surprise in the future
 - ♻️ Reactive: updating the state recalculate the Virtual Dom when needed
 - 🚀 fast: using virtual dom through a thin layer makes it close to bare-metal
 - 💧 Simple: that's [Vanilla](http://vanilla-js.com/), there isn't much to know, it's a raw class to extend; no magic ✨
@@ -100,7 +100,7 @@ I also works with [https://bun.sh](Bun) and probably other interpreters.
 - 🏡 Native: LEGO components are actual native Web Components, you benefit from all the today's and tomorrow's possibilities ([slot](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots), [Shadow DOM](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM), …).
 
 Lego is not (and will never be):
-- 🏯 A full bloated frontend framework with routing. [Others do it well](https://github.com/visionmedia/page.js).
+- 🏯 A fully-bloated frontend framework with routing. [Others do it well](https://github.com/visionmedia/page.js).
 - 🏗 A website builder with SSR or similar complexities.
 - 🔐 An HTML replacement that locks you into a specific technology.
 
