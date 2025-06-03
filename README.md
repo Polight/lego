@@ -67,7 +67,7 @@ Once you're done with it you can write more components the same way and play wit
 
 ## What Can You **Actually** Do With It?
 
-You can create a simple reusable Web Components for your HTML website or build a full fledge app with it. It's as light as powerful, fully driven by the web-browsers standards.
+You can create a simple reusable Web Component for your HTML website or build a full fledge app with it. It's as light as powerful, fully driven by the web-browsers standards.
 
 Various applications are running LEGO in production for years now. Because of the standards and the zero dependency you can rely on it for the long term. Your site/app will still run and remain editable in 10+ years, and as long as web browsers will exist.
 
