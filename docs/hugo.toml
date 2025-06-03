@@ -26,3 +26,8 @@ enableInlineShortcodes = true
   date_format = "January 2, 2006"
   main_logo = "/lego.svg"
   versions = [ "v1", "v2" ]
+
+# Caches for deployment
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
