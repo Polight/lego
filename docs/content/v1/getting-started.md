@@ -37,9 +37,7 @@ Create a file called **bricks/hello-world.html**:
 
 <script>
   export default class extends Lego {
-    init() {
-      this.state = { name: 'World!' }
-    }
+    state = { name: 'World!' }
   }
 </script>
 ```
@@ -57,15 +55,15 @@ Run a local web server, eg: `npm exec sirv-cli` and open http://localhost:5000.
 
 ## Let's Get a Step Back
 
-What did just happen?
+What did just happened?
 
 Here's what you just did with this simple code:
 
-1. you created a native HTML element called `hello-world` by creating _bricks/hello-world.html_
-2. you made it react with a `name` state property
-3. you imported all components from `./dist/index.js` (well, only 1 for now)
-4. you used the HTML element `<hello-world></hello-world>`
+1. you created a native HTML element called `hello-world` by creating _bricks/hello-world.html_ ;
+2. you made it react with a `name` state property ;
+3. you imported all components from `./dist/index.js` (well, only 1 for now) ;
+4. you used the HTML element `<hello-world></hello-world>`.
 
-No magic {{< emoji "🪄" >}} here, just a couple of [default configuration that you can override](/configuring-components/).
+No magic {{< emoji "🪄" >}} here, just a couple of [default configuration that you can override]({{< relref "configuring" >}}).
 
 You website is ready to be published on any _static_ host, even Github Pages.
