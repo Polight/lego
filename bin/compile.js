@@ -25,7 +25,7 @@ const argsConfig = {
  */
 function mergeObjects(native, override) {
   return Object.keys(native).reduce((obj, key) => {
-    obj[key] = (key in override && override[key])
+    obj[key] = (key in override && typeof override[key] !== 'undefined')
       ? override[key]
       : native[key]
     return obj
@@ -73,7 +73,7 @@ async function compile(sourceDir, targetDir, config) {
     const component = createComponent({
       html: fs.readFileSync(f, 'utf8'),
       name: filename,
-      ...config
+      config
     })
     fs.writeFileSync(`${targetDir}/${filename}.js`, component.content, 'utf8')
     return { component, filename }
@@ -113,7 +113,7 @@ async function build() {
   const compiled = await compile(sourceDir, targetDir, config)
   writeIndex(targetDir, compiled.map(c => c.filename))
   const names = compiled.map(c => c.component.name)
-  console.info(`⚙️  Current configuration:`, config)
+  console.info('⚙️  Current configuration:', config)
   console.info(`🏗  ${names.length} component${names.length > 1 ? 's were' : ' was'} compiled into "${config.targetDir}": ${names.join(', ')}.`)
 
   if (config.watch) {

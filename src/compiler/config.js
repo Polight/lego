@@ -29,6 +29,11 @@ export default {
   // Ideal for importing stylesheets in all components.
   preStyle: '',
 
+  // Boolean value to enable or disable use of ShadowDOM instead of LightDOM for
+  // Lego components in the whole project. ShadowDOM ensures DOM and styles
+  // isolation away from parents and other components.
+  useShadowDOM: true,
+
   // Export the version for easy access
   version
 }
