@@ -633,18 +633,36 @@ function render(vnode, parentDomNode, options = {}) {
 }
 
 function toCamelCase(name) {
-  if (!name.includes("-")) return name
+  if (!name.includes('-')) return name
   return name.replace(/-([a-z])/g, (match, letter) => letter.toUpperCase())
 }
+
+function sanitizeAttribute(attrType, attrValue) {
+  if (attrType === 'object') return sanitizeJsonAttribute(attrValue)
+  if (attrType === 'boolean') return attrValue === "" || !!attrValue
+  if (attrType === 'number') return Number(attrValue)
+  return attrValue
+}
+
+function sanitizeJsonAttribute(attrValue) {
+  try {
+    return JSON.parse(attrValue)
+  } catch (_) {
+    return attrValue
+  }
+}
+
 class Component extends HTMLElement {
   state = {}
   useShadowDOM = true
+  #watchProps = []
   #isConnected = false
   #isInitialized = false
+  #customEvents = []
 
   #ready() {
     this.init?.();
-    this.watchProps = Object.keys(this.state);
+    this.#watchProps = Object.keys(this.state);
     this.#syncAttributesToState();
     this.document = this.useShadowDOM
       ? this.attachShadow({ mode: "open" })
@@ -654,10 +672,14 @@ class Component extends HTMLElement {
 
   #syncAttributesToState() {
     this.state = Array.from(this.attributes).reduce(
-      (state, attr) => ({
-        ...state,
-        [toCamelCase(attr.name)]: attr.value,
-      }),
+      (state, attr) => {
+        const camelCaseName = toCamelCase(attr.name);
+        const attrType = typeof this.state[camelCaseName];
+        return {
+          ...state,
+          [camelCaseName]: sanitizeAttribute(attrType, attr.value),
+        }
+      },
       this.state
     );
   }
@@ -671,17 +693,19 @@ class Component extends HTMLElement {
   }
 
   setAttribute(name, value) {
-    super.setAttribute(name, value);
+    if (name.match(/@[a-z]+(?:-[a-z]+)*/)) return this.#customEvents.push([name.slice(1), value])
+    super.setAttribute(name, typeof value === 'object' ? JSON.stringify(value) : value);
     const prop = toCamelCase(name);
-    if (this.watchProps.includes(prop)) this.render({ [prop]: value });
+    const attrType = typeof this.state[prop];
+    if (this.#watchProps.includes(prop)) this.render({ [prop]: sanitizeAttribute(attrType, value) });
   }
 
   removeAttribute(name) {
     super.removeAttribute(name);
     const prop = toCamelCase(name);
-    if (this.watchProps.includes(prop) && prop in this.state) {
-      this.render({ [prop]: null });
-      delete this.state[prop];
+    const attrType = typeof this.state[prop];
+    if (this.#watchProps.includes(prop) && prop in this.state) {
+      this.render({ [prop]: sanitizeAttribute(attrType, null) });
     }
   }
 
@@ -690,11 +714,13 @@ class Component extends HTMLElement {
     this.#isConnected = true;
     // Load the DOM
     this.render();
+    this.#customEvents.forEach(([customEvent, listener]) => this.addEventListener(customEvent, listener));
     this.connected?.();
   }
 
   disconnectedCallback() {
     this.#isConnected = false;
+    this.#customEvents.forEach(([customEvent, listener]) => this.removeEventListener(customEvent, listener));
     this.disconnected?.();
   }
 
@@ -712,13 +738,15 @@ class Component extends HTMLElement {
   }
 
   render(state) {
-    this.setState(state);
+    if (state) this.setState(state);
     if (!this.#isConnected) return
 
-    return render(
+    render(
       [this.vdom({ state: this.state }), this.vstyle({ state: this.state })],
       this.document
-    )
+    );
+
+    this.rendered?.(state);
   }
 }
 
