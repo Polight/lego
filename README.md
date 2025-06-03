@@ -5,7 +5,7 @@
 
 # LEGO: Modern Buildless Web Components
 
-LEGO is a fast & native-Web Components library.
+LEGO (_Lightweight Embedded Gluten-free Objects_) is a library for writing fast ♻️ reactive, 📦 scoped and predictable 🏡 **native Web Components** in HTML/CSS/JS, that are easy to digest 🌱 for your browser.
 
 ## Native Web Components?
 
@@ -80,9 +80,8 @@ Various applications are running LEGO in production for years now. Because of th
 
 ## How Does LEGO Work?
 
-LEGO (_Lightweight Embedded Gluten-free Objects_) is a base class that you can extend and provide you with methods to use ♻️ reactive and 🏡 **native Web Components** that are easy to digest 🌱 for your browser.
+LEGO is a base class that you can extend and provide you with useful methods for reactivity. A small CLI in NodeJS come along to build 🚀 your component.
 
-A small CLI in NodeJS come along to build 🚀 your component.
 There's no [Vite](https://vitejs.dev/) nor other 3rd parties, it's [just an interpreter of ±130 lines of readable code](https://github.com/Polight/lego/blob/master/src/compiler/transpiler.js).
 
 It also works with [Bun](https://bun.sh) and probably other interpreters.
