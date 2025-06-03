@@ -21,7 +21,7 @@ Example (`my-example.html`):
 
 These are **native HTML elements** with Shadow DOM, slots and all native features from the official specs.
 
-Lego is:
+LEGO is:
 
 - {{< emoji "👙" >}} Minimalist: ~74~ 61 lines of readable code in its core (non-optimized, uncompressed, no cheating).
 - {{< emoji "🌱" >}} Low dependency: its single third-party is the minimalist [Petit-Dom](https://github.com/yelouafi/petit-dom) which itself has no dependency
@@ -33,7 +33,7 @@ Lego is:
   fully based on browser features, it's secured and upgraded
   via your browser.
 
-Lego is not (and will never be):
+LEGO is not (and will never be):
 
 - {{< emoji "🏯" >}} A full bloated frontend framework with built-in routing. [Others do it well](https://github.com/visionmedia/page.js).
 - {{< emoji "🏗" >}} A website builder with built-in SSR or similar complexities.
@@ -42,11 +42,11 @@ Lego is not (and will never be):
 
 View the [demo](https://polight.github.io/lego-demo/) and [their source](https://github.com/Polight/lego-demo) {{< emoji "🧪" >}}.
 
-Lego is inspired from the [native Web Component spec](https://developer.mozilla.org/en-US/docs/Web/Web_Components) and [Riot](https://riot.js.org/).
+LEGO is inspired from the [native Web Component spec](https://developer.mozilla.org/en-US/docs/Web/Web_Components) and [Riot](https://riot.js.org/).
 
 It's just **much lighter** with simplicity, a source code that is readable for a regular human which makes it accessible to hack, tweak and maintain in the loooong term.
 The [core lib](https://github.com/Polight/lego/blob/master/src/lib/Component.js) is only 61 <abbr title="Lines Of Code">LOC</abbr>!
-Lego is as light as **3Kb** for the full bundle!
+LEGO is as light as **3Kb** for the full bundle!
 
 No Babel transpiler, no Parcel, no Webpack… it just works out of the box.
 

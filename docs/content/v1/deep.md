@@ -5,13 +5,13 @@ weight: 8
 
 ## Native Web Components
 
-Because Lego is actual native Web Components, all its native possibilities (like [slots](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots#Adding_flexibility_with_slots)),
+Because LEGO is actual native Web Components, all its native possibilities (like [slots](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots#Adding_flexibility_with_slots)),
 [:host](https://developer.mozilla.org/en-US/docs/Web/CSS/:host)
 and whatever exists or will exist are on board.
 
 ## Browser Compatibility
 
-Lego is based on native _customElements_.
+LEGO is based on native _customElements_.
 [Support for customElement is spreading](https://caniuse.com/#feat=custom-elementsv1) and
 shall increase in time.
 

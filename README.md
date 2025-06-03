@@ -5,17 +5,15 @@
 
 # LEGO: Modern Buildless Web Components
 
-Lego is a fast & native-Web Components library.
+LEGO is a fast & native-Web Components library.
 
 ## Native Web Components?
 
 Yes, you write native HTML, CSS and JS and create a native [W3C](https://en.wikipedia.org/wiki/World_Wide_Web_Consortium)-compliant Web Components.
 
 It's stable and predictable.
+If you have ever played with Web Component-like frameworks (not to name Vue, React, Svelte…), you may know how debugging gets tricky and requires extra tooling. Because LEGO is native, your browser developer toolbar is all you need.
 
-If you have ever played with Web Component-like frameworks (not to name Vue, React, Svelte…), you may know how debugging gets tricky and requires extra tooling.
-
-Because LEGO is native, your browser developer toolbar is all you need.
 - `debugger` works as expected,
 - _step-by-step_ debugging,
 - element inspector,
@@ -72,11 +70,7 @@ Once you're done with it you can write more components the same way and play wit
 You can create a simple reusable Web Components for your HTML website or build a full fledge app with it.
 It's as light as powerful, fully driven by the web-browsers standards.
 
-Various applications are running Lego in production for years now.
-
-Because of the standards and the zero dependency you can rely on it for the long term.
-
-Your site/app will still running and remain editable in 10+ years, and as long as web browsers will exist.
+Various applications are running LEGO in production for years now. Because of the standards and the zero dependency you can rely on it for the long term. Your site/app will still run and remain editable in 10+ years, and as long as web browsers will exist.
 
 
 ## How Does LEGO Work?
@@ -98,7 +92,8 @@ I also works with [https://bun.sh](Bun) and probably other interpreters.
 - 🪶 3 directives to enhance HTML: `:if` for conditions, `:for` for loops, `@myfuncname` to call an action
 - 🏡 Native: LEGO components are actual native Web Components, you benefit from all the today's and tomorrow's possibilities ([slot](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots), [Shadow DOM](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM), …).
 
-Lego is not (and will never be):
+LEGO is not (and will never be):
+
 - 🏯 A fully-bloated frontend framework with routing. [Others do it well](https://github.com/visionmedia/page.js).
 - 🏗 A website builder with SSR or similar complexities.
 - 🔐 An HTML replacement that locks you into a specific technology.
@@ -109,28 +104,28 @@ Lego is not (and will never be):
 
 📕 [Read the full documentation at https://lego.js.org](https://lego.js.org)
 
-💭 Lego is inspired from the [native Web Component spec](https://developer.mozilla.org/en-US/docs/Web/Web_Components) and [Riot](https://riot.js.org/).
+💭 LEGO is inspired from the [native Web Component spec](https://developer.mozilla.org/en-US/docs/Web/Web_Components) and [Riot](https://riot.js.org/).
 
 🔧 Customizing and contributing is just **much lighter** with simplicity, source that are easy to read, to hack and to maintain.
 
 🎈 You can [read the core code](https://github.com/Polight/lego/blob/master/src/lib/Component.js) that is only 61 <abbr title="Lines Of Code">LOC</abbr> resulting that Lego is **as light as 3Kb** for the full bundle!
 
-## Developing and Contributing to Lego
+## Developing and Contributing to LEGO
 
-Lego codebase is small so navigating through its code should be pretty straightforward.
+LEGO codebase is small so navigating through its code should be pretty straightforward.
 
 ### Updating the Compiler
 
-For any changes within the `src/compiler` folder, you can test it by running it from one of your Lego project. From this project, simply run `[path-from-your-project-to-lego-folder]/bin/compile.js` and see the result on your compiled Lego components.
+For any changes within the `src/compiler` folder, you can test it by running it from one of your LEGO project. From this project, simply run `[path-from-your-project-to-lego-folder]/bin/compile.js` and see the result on your compiled LEGO components.
 
 ### Updating the Library
 
-For any changes within the `src/lib` folder, you can test it by building it with `npm run build` and using files from `dist` folder within one of your Lego project.
+For any changes within the `src/lib` folder, you can test it by building it with `npm run build` and using files from `dist` folder within one of your LEGO project.
 
 ### Contributing
 
-Before opening a pull request with your changes, you don't need to build and commit the `dist` folder with the `npm run build` command. It is achieved when deploying a new version of Lego.
+Before opening a pull request with your changes, you don't need to build and commit the `dist` folder with the `npm run build` command. It is achieved when deploying a new version of LEGO.
 
 ## Latest News
 
-- April 2025: [Lego v1](https://lego.js.org/v1/) will remain in place and stable as it remains more flexible than ~~[the Lego v2 proposal](https://lego.js.org/v2/)~~.
+- April 2025: [LEGO v1](https://lego.js.org/v1/) will remain in place and stable as it remains more flexible than ~~[the LEGO v2 proposal](https://lego.js.org/v2/)~~.

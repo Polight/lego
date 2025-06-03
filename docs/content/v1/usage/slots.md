@@ -5,7 +5,7 @@ weight: 8
 
 [Slots](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) are part of the
 native Web Component.
-Because Lego builds native Web Components, you can use the standard _slots_ as documented.
+Because LEGO builds native Web Components, you can use the standard _slots_ as documented.
 
 Example:
 
