@@ -3,7 +3,7 @@ title: Welcome
 weight: 1
 ---
 
-LEGO (_Lightweight Embedded Gluten-free Objects_) is a library for writing fast {{< emoji "♻️" >}} reactive, {{< emoji "📦" >}} scoped and predictable {{< emoji "🏡" >}} **native web-components** in HTML/CSS/JS, that are easy to digest {{< emoji "🌱" >}} for your browser.
+LEGO (_Lightweight Embedded Gluten-free Objects_) is a library for writing fast {{< emoji "♻️" >}} reactive, {{< emoji "📦" >}} scoped and predictable {{< emoji "🏡" >}} **native Web Components** in HTML/CSS/JS, that are easy to digest {{< emoji "🌱" >}} for your browser.
 
 Example (`my-example.html`):
 
@@ -42,7 +42,7 @@ Lego is not (and will never be):
 
 View the [demo](https://polight.github.io/lego-demo/) and [their source](https://github.com/Polight/lego-demo) {{< emoji "🧪" >}}.
 
-Lego is inspired from the [native Web-Component spec](https://developer.mozilla.org/en-US/docs/Web/Web_Components) and [Riot](https://riot.js.org/).
+Lego is inspired from the [native Web Component spec](https://developer.mozilla.org/en-US/docs/Web/Web_Components) and [Riot](https://riot.js.org/).
 
 It's just **much lighter** with simplicity, a source code that is readable for a regular human which makes it accessible to hack, tweak and maintain in the loooong term.
 The [core lib](https://github.com/Polight/lego/blob/master/src/lib/Component.js) is only 61 <abbr title="Lines Of Code">LOC</abbr>!

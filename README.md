@@ -4,15 +4,17 @@
 </p>
 
 
-# LEGO: Modern Buildless Web-Components
+# LEGO: Modern Buildless Web Components
 
-## Native Web-Components?
+Lego is a fast & native-Web Components library.
 
-Yes, you write native HTML, CSS and JS and create a native web-components [W3C](https://en.wikipedia.org/wiki/World_Wide_Web_Consortium) compliant.
+## Native Web Components?
+
+Yes, you write native HTML, CSS and JS and create a native [W3C](https://en.wikipedia.org/wiki/World_Wide_Web_Consortium)-compliant Web Components.
 
 It's stable and predictable.
 
-If you have ever played with Web-Component-like frameworks (not to name Vue, React, Svelte…), you may know how debugging gets tricky and requires extra tooling.
+If you have ever played with Web Component-like frameworks (not to name Vue, React, Svelte…), you may know how debugging gets tricky and requires extra tooling.
 
 Because LEGO is native, your browser developper toobar is all you need.
 - `debugger` works as expected,
@@ -34,7 +36,7 @@ _/bricks/lean-welcome.html_:
 ```html
 <template>
   <h1>Welcome to LEGO</h1>
-  <p>The lean way to make web-components <slot></slot></p>
+  <p>The lean way to make Web Components <slot></slot></p>
 </template>
 ```
 
@@ -48,7 +50,7 @@ Will read in your HTML:
 
 ```
 Welcome to LEGO
-The lean way to make web-components powerful and easy
+The lean way to make Web Components powerful and easy
 ```
 
 Of course there's **so much** more you can do.
@@ -68,7 +70,7 @@ Once you're done with it you can write more components the same way and play wit
 
 ## What Can You **Actually** Do With It?
 
-You can create a simple reusable web-components for your HTML website or build a full fledge app with it.
+You can create a simple reusable Web Components for your HTML website or build a full fledge app with it.
 It's as light as powerful, fully driven by the web-browsers standards.
 
 Various applications are running Lego in production for years now.
@@ -80,7 +82,7 @@ Your site/app will still running and remain editable in 10+ years, and as long a
 
 ## How Does LEGO Work?
 
-LEGO (_Lightweight Embedded Gluten-free Objects_) is a base class that you extend and provide you with methods to use ♻️ reactive and 🏡 **native web-components** that are easy to digest 🌱 for your browser.
+LEGO (_Lightweight Embedded Gluten-free Objects_) is a base class that you extend and provide you with methods to use ♻️ reactive and 🏡 **native Web Components** that are easy to digest 🌱 for your browser.
 
 A small CLI in NodeJS come along to build 🚀 your component.
 There's no [Vite](https://vitejs.dev/) nor other 3rd parties, it's [just an interpreter of ±180 lines of readable code](https://github.com/Polight/lego/blob/master/src/compiler/transpiler.js).
@@ -95,7 +97,7 @@ I also works with [https://bun.sh](Bun) and probably other interpreters.
 - 🚀 fast: using virtual dom through a thin layer makes it close to bare-metal
 - 💧 Simple: that's [Vanilla](http://vanilla-js.com/), there isn't much to know, it's a raw class to extend; no magic ✨
 - 🪶 3 directives to enhance HTML: `:if` for conditions, `:for` for loops, `@myfuncname` to call an action
-- 🏡 Native: LEGO components are actual native web-components, you benefit from all the today's and tomorrow's possibilites ([slot](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots), [Shadow DOM](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM), …).
+- 🏡 Native: LEGO components are actual native Web Components, you benefit from all the today's and tomorrow's possibilities ([slot](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots), [Shadow DOM](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM), …).
 
 Lego is not (and will never be):
 - 🏯 A full bloated frontend framework with routing. [Others do it well](https://github.com/visionmedia/page.js).
@@ -108,7 +110,7 @@ Lego is not (and will never be):
 
 📕 [Read the full documentation at https://lego.js.org](https://lego.js.org)
 
-💭 Lego is inspired from the [native Web-Component spec](https://developer.mozilla.org/en-US/docs/Web/Web_Components) and [Riot](https://riot.js.org/).
+💭 Lego is inspired from the [native Web Component spec](https://developer.mozilla.org/en-US/docs/Web/Web_Components) and [Riot](https://riot.js.org/).
 
 🔧 Customizing and contributing is just **much lighter** with simplicity, source that are easy to read, to hack and to maintain.
 

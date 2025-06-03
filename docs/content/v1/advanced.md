@@ -3,7 +3,7 @@ title: Advanced Example
 weight: 7
 ---
 
-Let's write a web-component that:
+Let's write a Web Component that:
 
 - displays the full name of a user
 - shows a welcome text and the user
