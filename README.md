@@ -92,7 +92,7 @@ It also works with [Bun](https://bun.sh) and probably other interpreters.
 LEGO is:
 
 - 👙 Minimalist: 117 lines of readable code in its core (non-optimized, uncompressed, no cheating) ;
-- 🌱 Low dependency: it uses [petit-dom](https://github.com/yelouafi/petit-dom) which is stable and embedded, and which itself has no dependency. So no bad surprise in the future ;
+- 🌱 Low dependency: its single third-party is the **minimalist** [petit-dom](https://github.com/yelouafi/petit-dom) which is stable and embedded, and which itself has no dependency. So no bad surprise in the future ;
 - ♻️ Reactive: updating the state recalculate the [Virtual DOM](https://en.wikipedia.org/wiki/Virtual_DOM) when needed ;
 - 🚀 Fast: using Virtual DOM through a thin layer makes it close to bare-metal ;
 - 💧 Simple: that's [VanillaJS](http://vanilla-js.com/)! There isn't much to know, it's a raw class to extend. No magic ✨ ;
@@ -115,9 +115,9 @@ LEGO is not (and will never be):
 
 💭 LEGO is inspired from the [native Web Component specs](https://developer.mozilla.org/en-US/docs/Web/Web_Components) and [Riot](https://riot.js.org/).
 
-🔧 Customizing and contributing is just **much lighter** with simplicity. Source are easy to read, to maintain and to hack.
+🔧 Customizing and contributing is just **much lighter** with simplicity. Source are easy to read for a regular developer which makes it accessible to maintain, to tweak and to hack in the *loooong* term.
 
-🎈 You can [read the core code](https://github.com/Polight/lego/blob/master/src/lib/Component.js)! That is only 117 <abbr title="Lines Of Code">LOC</abbr> resulting that LEGO is **as light as 2.8KB** for the full bundle!
+🎈 You can [read the core code](https://github.com/Polight/lego/blob/master/src/lib/Component.js)! That is only 117 <abbr title="Lines Of Code">LOC</abbr> resulting that LEGO is **as light as 2.8KB** for the full bundle! No Babel transpiler, no Parcel, no Webpack… It just works out of the box.
 
 ## Developing and Contributing to LEGO
 
