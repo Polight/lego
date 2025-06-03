@@ -1,6 +1,5 @@
-
 <p style="text-align:center">
- <img src="./assets/lego.svg" title="Native Web-components" alt="Lego is a fast & native web-components library" style="width:100%;max-width:600px">
+ <img src="./assets/lego.svg" alt="" style="width:100%;max-width:600px">
 </p>
 
 
