@@ -1,6 +1,6 @@
 # 🚀 LEGO Web Components, the Native and Future-Proof Web Components Library
 
-LEGO is a Web Component library that allows you to build HTML elements easily and compile them to native HTML elements. The whole library runs within the browser.
+LEGO (_Lightweight Embedded Gluten-free Objects_) is a library for writing fast ♻️ reactive, 📦 scoped and predictable 🏡 **native Web Components** in HTML/CSS/JS, that are easy to digest 🌱 for your browser.
 
 Here is an example of LEGO component:
 
