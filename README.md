@@ -113,7 +113,7 @@ LEGO is not (and will never be):
 
 📕 Read the full [documentation](https://lego.js.org)
 
-💭 LEGO is inspired from the [native Web Component specifications](https://developer.mozilla.org/en-US/docs/Web/Web_Components) and [Riot](https://riot.js.org/).
+💭 LEGO is inspired from the [native Web Component specs](https://developer.mozilla.org/en-US/docs/Web/Web_Components) and [Riot](https://riot.js.org/).
 
 🔧 Customizing and contributing is just **much lighter** with simplicity. Source are easy to read, to maintain and to hack.
 
