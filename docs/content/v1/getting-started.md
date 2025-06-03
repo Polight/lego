@@ -3,9 +3,9 @@ title: Getting Started
 weight: 2
 ---
 
-Lego requires [npm](https://npmjs.com) or [yarn](https://yarnpkg.com) and [node](https://nodejs.org/).
+LEGO requires [npm](https://npmjs.com) or [yarn](https://yarnpkg.com) and [node](https://nodejs.org/).
 
-By default Lego compiles HTML components from the HTML files within the _/bricks_ folder.
+By default LEGO compiles HTML components from the HTML files within the _/bricks_ folder.
 Create the folder to host your future components: `mkdir bricks`.
 
 ## Quick Start
