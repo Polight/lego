@@ -1,5 +1,5 @@
 import { parseFragment } from 'parse5'
-import { isNativeEvent } from './native-events'
+import { isNativeEvent } from './native-events.js'
 
 function vnode(name, attributes = {}, children = '', indent = '') {
   const attrs = Object.keys(attributes).reduce((acc, name) => {
