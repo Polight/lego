@@ -63,8 +63,6 @@ Will read in your HTML:
 
 Of course there's **so much** more you can do. The [documentation](https://lego.js.org/) is here to guide you. 📓
 
-_Pretty neat!_ <!-- FIXME: What is it related to?  -->
-
 ## Getting Started in 3 Minutes
 
 You can just hop in and experiment your first LEGO component. [Follow this "Getting Started" guide](https://lego.js.org/v2/getting-started/#quick-start) for installing and writing it. <!-- FIXME: Fix the documentation link -->
