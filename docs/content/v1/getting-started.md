@@ -5,10 +5,10 @@ weight: 2
 
 LEGO requires [npm](https://npmjs.com) or [yarn](https://yarnpkg.com) and [node](https://nodejs.org/).
 
+## Quick Start
+
 By default LEGO compiles HTML components from the HTML files within the _/bricks_ folder.
 Create the folder to host your future components: `mkdir bricks`.
-
-## Quick Start
 
 ### Installation
 
@@ -44,14 +44,14 @@ Create a file called **bricks/hello-world.html**:
 
 Compile with `npm exec lego` (or `yarn lego`)
 
-And use you component in your _/index.html_:
+And use you component in your **/index.html**:
 
 ```html
 <script src="./dist/index.js" type="module"></script>
 <hello-world></hello-world>
 ```
 
-Run a local web server, eg: `npm exec sirv-cli` and open http://localhost:5000.
+Run a local web server, e.g.: `npm exec sirv-cli` and open [http://localhost:5000](http://localhost:5000).
 
 ## Let's Get a Step Back
 
@@ -59,7 +59,7 @@ What did just happened?
 
 Here's what you just did with this simple code:
 
-1. you created a native HTML element called `hello-world` by creating _bricks/hello-world.html_;
+1. you created a native HTML element called `hello-world` by creating the LEGO component **bricks/hello-world.html**;
 2. you made it react with a `name` state property;
 3. you imported all components from `./dist/index.js` (well, only 1 for now);
 4. you used the HTML element `<hello-world></hello-world>`.
