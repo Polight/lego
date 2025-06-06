@@ -32,7 +32,7 @@ _/bricks/lean-welcome.html_:
 ```html
 <template>
   <h1>Welcome to LEGO</h1>
-  <p>The lean way to make ${state.duration} Web Components <slot></slot></p>
+  <p>The lean way to make ${state.duration} Web Components powerful and easy</p>
 </template>
 
 <script>
@@ -51,7 +51,7 @@ _/bricks/lean-welcome.html_:
 Later, when builded and loaded as a plain JS-file, you can use it anywhere in your HTML:
 
 ```html
-<lean-welcome duration="Future-Proof">powerful and easy</lean-welcome>
+<lean-welcome duration="Future-Proof"></lean-welcome>
 ```
 
 Will read in your HTML:

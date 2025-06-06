@@ -10,7 +10,7 @@ Example (`bricks/my-example.html`):
 ```html
 <template>
   <h1>Welcome to LEGO</h1>
-  <p>The lean way to make ${state.duration} Web Components <slot></slot></p>
+  <p>The lean way to make ${state.duration} Web Components powerful and easy</p>
 </template>
 
 <script>
