@@ -65,9 +65,9 @@ Of course there's **so much** more you can do. The [documentation](https://lego.
 
 ## Getting Started in 3 Minutes
 
-You can just hop in and experiment your first LEGO component. [Follow this "Getting Started" guide](https://lego.js.org/v2/getting-started/#quick-start) for installing and writing it. <!-- FIXME: Fix the documentation link -->
+You can just hop in and experiment your first LEGO component. [Follow this "Getting Started" guide](https://lego.js.org/v1/getting-started/#quick-start) for installing and writing it.
 
-Once you're done with it you can write more components the same way and play with [daily usage guide](https://lego.js.org/v2/usage-web-components/) for passing advanced arguments, writing conditions and loops, dynamic styling, connecting to APIs… <!-- FIXME: Fix the documentation link -->
+Once you're done with it you can write more components the same way and play with [daily usage guide](https://lego.js.org/v1/usage/) for passing advanced arguments, writing conditions and loops, dynamic styling, connecting to APIs…
 
 ## What Can You **Actually** Do With It?
 
