@@ -59,9 +59,9 @@ What did just happened?
 
 Here's what you just did with this simple code:
 
-1. you created a native HTML element called `hello-world` by creating _bricks/hello-world.html_ ;
-2. you made it react with a `name` state property ;
-3. you imported all components from `./dist/index.js` (well, only 1 for now) ;
+1. you created a native HTML element called `hello-world` by creating _bricks/hello-world.html_;
+2. you made it react with a `name` state property;
+3. you imported all components from `./dist/index.js` (well, only 1 for now);
 4. you used the HTML element `<hello-world></hello-world>`.
 
 No magic {{< emoji "🪄" >}} here, just a couple of [default configuration that you can override]({{< relref "configuring" >}}).

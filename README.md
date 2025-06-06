@@ -89,20 +89,20 @@ It also works with [Bun](https://bun.sh) and probably other interpreters.
 
 LEGO is:
 
-- 👙 Minimalist: 117 lines of readable code in its core (non-optimized, uncompressed, no cheating) ;
-- 🌱 Low dependency: its single third-party is the **minimalist** [petit-dom](https://github.com/yelouafi/petit-dom) which is stable and embedded, and which itself has no dependency. So no bad surprise in the future ;
-- ♻️ Reactive: updating the state recalculate the [Virtual DOM](https://en.wikipedia.org/wiki/Virtual_DOM) when needed ;
-- 🚀 Fast: using Virtual DOM through a thin layer makes it close to bare-metal ;
-- 💧 Simple: that's [VanillaJS](http://vanilla-js.com/)! There isn't much to know, it's a raw class to extend. No magic ✨ ;
-- 🪶 3 directives to enhance HTML: `:if` for conditions, `:for` for loops, `@myfuncname` to call an action ; <!-- FIXME: Should we keep this line? Seems it has been removed in v2 doc. -->
-- 🏡 Native: LEGO components are actual native Web Components. You benefit from all the today's and tomorrow's possibilities ([slot](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots), [encapsulation with Shadow DOM](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM), …) ;
+- 👙 Minimalist: 117 lines of readable code in its core (non-optimized, uncompressed, no cheating);
+- 🌱 Low dependency: its single third-party is the **minimalist** [petit-dom](https://github.com/yelouafi/petit-dom) which is stable and embedded, and which itself has no dependency. So no bad surprise in the future;
+- ♻️ Reactive: updating the state recalculate the [Virtual DOM](https://en.wikipedia.org/wiki/Virtual_DOM) when needed;
+- 🚀 Fast: using Virtual DOM through a thin layer makes it close to bare-metal;
+- 💧 Simple: that's [VanillaJS](http://vanilla-js.com/)! There isn't much to know, it's a raw class to extend. No magic ✨;
+- 🪶 3 directives to enhance HTML: `:if` for conditions, `:for` for loops, `@myfuncname` to call an action; <!-- FIXME: Should we keep this line? Seems it has been removed in v2 doc. -->
+- 🏡 Native: LEGO components are actual native Web Components. You benefit from all the today's and tomorrow's possibilities ([slot](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots), [encapsulation with Shadow DOM](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM), …);
 - 🦺 Safe: because it has no third-party dependency and is fully based on browser features, it's secured and upgraded via your browser.
 
 LEGO is not (and will never be):
 
-- 🏯 A fully-bloated front-end framework with built-in routing. [Others do it well](https://github.com/visionmedia/page.js) ;
-- 🏗 A website builder with built-in SSR or similar complexities ;
-- 🔐 An HTML replacement that locks you into a specific technology ;
+- 🏯 A fully-bloated front-end framework with built-in routing. [Others do it well](https://github.com/visionmedia/page.js);
+- 🏗 A website builder with built-in SSR or similar complexities;
+- 🔐 An HTML replacement that locks you into a specific technology;
 - {{< emoji "🧓" >}} An old browsers or IE compatible library (you may try [Web Components polyfills](https://github.com/webcomponents/polyfills) if you feel wild). <!-- FIXME: Do we keep this one from v2 doc? -->
 
 ## Next Steps, Demo and Doc
