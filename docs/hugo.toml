@@ -1,6 +1,6 @@
 baseURL = 'https://lego.js.org/'
 languageCode = 'en-us'
-title = '🚀 Lego Web-Components'
+title = '🚀 LEGO Web Components'
 theme = 'docs'
 
 enableRobotsTXT = true
@@ -21,8 +21,8 @@ enableInlineShortcodes = true
     endLevel = 3
 
 [params]
-  description = "Lego is a minimalist native Web-Components library for low-tech lovers with serious needs of long-term future-proof applications. This documentation describes how to install, use and hack the tool."
-  # github_repo_edit = "https://github.com/Polight/lego/tree/master/docs/content" # FIXME: To enable once merged
+  description = "LEGO is a minimalist native-Web Components library for low-tech lovers with serious needs of long-term future-proof applications. This documentation describes how to install, use and hack the tool."
+  github_repo_edit = "https://github.com/Polight/lego/tree/master/docs/content"
   date_format = "January 2, 2006"
   main_logo = "/lego.svg"
   versions = [ "v1", "v2" ]

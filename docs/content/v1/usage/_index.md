@@ -3,16 +3,15 @@ title: Usage
 weight: 3
 ---
 
-A web-component can optionally have 3 parts: some HTML in a `<template>` tag, some JavaScript
-in a `<script>` tag and some CSS in a `<style>` tag.
+A Web Component can optionally have 3 parts:
 
-You can make a web-component for multiple reasons.
+* some HTML in a `<template>` tag,
+* some JavaScript in a `<script>` tag,
+* and some CSS in a `<style>` tag.
 
-If you just want to re-use a piece of HTML, the `<template>`
-tag is all you need.
+You can make a Web Component for multiple reasons:
 
-If you want to polish it's look {{< emoji "💅" >}}, `<style>` is your friend.
-Bonus: it's fully scoped with no leaking out of context.
-
-When some user interaction or reactivity is demanded, `<script>`
-is going to be the guy.
+* If you just want to re-use a piece of HTML, the `<template>` tag is all you need.
+* If you want to polish it's look {{< emoji "💅" >}}, `<style>` is your friend.
+  Bonus: it's fully scoped with no leaking out of context.
+* When some user interaction or reactivity is demanded, `<script>` is going to be the guy.
