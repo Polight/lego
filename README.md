@@ -94,7 +94,7 @@ LEGO is:
 - ♻️ Reactive: updating the state recalculate the [Virtual DOM](https://en.wikipedia.org/wiki/Virtual_DOM) when needed;
 - 🚀 Fast: using Virtual DOM through a thin layer makes it close to bare-metal;
 - 💧 Simple: that's [VanillaJS](http://vanilla-js.com/)! There isn't much to know, it's a raw class to extend. No magic ✨;
-- 🪶 3 directives to enhance HTML: `:if` for conditions, `:for` for loops, `@myfuncname` to call an action; <!-- FIXME: Should we keep this line? Seems it has been removed in v2 doc. -->
+- 🪶 3 directives to enhance HTML: `:if` for conditions, `:for` for loops, `@myfuncname` to call an action;
 - 🏡 Native: LEGO components are actual native Web Components. You benefit from all the today's and tomorrow's possibilities ([slot](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots), [encapsulation with Shadow DOM](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM), …);
 - 🦺 Safe: because it has no third-party dependency and is fully based on browser features, it's secured and upgraded via your browser.
 
