@@ -26,7 +26,7 @@ Example (`bricks/my-example.html`):
 </style>
 ```
 
-These are **native HTML elements** with Shadow DOM, slots and all native features from the official specs.
+These are **native HTML elements** with [Shadow DOM](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM), slots and all native features from the official specs.
 
 LEGO is:
 
@@ -56,4 +56,4 @@ LEGO is not (and will never be):
 
 {{< emoji "🎈" >}} You can [read the core code](https://github.com/Polight/lego/blob/master/src/lib/Component.js)! That is only 117 <abbr title="Lines Of Code">LOC</abbr> resulting that LEGO is **as light as 2.8KB** for the full bundle! No Babel transpiler, no Parcel, no Webpack… It just works out of the box.
 
-{{< emoji "📖">}} Keep on reading this documentation and start writing your first LEGO component...
+{{< emoji "📖">}} Keep on reading this documentation and start writing your first LEGO component…

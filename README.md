@@ -37,7 +37,7 @@ _/bricks/lean-welcome.html_:
 
 <script>
   export default class extends Lego {
-    state = { duration: 'Short-Term' }
+    state = { duration: 'quick' }
   }
 </script>
 

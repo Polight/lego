@@ -55,7 +55,7 @@ Run a local web server, e.g.: `npm exec sirv-cli` and open [http://localhost:500
 
 ## Let's Get a Step Back
 
-What did just happened?
+What did just happen?
 
 Here's what you just did with this simple code:
 
