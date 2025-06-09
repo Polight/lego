@@ -1,7 +1,7 @@
 {
   "name": "@polight/lego",
   "version": "1.10.1",
-  "description": "Tiny Web-Components lib for future-proof HTML mentors",
+  "description": "Tiny Web Components lib for future-proof HTML mentors",
   "main": "index.js",
   "type": "module",
   "scripts": {

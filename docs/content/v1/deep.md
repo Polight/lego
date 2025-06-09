@@ -3,15 +3,15 @@ title: Getting Deep
 weight: 8
 ---
 
-## Native Web-Components
+## Native Web Components
 
-Because Lego is actual native web-components, all its native possibilities (like [slots](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots#Adding_flexibility_with_slots)),
+Because LEGO is actual native Web Components, all its native possibilities (like [slots](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots#Adding_flexibility_with_slots)),
 [:host](https://developer.mozilla.org/en-US/docs/Web/CSS/:host)
 and whatever exists or will exist are on board.
 
 ## Browser Compatibility
 
-Lego is based on native _customElements_.
+LEGO is based on native _customElements_.
 [Support for customElement is spreading](https://caniuse.com/#feat=custom-elementsv1) and
 shall increase in time.
 
@@ -22,6 +22,6 @@ compatibility and install the [custom-element polyfill](https://github.com/webco
 ## Dependencies
 
 It is still fully compatible with native _custom elements_. No magic behind the scene,
-no complexity, just a couple of useful methods to write native web-components easier.
+no complexity, just a couple of useful methods to write native Web Components easier.
 
 Using a compiled component has no dependency, nothing extra injected in the browser.
