@@ -3,30 +3,26 @@ title: Reactive CSS
 weight: 10
 ---
 
-CSS is much more fun when it's scoped.
-Here it come with the Web Components.
+CSS is much more fun when it's scoped. Here it comes with the Web Components, thanks to [Shadow DOM encapsulation](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM)
 
 Here again, no trick, just the full power of Web Components and scoping styles.
-Well, you should know that the css is reactive too! {{< emoji "😲" >}}
 
-Writing CSS is as easy as
+Writing CSS is as easy as:
 
 ```html
 <template>
-  <h1>Bonjour!</h1>
+  <h1>Hello!</h1>
 </template>
 
 <script>
   export default class extends Lego {
-    init() {
-      this.state = { fontScale: 1 }
-    }
+    …
   }
 </script>
 
 <style>
   :host {
-    font-size: ${state.fontScale}rem;
+    font-size: 1rem;
   }
   h1 {
     padding: 1rem;
@@ -37,26 +33,26 @@ Writing CSS is as easy as
 
 ## Host
 
-[`:host` is a native selector](<https://developer.mozilla.org/en-US/docs/Web/CSS/:host()>) for Web Components.
+[`:host` is a native selector](https://developer.mozilla.org/en-US/docs/Web/CSS/:host()) for Web Components.
 
 It allows to select the current component itself.
 
 ## Variables
 
+Well... You should know that the CSS is reactive too! {{< emoji "😲" >}}
+
 You can use variables in your CSS just like in your templates.
 
-Example:
+### Example
 
 ```html
 <template>
-  <h1>Bonjour<h1>
+  <h1>Hello!<h1>
 </template>
 
 <script>
   export default class extends Lego {
-    init() {
-      this.state = { color: '#357' }
-    }
+    state = { color: '#357' }
   }
 </script>
 
@@ -68,3 +64,27 @@ Example:
 ```
 
 will apply the `#357` color onto `h1`.
+
+## Using global styles with Shadow DOM
+
+As CSS is scoped when using Shadow DOM in components, your global styles won't apply by default to the children of your component.
+
+To do so, you can use the configuration option `preStyle` that will add any style you want to the `<style>` of your LEGO components.
+
+### Example
+
+If your **index.html** has a global stylesheet as follows:
+
+```html
+<link rel="stylesheet" type="text/css" href="./styles.css" />
+```
+
+Set your **lego.config.js** configuration file:
+
+```js
+export default {
+  preStyle: '@import ./styles.css'
+}
+```
+
+However, if you don't need CSS encapsulation, you can disable it with the configuration option `useShadowDOM`. <!-- TODO: Add links between pages-->
