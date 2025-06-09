@@ -3,7 +3,7 @@ title: Getting Started
 weight: 2
 ---
 
-LEGO requires [npm](https://npmjs.com) or [yarn](https://yarnpkg.com) and [node](https://nodejs.org/).
+LEGO requires [NodeJS](https://nodejs.org/).
 
 ## Quick Start
 
@@ -12,9 +12,9 @@ Create the folder to host your future components: `mkdir bricks`.
 
 ### Installation
 
-If you don't have a _package.json_ file yet, initialize first with `npm init` (or `yarn init`).
+If you don't have a _package.json_ file yet, initialize first with `npm init`.
 
-Install the compiler with `npm i @polight/lego` (or `yarn add @polight/lego`).
+Install the compiler with `npm i @polight/lego`.
 
 ### Basic Example
 
@@ -42,7 +42,7 @@ Create a file called **bricks/hello-world.html**:
 </script>
 ```
 
-Compile with `npm exec lego` (or `yarn lego`)
+Compile with `npm exec lego`.
 
 And use you component in your **/index.html**:
 
