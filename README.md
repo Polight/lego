@@ -103,7 +103,7 @@ LEGO is not (and will never be):
 - 🏯 A fully-bloated front-end framework with built-in routing. [Others do it well](https://github.com/visionmedia/page.js);
 - 🏗 A website builder with built-in SSR or similar complexities;
 - 🔐 An HTML replacement that locks you into a specific technology;
-- {{< emoji "🧓" >}} An old browsers or IE compatible library (you may try [Web Components polyfills](https://github.com/webcomponents/polyfills) if you feel wild). <!-- FIXME: Do we keep this one from v2 doc? -->
+- {{< emoji "🧓" >}} An old browsers or IE compatible library (you may try [Web Components polyfills](https://github.com/webcomponents/polyfills) if you feel wild).
 
 ## Next Steps, Demo and Doc
 
