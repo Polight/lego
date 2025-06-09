@@ -1,6 +1,6 @@
 ---
 title: Using Slots
-weight: 8
+weight: 9
 ---
 
 [Slots](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) are part of the
