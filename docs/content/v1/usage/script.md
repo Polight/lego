@@ -3,26 +3,27 @@ title: Script Tag
 weight: 11
 ---
 
-The script tag is has a special behavior.
-You will create a class extending the component, that's how you build your
-full component with advanced script.
+The script tag has a special behavior.
+You just need to create a class extending the `Lego` default class to build your full component with advanced script.
 
-To do so extend the `Lego` default class:
-
-```js
-export default class extends Lego {
-  …
-}
+```html
+<script>
+  export default class extends Lego {
+    …
+  }
+</script>
 ```
 
 ## Accessing the component's DOM
 
-Even if it's not the most recommended way it might occur that you need to access a DOM element from the script tag.
+Even if it's not the most recommended way, it might occur that you need to access a DOM element inside the component from the script tag.
 
-In which case the shortcut `this.document` will gain you access to the DOM,
-wether it's the Shadow DOM (default) or you toggled to Light DOM (overriding).
+In which case, the shortcut `this.document` will gain you access to the component DOM, being whether the Shadow DOM if enabled (default) or the component element if you have toggled to Light DOM (overriding). <!-- FIXME: It's weird that it is called document, isn't it? -->
 
-`this.document` has all the methods you may expect from a document such as
-`querySelector`, `getElementById`, `querySelectorAll`…
+`this.document` has all the methods you may expect from a document such as `querySelector`, `getElementById`, `querySelectorAll`…
 
-Ex: `this.document.querySelectorAll('a')`
+For example, you can query all the `<a>` tag inside the component with:
+
+```js
+this.document.querySelectorAll('a')
+```
