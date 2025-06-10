@@ -3,7 +3,7 @@ title: Lifecycle callbacks
 weight: 8
 ---
 
-LEGO comes with 5 methods that allows you to hook some callbacks within the component lifecycle
+LEGO comes with 5 methods that allows you to hook some callbacks within the component lifecycle.
 
 ```js
 export default class extends Lego {
