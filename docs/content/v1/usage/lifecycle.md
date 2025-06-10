@@ -21,7 +21,7 @@ export default class extends Lego {
 
 ## `init()`
 
-This callback is called on the first time when the element is added to the DOM. At this point the element is still not rendered, so you can't access the [Shadow DOM]((https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM)) and inner elements.
+This callback is called on the first time when the element is added to the DOM. At this point the element is still not rendered, so you can't access the [Shadow DOM]((https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM)) and inner elements (see [Accessing the component's DOM]({{< relref "script#accessing-the-components-dom" >}})).
 
 ## `connected()`
 
@@ -29,7 +29,7 @@ This callback is called when the element is added to the DOM **and** rendered.
 
 ## `rendered(state)`
 
-This callback is called **after** each time the element is rendered. It means at the initialization (after `init` and before `connected`), as well as each time the state is updated (with `this.render()`) and the component is re-rendered.
+This callback is called **after** each time the element is rendered. It means at the initialization (after `init` and before `connected`), as well as each time [the state is mutated]({{< relref "reactive" >}}) (with `this.render()`) and the component is re-rendered.
 
 The method is called with one param corresponding to the updated state.
 

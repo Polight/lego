@@ -69,7 +69,7 @@ will apply the `#357` color onto `h1`.
 
 As CSS is scoped when using Shadow DOM in components, your global styles won't apply by default to the children of your component.
 
-To do so, you can use the configuration option `preStyle` that will add any style you want to the `<style>` of your LEGO components.
+To do so, you can use the [configuration option `preStyle`]({{< relref "configuring" >}}) that will add any style you want to the `<style>` of your LEGO components.
 
 ### Example
 
@@ -87,4 +87,4 @@ export default {
 }
 ```
 
-However, if you don't need CSS encapsulation, you can disable it with the configuration option `useShadowDOM`. <!-- TODO: Add links between pages-->
+However, if you don't need CSS encapsulation, you can disable it with the [configuration option `useShadowDOM`]({{< relref "configuring" >}}).
