@@ -6,15 +6,13 @@ weight: 5
 Compiling LEGO component is built-in with no extra installation; pretty straightforward.
 
 ```sh
-LEGO_URL=</url/to/lego.min.js> npm exec lego <source_path> <target_file_path>
+LEGO_URL=</url/to/lego.min.js> npm exec lego <source_dir> <target_dir>
 ```
 
-Would compile the _source_path_ file or folder (recursively) into _target_file_path_ js file using lego.min.js from the declared url.
+Would compile the LEGO components in `source_dir` folder (recursively) into JS file in `target_dir` using **lego.min.js** from the declared URL.
 
-As mentioned before, when developing you probably want to watch for changes with the `-w`
-option: `npm exec lego -w <source_path> <target_file_path>`
+When developing you probably want to watch for changes with the `-w` option: `npm exec lego -w <source_dir> <target_dir>`
 
-**source_path**: either a file or a directory (relative or absolute). If it's a directory, it will recursively read all the _.html_ files and compile them into the _target_file_.
+`source_dir` *(default: **bricks**)*: a directory (relative or absolute). If it's a directory, it will recursively read all the **.html** files and compile them into the `target_dir`.
 
-**target_file_path**: (default: _components.js_) the path (relative or absolute) to a _.js_ file.
-That file will be created and contain all the components.
+`target_dir` *(default: **dist**)*: the path (relative or absolute) to a folder where all _.js_ files are compiled.
