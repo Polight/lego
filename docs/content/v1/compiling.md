@@ -11,7 +11,7 @@ LEGO_URL=</url/to/lego.min.js> npm exec lego <sourceDir> <targetDir> <options>
 
 Would compile the LEGO components in `sourceDir` folder (recursively) into JS file in `targetDir` using **lego.min.js** from the declared URL and provided options.
 
-* `sourceDir` *(default: **bricks**)*: a directory (relative or absolute). If it's a directory, it will recursively read all the **.html** files and compile them into the `targetDir`.
+* `sourceDir` *(default: **bricks**)*: either a LEGO component file or a directory (relative or absolute). If it's a directory, it will recursively read all the **.html** files and compile them into the `targetDir`.
 
 * `targetDir` *(default: **dist**)*: the path (relative or absolute) to a folder where all _.js_ files are compiled.
 
