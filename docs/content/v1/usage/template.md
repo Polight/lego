@@ -1,6 +1,6 @@
 ---
 title: Template Tag
-weight: 1
+weight: 3
 ---
 
 An HTML content is written within a `<template>` tag.

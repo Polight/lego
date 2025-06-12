@@ -1,6 +1,6 @@
 ---
-title: Reactive CSS
-weight: 10
+title: Style Tag
+weight: 11
 ---
 
 CSS is much more fun when it's scoped. Here it comes with the Web Components, thanks to [Shadow DOM encapsulation](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM)

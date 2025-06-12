@@ -1,6 +1,6 @@
 ---
 title: Pass Attributes to Components
-weight: 7
+weight: 8
 ---
 
 Attributes declared on the components will be all be accessible through the [`state`]({{< relref "reactive" >}}). If the property is initialized in the `this.state`, the attribute will be reactive.

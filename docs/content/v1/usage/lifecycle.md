@@ -1,6 +1,6 @@
 ---
 title: Lifecycle callbacks
-weight: 8
+weight: 9
 ---
 
 LEGO comes with 5 methods that allows you to hook some callbacks within the component lifecycle.

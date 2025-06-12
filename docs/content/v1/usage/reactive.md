@@ -1,6 +1,6 @@
 ---
 title: Reactivity
-weight: 6
+weight: 2
 ---
 
 The `state` is where the reactivity takes place.

@@ -1,6 +1,6 @@
 ---
 title: Script Tag
-weight: 11
+weight: 1
 ---
 
 The script tag has a special behavior.
