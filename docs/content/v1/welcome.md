@@ -52,7 +52,7 @@ LEGO is not (and will never be):
 
 {{< emoji "💭" >}} LEGO is inspired from the [native Web Component specs](https://developer.mozilla.org/en-US/docs/Web/Web_Components) and [Riot](https://riot.js.org/).
 
-{{< emoji "🔧" >}} Customizing and contributing is just **much lighter** with simplicity. Source are easy to read for a regular developer which makes it accessible to maintain, to tweak and to hack in the *loooong* term.
+{{< emoji "🔧" >}} Customizing and contributing is just **much lighter** with simplicity. Source are easy to read for a regular developer which makes it accessible to maintain, to [tweak and to hack]({{< relref "extending" >}}) in the *loooong* term.
 
 {{< emoji "🎈" >}} You can [read the core code](https://github.com/Polight/lego/blob/master/src/lib/Component.js)! That is only 117 <abbr title="Lines Of Code">LOC</abbr> resulting that LEGO is **as light as 2.8KB** for the full bundle! No Babel transpiler, no Parcel, no Webpack… It just works out of the box.
 
