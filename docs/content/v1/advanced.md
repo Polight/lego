@@ -5,10 +5,10 @@ weight: 7
 
 Let's write a Web Component that:
 
-- displays the full name of a user
-- shows a welcome text and the user
-- list all user's favorite fruit
-- toggles user registration
+- displays the full name of a user,
+- shows a welcome text and the user,
+- list all user's favorite fruit,
+- toggles user registration.
 
 **bricks/user-profile.html**
 
@@ -54,11 +54,11 @@ Let's write a Web Component that:
 </script>
 ```
 
-Compile this component: `npm exec lego bricks`
+Compile this component: `npm exec lego`.
 
-## Then Include It in Your Page
+Then include it in your page:
 
-_index.html_
+**index.html**
 
 ```html
 <user-profile></user-profile>
@@ -66,9 +66,3 @@ _index.html_
 ```
 
 Run your webserver and see your little app!
-
-> When developing you may want to automatically watch files changes.
-> In that case pass the `-w` flag: `npm exec lego -w bricks`
-
-> Tip: you probably want to store this task with a shortcut like `npm run watch`.
-> To do so just add `"watch": "lego -w bricks"` in you _package.json_ scripts.

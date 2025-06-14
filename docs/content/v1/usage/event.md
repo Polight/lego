@@ -1,6 +1,6 @@
 ---
 title: Binding Events
-weight: 5
+weight: 7
 ---
 
 `@` directive allows to bind events.

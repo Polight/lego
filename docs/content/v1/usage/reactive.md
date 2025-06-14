@@ -1,25 +1,26 @@
 ---
-title: Reactive Properties
-weight: 6
+title: Reactivity
+weight: 2
 ---
 
 The `state` is where the reactivity takes place.
 
-declare a `state` object in the `init()` function with default values:
+Declare a `state` property in the component class with default values:
 
-```js
-init() {
-  this.state = {
-    user: { firstname: 'John', lastname: 'Doe' },
-    status: "Happy 😄"
+```html
+<script>
+  export default class extends Lego {
+    state = {
+      user: { firstname: 'John', lastname: 'Doe' },
+      status: "Happy 😄"
+    }
   }
-}
+</script>
 ```
 
-Displaying a _state_ value is as simple as writing `${state.theValue}` in your HTML.
+Displaying a _state_ value is as simple as writing `${state.theValue}` in your HTML. **Note** that `this.` keyword is not required when referencing the `state` in your HTML as it is already provided by the rendering method.
 
-When you need your component to react, call the `this.render()` method
-with your updated state:
+When you need your component to react, call the `this.render()` method with your updated state:
 
 ```js
 updateStatus(event) {
@@ -28,6 +29,3 @@ updateStatus(event) {
 ```
 
 This will refresh your component where needed.
-
-When `state` is just mutated, the `changed(changedProps)` is called.
-This `changed()` method is called before (re-)rendering.

@@ -1,6 +1,6 @@
 ---
 title: Condition :if
-weight: 2
+weight: 4
 ---
 
 `:if` directive allows to conditionally display a tag and its descendants.

@@ -44,7 +44,7 @@ LEGO is not (and will never be):
 - {{< emoji "🏯" >}} A fully-bloated front-end framework with built-in routing. [Others do it well](https://github.com/visionmedia/page.js);
 - {{< emoji "🏗" >}} A website builder with built-in SSR or similar complexities;
 - {{< emoji "🔐" >}} An HTML replacement that locks you into a specific technology;
-- {{< emoji "🧓" >}} An old browsers or IE compatible library (you may try [Web Components polyfills](https://github.com/webcomponents/polyfills) if you feel wild).
+- {{< emoji "🧓" >}} An old browsers or IE compatible library. [Support for _Custom Elements_ is spreading](https://caniuse.com/#feat=custom-elementsv1) and shall increase in time (you may try [Web Components polyfills](https://github.com/webcomponents/polyfills) if you feel wild).
 
 ## Next Steps, Demo and Doc
 
@@ -52,7 +52,7 @@ LEGO is not (and will never be):
 
 {{< emoji "💭" >}} LEGO is inspired from the [native Web Component specs](https://developer.mozilla.org/en-US/docs/Web/Web_Components) and [Riot](https://riot.js.org/).
 
-{{< emoji "🔧" >}} Customizing and contributing is just **much lighter** with simplicity. Source are easy to read for a regular developer which makes it accessible to maintain, to tweak and to hack in the *loooong* term.
+{{< emoji "🔧" >}} Customizing and contributing is just **much lighter** with simplicity. Source are easy to read for a regular developer which makes it accessible to maintain, to [tweak and to hack]({{< relref "extending" >}}) in the *loooong* term.
 
 {{< emoji "🎈" >}} You can [read the core code](https://github.com/Polight/lego/blob/master/src/lib/Component.js)! That is only 117 <abbr title="Lines Of Code">LOC</abbr> resulting that LEGO is **as light as 2.8KB** for the full bundle! No Babel transpiler, no Parcel, no Webpack… It just works out of the box.
 

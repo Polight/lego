@@ -1,6 +1,6 @@
 ---
 title: Template Tag
-weight: 1
+weight: 3
 ---
 
 An HTML content is written within a `<template>` tag.
@@ -11,10 +11,10 @@ You may easily detect them as they are prefixed with `:` or `@`.
 
 With LEGO, there are only 4 directives to know:
 
-- `:if` to display a tag based on a condition,
-- `:for` to repeat a tag,
-- `:` to evaluate a string,
-- `@` to bind an event.
+- [`:if`]({{< relref "if" >}}) to display a tag based on a condition,
+- [`:for`]({{< relref "for" >}}) to repeat a tag,
+- [`:`]({{< relref "custom-directive" >}}) to evaluate a string,
+- [`@`]({{< relref "event" >}}) to bind an event.
 
 Note that `:if` and `:for` attributes, when used in the same tag should be used with an order in mind:
 

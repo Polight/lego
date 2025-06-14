@@ -5,9 +5,9 @@ weight: 3
 
 A Web Component can optionally have 3 parts:
 
-* some HTML in a `<template>` tag,
-* some JavaScript in a `<script>` tag,
-* and some CSS in a `<style>` tag.
+* some HTML in a [`<template>` tag]({{< relref "template" >}}),
+* some JavaScript in a [`<script>` tag]({{< relref "script" >}}),
+* and some CSS in a [`<style>` tag]({{< relref "reactive-style" >}}).
 
 You can make a Web Component for multiple reasons:
 

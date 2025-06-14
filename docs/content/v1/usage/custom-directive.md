@@ -1,6 +1,6 @@
 ---
 title: Custom Directives
-weight: 4
+weight: 6
 ---
 
 A `:` custom directive will interpret in JS whatever you pass as value.

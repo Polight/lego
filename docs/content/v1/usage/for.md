@@ -1,6 +1,6 @@
 ---
 title: Loop :for
-weight: 3
+weight: 5
 ---
 
 `:for` directive allows to repeat a tag based on a property.
