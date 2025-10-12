@@ -14,8 +14,8 @@ Yes, you write native HTML, CSS and JS and create a native [W3C](https://en.wiki
 If you have ever played with Web Component-like frameworks (not to name Vue, React, Svelte…), you may know how debugging gets tricky and requires extra tooling. Because LEGO is native, your browser developer toolbar is all you need.
 
 - `debugger` works as expected,
-- _step-by-step_ debugging,
-- element inspector,
+- _step-by-step_ debugging and _breakpoints_,
+- browser _element_ inspector and source explorer,
 - the console with the live JS in the context…
 
 It's all just normal!
