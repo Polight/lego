@@ -104,7 +104,11 @@ class Component extends HTMLElement {
   }
 
   render(state) {
-    if (state) this.setState(state)
+    if (state) {
+      const hasChanges = this.#hasStateChanged(state)
+      if (!hasChanges) return
+      this.setState(state)
+    }
     if (!this.#isConnected) return
 
     render(
@@ -113,6 +117,13 @@ class Component extends HTMLElement {
     )
 
     this.rendered?.(state)
+  }
+
+  #hasStateChanged(newState) {
+    for (const key in newState) {
+      if (this.#_state[key] !== newState[key]) return true
+    }
+    return false
   }
 }
 
