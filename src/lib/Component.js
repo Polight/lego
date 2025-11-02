@@ -18,6 +18,7 @@ function sanitizeJsonAttribute(attrValue) {
 
 class Component extends HTMLElement {
   state = {}
+  #_state = {}
   useShadowDOM = true
   #watchProps = []
   #isConnected = false
@@ -26,6 +27,7 @@ class Component extends HTMLElement {
 
   #ready() {
     this.init?.()
+    this.#_state = { ...this.state }
     this.#watchProps = Object.keys(this.state)
     this.#syncAttributesToState()
     this.document = this.useShadowDOM
@@ -35,16 +37,16 @@ class Component extends HTMLElement {
   }
 
   #syncAttributesToState() {
-    this.state = Array.from(this.attributes).reduce(
+    this.#_state = Array.from(this.attributes).reduce(
       (state, attr) => {
         const camelCaseName = toCamelCase(attr.name)
-        const attrType = typeof this.state[camelCaseName]
+        const attrType = typeof this.#_state[camelCaseName]
         return {
           ...state,
           [camelCaseName]: sanitizeAttribute(attrType, attr.value),
         }
       },
-      this.state
+      this.#_state
     )
   }
 
@@ -60,15 +62,15 @@ class Component extends HTMLElement {
     if (name.match(/@[a-z]+(?:-[a-z]+)*/)) return this.#customEvents.push([name.slice(1), value])
     super.setAttribute(name, typeof value === 'object' ? JSON.stringify(value) : value)
     const prop = toCamelCase(name)
-    const attrType = typeof this.state[prop]
+    const attrType = typeof this.#_state[prop]
     if (this.#watchProps.includes(prop)) this.render({ [prop]: sanitizeAttribute(attrType, value) })
   }
 
   removeAttribute(name) {
     super.removeAttribute(name)
     const prop = toCamelCase(name)
-    const attrType = typeof this.state[prop]
-    if (this.#watchProps.includes(prop) && prop in this.state) {
+    const attrType = typeof this.#_state[prop]
+    if (this.#watchProps.includes(prop) && prop in this.#_state) {
       this.render({ [prop]: sanitizeAttribute(attrType, null) })
     }
   }
@@ -89,16 +91,16 @@ class Component extends HTMLElement {
   }
 
   setState(props = {}) {
-    Object.assign(this.state, props)
+    Object.assign(this.#_state, props)
     if (this.changed && this.#isConnected) this.changed(props)
   }
 
   set state(value) {
-    this.setState(value)
+    this.#_state = { ...value }
   }
 
   get state() {
-    return this.state
+    return this.#_state
   }
 
   render(state) {
