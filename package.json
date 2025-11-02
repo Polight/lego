@@ -7,7 +7,9 @@
   "scripts": {
     "build": "rollup -c && rollup -c rollup.config.minified.js",
     "publish": "npm run build && npm publish",
-    "test": "echo 'test still need to be implemented, contribution needed :)'"
+    "test": "echo 'test still need to be implemented, contribution needed :)'",
+    "lint": "eslint src/ --ext .js",
+    "lint:fix": "eslint src/ --ext .js --fix"
   },
   "dependencies": {
     "parse5": "^7.1.2"
@@ -17,7 +19,8 @@
     "@rollup/plugin-node-resolve": "*",
     "rollup": "*",
     "rollup-plugin-gzip": "*",
-    "rollup-plugin-terser": "*"
+    "rollup-plugin-terser": "*",
+    "eslint": "^8.0.0"
   },
   "bin": {
     "lego": "./bin/compile.js"
