@@ -1,6 +1,6 @@
 // Inspired from https://github.com/jsdom/jsdom/blob/6cf36809c500643160f4626c077cc597967f8871/lib/jsdom/living/nodes/GlobalEventHandlers.webidl
 
-const NATIVE_EVENTS = [
+const NATIVE_EVENTS = new Set([
   'onabort',
   'onauxclick',
   'onbeforeinput',
@@ -91,10 +91,10 @@ const NATIVE_EVENTS = [
   'onpointerleave',
   'ongotpointercapture',
   'onlostpointercapture',
-]
+])
 
 function isNativeEvent(event) {
-  return NATIVE_EVENTS.includes(event)
+  return NATIVE_EVENTS.has(event)
 }
 
 export { NATIVE_EVENTS, isNativeEvent }
