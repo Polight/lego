@@ -11,7 +11,8 @@ function sanitizeAttribute(attrType, attrValue) {
 function sanitizeJsonAttribute(attrValue) {
   try {
     return JSON.parse(attrValue)
-  } catch (_) {
+  } catch (error) {
+    console.warn(`Failed to parse JSON attribute: ${attrValue}`, error)
     return attrValue
   }
 }

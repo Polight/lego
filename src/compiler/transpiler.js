@@ -2,13 +2,22 @@ import parse from './vdom-parser.js'
 import { toCamelCase } from '../utils.js'
 
 function parseHtmlComponent(html) {
-  const templateMatch = html.match(/<template[^>]*>([\s\S]*)<\/template>/m)
-  const scriptMatch = html.match(/<script[^>]*>([\s\S]*)<\/script>/m)
-  const styleMatch = html.match(/<style[^>]*>([\s\S]*)<\/style>/m)
-  const template = templateMatch ? templateMatch[1].trim() : ''
-  const script = scriptMatch ? scriptMatch[1].trim() : ''
-  const style = styleMatch ? styleMatch[1].trim() : ''
-  return { template, script, style }
+  try {
+    const templateMatch = html.match(/<template[^>]*>([\s\S]*)<\/template>/m)
+    const scriptMatch = html.match(/<script[^>]*>([\s\S]*)<\/script>/m)
+    const styleMatch = html.match(/<style[^>]*>([\s\S]*)<\/style>/m)
+    
+    if (!templateMatch && !scriptMatch && !styleMatch) {
+      throw new Error('No template, script, or style tags found in component')
+    }
+    
+    const template = templateMatch ? templateMatch[1].trim() : ''
+    const script = scriptMatch ? scriptMatch[1].trim() : ''
+    const style = styleMatch ? styleMatch[1].trim() : ''
+    return { template, script, style }
+  } catch (error) {
+    throw new Error(`Failed to parse HTML component: ${error.message}`)
+  }
 }
 
 function generateFileContent({ dom, config }) {
