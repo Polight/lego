@@ -23,6 +23,7 @@ function extractDirectives(node) {
     let value = attr.value
     if(name === ':for') directives.push({ name: 'for', value })
     else if(name === ':if') directives.push({ name: 'if', value })
+    else if(name === ':else') directives.push({ name: 'else', value })
     else if(name.startsWith(':')) {
       name = name.slice(1)
       attrs.push({ name, value })
@@ -50,18 +51,72 @@ function wrapDirectives(directives, content, indent = '') {
   return indent + content
 }
 
-function convert(node, indentSize = 0) {
+function convert(node, indentSize = 0, parentContext = {}) {
   const indent = ' '.repeat(indentSize)
   if(node.nodeName === '#text') {
     return node.value.trim() ? `\`${node.value}\`` : ''
   }
   if(node.nodeName === '#document-fragment') {
-    return `[${indent}\n${cleanChildren(node.childNodes).map(c => convert(c, indentSize + 2)).join(',\n')}]`
+    return convertFragment(node.childNodes, indentSize)
   }
   let directives
   [node, directives] = extractDirectives(node)
   const attributes = node.attrs.reduce((attrs, attr) => Object.assign(attrs, {[attr.name]: attr.value }), {})
   const children = node.childNodes ? cleanChildren(node.childNodes).map(c => convert(c, indent + 4)).join(',\n') : ''
+  let childrenIndent
+  if(!node.childNodes || node.childNodes.length === 0) childrenIndent = JSON.stringify('')
+  else if(node.childNodes.length === 1) childrenIndent = children
+  else childrenIndent = `[\n${children}\n]`
+  return wrapDirectives(directives, vnode(node.nodeName, attributes, childrenIndent), indent)
+}
+
+function convertFragment(childNodes, indentSize) {
+  const indent = ' '.repeat(indentSize)
+  const children = cleanChildren(childNodes)
+  let result = []
+  let pendingIf = null
+  
+  for(let i = 0; i < children.length; i++) {
+    let child = children[i]
+    let directives
+    [child, directives] = extractDirectives(child)
+    
+    const hasIf = directives.some(d => d.name === 'if')
+    const hasElse = directives.some(d => d.name === 'else')
+    
+    if(hasIf && hasElse) {
+      throw new Error('Cannot use :if and :else on the same element')
+    }
+    
+    if(hasIf) {
+      pendingIf = { child, directives }
+    } else if(hasElse && pendingIf) {
+      const ifContent = convertElement(pendingIf.child, pendingIf.directives.filter(d => d.name !== 'if'), indentSize + 2)
+      const elseContent = convertElement(child, directives.filter(d => d.name !== 'else'), indentSize + 2)
+      const ifDirective = pendingIf.directives.find(d => d.name === 'if')
+      const combined = `((${ifDirective.value}) ? ${ifContent} : ${elseContent})`
+      result.push(combined)
+      pendingIf = null
+    } else {
+      if(pendingIf) {
+        result.push(convertElement(pendingIf.child, pendingIf.directives, indentSize + 2))
+        pendingIf = null
+      }
+      result.push(convertElement(child, directives, indentSize + 2))
+    }
+  }
+  
+  if(pendingIf) {
+    result.push(convertElement(pendingIf.child, pendingIf.directives, indentSize + 2))
+  }
+  
+  return `[${indent}\n${result.join(',\n')}]`
+}
+
+function convertElement(node, directives, indentSize) {
+  const indent = ' '.repeat(indentSize)
+  const attributes = node.attrs.reduce((attrs, attr) => Object.assign(attrs, {[attr.name]: attr.value }), {})
+  const children = node.childNodes ? cleanChildren(node.childNodes).map(c => convert(c, indentSize + 2)).join(',\n') : ''
   let childrenIndent
   if(!node.childNodes || node.childNodes.length === 0) childrenIndent = JSON.stringify('')
   else if(node.childNodes.length === 1) childrenIndent = children
