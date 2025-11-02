@@ -38,17 +38,15 @@ class Component extends HTMLElement {
   }
 
   #syncAttributesToState() {
-    this.#_state = Array.from(this.attributes).reduce(
-      (state, attr) => {
-        const camelCaseName = toCamelCase(attr.name)
-        const attrType = typeof this.#_state[camelCaseName]
-        return {
-          ...state,
-          [camelCaseName]: sanitizeAttribute(attrType, attr.value),
-        }
-      },
-      this.#_state
-    )
+    const newState = { ...this.#_state }
+    
+    for (const attr of this.attributes) {
+      const camelCaseName = toCamelCase(attr.name)
+      const attrType = typeof this.#_state[camelCaseName]
+      newState[camelCaseName] = sanitizeAttribute(attrType, attr.value)
+    }
+    
+    this.#_state = newState
   }
 
   get vdom() {
