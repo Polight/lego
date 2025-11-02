@@ -86,7 +86,10 @@ class Component extends HTMLElement {
 
   disconnectedCallback() {
     this.#isConnected = false
-    this.#customEvents.forEach(([customEvent, listener]) => this.removeEventListener(customEvent, listener))
+    this.#customEvents.forEach(([customEvent, listener]) => {
+      this.removeEventListener(customEvent, listener)
+    })
+    this.#customEvents = []
     this.disconnected?.()
   }
 
