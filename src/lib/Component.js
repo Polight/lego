@@ -120,10 +120,7 @@ class Component extends HTMLElement {
   }
 
   #hasStateChanged(newState) {
-    for (const key in newState) {
-      if (this.#_state[key] !== newState[key]) return true
-    }
-    return false
+    return Object.keys(newState).some(key => this.#_state[key] !== newState[key])
   }
 }
 
