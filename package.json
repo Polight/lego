@@ -1,13 +1,14 @@
 {
   "name": "@polight/lego",
-  "version": "1.11.0",
+  "version": "1.11.1",
   "description": "Tiny Web Components lib for future-proof HTML mentors",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "build": "rollup -c && rollup -c rollup.config.minified.js",
     "publish": "npm run build && npm publish",
-    "test": "echo 'test still need to be implemented, contribution needed :)'"
+    "test": "node --test test/*.test.js",
+    "test:bun": "bun test test/*.test.js"
   },
   "dependencies": {
     "parse5": "^7.1.2"
