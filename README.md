@@ -5,6 +5,9 @@
 
 # LEGO: Modern Buildless Web Components
 
+[![Smoke tests](https://github.com/Polight/lego/actions/workflows/tests.yaml/badge.svg)](https://github.com/Polight/lego/actions/workflows/tests.yaml)
+[![npm version](https://img.shields.io/npm/v/%40polight%2Flego)](https://www.npmjs.com/package/@polight/lego)
+
 LEGO (_Lightweight Embedded Gluten-free Objects_) is a library for writing fast ♻️ reactive, 📦 scoped and predictable 🏡 **native Web Components** in HTML/CSS/JS, that are easy to digest 🌱 for your browser.
 
 ## Native Web Components?
