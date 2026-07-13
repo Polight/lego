@@ -7,12 +7,18 @@ import { createComponent, generateIndex } from '../src/compiler/transpiler.js'
 import defaultConfig from '../src/compiler/config.js'
 
 // Read the config from the args
-const args = process.argv
-const [sourceDir, targetDir] = args.slice(2).filter(a => !a.startsWith('-'))
+const cliArgs = process.argv.slice(2)
+
+if (cliArgs.includes('-h') || cliArgs.includes('--help')) {
+  console.info(`LEGO compiler\n\nUsage:\n  lego [sourceDir] [targetDir] [options]\n\nArguments:\n  sourceDir      Source directory containing .html components (default: bricks)\n  targetDir      Output directory for compiled .js files (default: dist)\n\nOptions:\n  -w, --watch    Watch source files and recompile on changes\n  -h, --help     Show this help message\n\nExamples:\n  lego\n  lego bricks dist\n  lego bricks dist --watch`)
+  process.exit(0)
+}
+
+const [sourceDir, targetDir] = cliArgs.filter(a => !a.startsWith('-'))
 const argsConfig = {
   sourceDir,
   targetDir,
-  watch: args.indexOf('-w') >= 0
+  watch: cliArgs.includes('-w') || cliArgs.includes('--watch')
 }
 
 /**
