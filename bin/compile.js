@@ -71,6 +71,14 @@ async function walkDir(dirname, extensions) {
  * @returns {Object} { component, filename } object
  */
 async function compile(sourceDir, targetDir, config) {
+  if (!fs.existsSync(sourceDir)) {
+    throw new Error(`Source directory "${sourceDir}" was not found. Check your path or create it first.`)
+  }
+
+  if (!fs.statSync(sourceDir).isDirectory()) {
+    throw new Error(`Source path "${sourceDir}" is not a directory.`)
+  }
+
   const filenames = await walkDir(sourceDir, ['html'])
   fs.mkdirSync(targetDir, { recursive: true })
   return filenames.map(f => {
@@ -134,4 +142,7 @@ async function build() {
   }
 }
 
-build()
+build().catch((error) => {
+  console.error(`❌ ${error.message}`)
+  process.exit(1)
+})
