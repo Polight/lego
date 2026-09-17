@@ -12,10 +12,19 @@ function parseHtmlComponent(html) {
 }
 
 function generateFileContent({ dom, config }) {
-    return `
-// Lego version ${config.version}
+  const hasDefaultExport = /\bexport\s+default\b/.test(dom.script)
+  const extendsComponent = /\bexport\s+default\s+class\s+extends\s+Component\b/.test(dom.script)
+
+  const header = `// Lego version ${config.version}
 import { h, Component } from '${config.importPath}'
 
+${config.preScript || ''}
+`
+
+  // The brick extends `Component` itself: it owns everything, nothing to generate.
+  if (extendsComponent) return `${header}\n${dom.script}\n`
+
+  return `${header}
 class ${config.baseClassName} extends Component {
   useShadowDOM = ${Boolean(config.useShadowDOM)}
 
@@ -29,9 +38,9 @@ class ${config.baseClassName} extends Component {
   \`)}` : ''}
 }
 
-${config.preScript || ''}
+${dom.script}
 
-${dom.script || `export default class extends ${config.baseClassName} {}`}
+${hasDefaultExport ? '' : `export default class extends ${config.baseClassName} {}`}
 `
 }
 

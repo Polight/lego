@@ -87,3 +87,39 @@ test('compiled brick injects config.preScript before the brick code', async () =
 
   assert.match(content, /const injected = 1/)
 })
+
+test('compiled brick whose script has no default export still gets one', async () => {
+  const { Brick } = await load(`
+<template><p>hi</p></template>
+<script>
+  const helper = 1
+</script>`)
+
+  assert.ok(Brick.prototype instanceof Component)
+  assert.ok('vdom' in Brick.prototype)
+})
+
+test('script extending Component directly is passed through untouched', async () => {
+  const { Brick, content } = await load(`
+<template><p>hi</p></template>
+<script>
+  export default class extends Component {
+    answer = 42
+  }
+</script>`)
+
+  assert.ok(Brick.prototype instanceof Component)
+  assert.equal(new Brick().answer, 42)
+  assert.equal('vdom' in Brick.prototype, false)
+  assert.equal((content.match(/export default/g) || []).length, 1)
+})
+
+test('script extending Lego exports exactly once', async () => {
+  const { content } = await load(`
+<template><p>hi</p></template>
+<script>
+  export default   class extends Lego {}
+</script>`)
+
+  assert.equal((content.match(/export\s+default/g) || []).length, 1)
+})
